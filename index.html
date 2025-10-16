@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Тимур Надршин — Портфолио</title>
+    <meta name="description" content="Портфолио frontend-разработчика Тимура Надршина" />
+    <style>
+        /* Временные стили прямо в файле — потом вынесем в style.css */
+        :root { --maxw: 960px; }
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #0f172a;
+            background:
+            radial-gradient(60% 60% at 80% 10%, #e2e8f0 0%, transparent 60%),
+            radial-gradient(50% 50% at 0% 100%, #f1f5f9 0%, transparent 60%),
+            #ffffff;
+        }
+        .container {
+            min-height: 100dvh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+        }
+        .card {
+            width: 100%;
+            max-width: var(--maxw);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(6px);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: clamp(24px, 5vw, 56px);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+        h1 {
+            font-size: clamp(28px, 4vw, 48px);
+            line-height: 1.1;
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+        }
+        p.lead {
+            margin: 0 auto 28px;
+            max-width: 60ch;
+            font-size: clamp(16px, 2.2vw, 18px);
+            color: #334155;
+        }
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid #0f172a;
+            background: #0f172a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, .2);
+        }
+        .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,.24); }
+        .cta:active { transform: translateY(0); }
+        .cta svg { width: 18px; height: 18px; }
+        .meta {
+            margin-top: 18px;
+            font-size: 14px;
+            color: #64748b;
+        }
+        footer {
+            margin-top: 28px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        /* Доступность: фокус по табу */
+        .cta:focus-visible {
+            outline: 3px solid #60a5fa;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="card" role="region" aria-labelledby="title">
+            <h1 id="title">Привет! Я Тимур 👋</h1>
+            <p class="lead">
+            Здесь собираю свои проекты, эксперименты и учебные работы по фронтенду.
+            Нажми кнопку ниже — и перейдёшь к полному портфолио.
+            </p>
+
+            <!-- Кнопка ведёт на следующую страницу -->
+            <a class="cta" href="portfolio.html" aria-label="Перейти к портфолио">
+            Смотреть портфолио
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </a>
+
+            <div class="meta">или нажми <strong>Enter</strong></div>
+
+            <footer>© 2025 Тимур Надршин</footer>
+        </section>
+    </main>
+
+    <script>
+    // Удобный переход по Enter/Space на чистой странице
+    document.addEventListener('keydown', (e) => {
+        if (['Enter', ' '].includes(e.key)) {
+        window.location.href = 'portfolio.html';
+        }
+    });
+    </script>
+</body>
+</html>
