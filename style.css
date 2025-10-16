@@ -14,17 +14,16 @@
     --container-w: 960px;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #0b1120;
-        --surface: #111827;
-        --text: #f3f4f6;
-        --muted: #cbd5e1;
-        --border: #374151;
-        --primary: #e5e7eb;
-        --link: #93c5fd;
-        --shadow: 0 8px 24px rgba(0,0,0,.45);
-    }
+/* Тёмная тема включается, когда на <html> установлен data-theme="dark" */
+html[data-theme="dark"] {
+    --bg: #0b1120;
+    --surface: #111827;
+    --text: #f3f4f6;
+    --muted: #cbd5e1;
+    --border: #374151;
+    --primary: #e5e7eb;
+    --link: #93c5fd;
+    --shadow: 0 8px 24px rgba(0,0,0,.45);
 }
 
 /* Сброс и база */
@@ -106,6 +105,23 @@ h1 {
 .meta { margin-top: 18px; font-size: 14px; color: var(--muted); }
 .card footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
 
+/* ===== Контрастная кнопка для тёмной темы ===== */
+html[data-theme="dark"] .cta {
+    background: #1e293b;         /* насыщенный тёмно-синий фон */
+    color: #f9fafb;              /* почти белый текст */
+    border-color: #1e293b;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .cta:hover {
+    transform: translateY(-1px);
+}
+
+html[data-theme="dark"] .cta:active {
+    background: #0f172a;         /* чуть темнее при нажатии */
+    transform: translateY(0);
+}
+
 /* =========
     HEADER / NAV (для portfolio.html)
     ========= */
@@ -139,6 +155,31 @@ h1 {
 .header nav a:hover {
     border-color: var(--border);
     background: var(--surface);
+}
+
+/* =========
+    Кнопка переключения темы
+    ========= */
+.theme-toggle {
+    position: fixed;     /* На index.html — фиксировано в углу */
+    top: 14px;
+    right: 14px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+.theme-toggle:hover { filter: brightness(0.98); }
+.theme-toggle:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; }
+
+/* В header (portfolio.html) кнопка будет в потоке */
+.header .theme-toggle {
+    position: static;
+    margin-left: 8px;
 }
 
 /* =========
