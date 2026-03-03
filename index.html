@@ -1,46 +1,71 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Тимур Надршин — Портфолио</title>
-    <meta name="description" content="Портфолио frontend-разработчика Тимура Надршина">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тимур Надршин — Системный аналитик</title>
+  <meta name="description" content="Профессиональное портфолио системного аналитика: требования, BPMN/UML, интеграции API, спецификации, кейсы." />
+  <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
 </head>
-<body>
-    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌙 Тема</button>
 
-    <main class="container">
-        <section class="card" role="region" aria-labelledby="title">
-            <h1 id="title">Привет! Я Тимур 👋</h1>
-            <p class="lead">
-            Здесь собираю свои проекты, эксперименты и учебные работы по фронтенду.
-            Нажми кнопку ниже — и перейдёшь к полному портфолио.
-            </p>
+<body data-page="home">
+  <div data-partial="header"></div>
 
-            <!-- Кнопка ведёт на следующую страницу -->
-            <a class="cta" href="portfolio.html" aria-label="Перейти к портфолио">
-            Смотреть портфолио
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            </a>
+  <main class="container page">
+    <div class="page__head">
+      <div class="page__kicker">Портфолио</div>
+      <h1 class="page__title">Системный аналитик</h1>
+      <p class="page__desc">
+        Сбор и анализ требований, BPMN/UML, проектирование интеграций (REST API), спецификации (SRS/ТЗ),
+        декомпозиция задач и критерии приемки.
+      </p>
+    </div>
 
-            <div class="meta">или нажми <strong>Enter</strong></div>
+    <section class="section hero">
+      <h2 class="hero__title">Перевожу бизнес-потребности в понятные решения для разработки</h2>
+      <p class="hero__text">
+        Моя сильная сторона — структурирование: от хаотичных запросов к четким сценариям, статусам, контрактам API и артефактам.
+      </p>
 
-            <footer>© 2025 Тимур Надршин</footer>
-        </section>
-    </main>
+      <div class="actions">
+        <a class="btn btn--primary" href="/portfolio/cases.html">Смотреть кейсы</a>
+        <a class="btn" href="/portfolio/artifacts.html">Артефакты</a>
+        <a class="btn btn--ghost" href="/portfolio/contacts.html">Связаться</a>
+      </div>
 
-    <script>
-    // Удобный переход по Enter/Space на чистой странице
-    document.addEventListener('keydown', (e) => {
-        if (['Enter', ' '].includes(e.key)) {
-        window.location.href = 'portfolio.html';
-        }
-    });
-    </script>
-    
-    <script src="script.js"></script>
+      <ul class="features" aria-label="Ключевые направления">
+        <li><strong>Требования</strong><br/>User Stories · Use Cases · Acceptance Criteria</li>
+        <li><strong>Моделирование</strong><br/>BPMN 2.0 · UML sequence/activity</li>
+        <li><strong>Интеграции</strong><br/>REST · JSON · OpenAPI/Swagger · Postman</li>
+        <li><strong>Данные</strong><br/>ERD · базовый SQL (JOIN/агрегации)</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Как устроено портфолио</h2>
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">Кейсы</div>
+          <div class="item__meta">Контекст → Решение → Артефакты → Результат</div>
+          <p class="item__text">Каждый кейс оформлен как мини-проект: цели, сценарии, диаграммы, спецификации.</p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/cases.html">Открыть кейсы</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__title">Артефакты</div>
+          <div class="item__meta">BPMN · SRS · OpenAPI · UML · ERD</div>
+          <p class="item__text">Отдельная страница со ссылками и примерами (PDF/MD/YAML) — удобно для проверяющего.</p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/artifacts.html">Открыть артефакты</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-partial="footer"></div>
+  <script src="/portfolio/assets/js/app.js"></script>
 </body>
 </html>
