@@ -10,20 +10,17 @@
 // - ✅ Mobile burger menu
 // =========================================================================
 
-const BUILD_ID = "2026-03-03-01"; // <- меняй при каждом релизе, если хочешь вручную
+const BUILD_ID = "2026-03-03-02"; // <- меняй при релизе
 const THEME_KEY = "theme";
 const SHOW_PROGRESS_AFTER_PX = 40;
 
 // ------------------ ✅ CACHE BUST CSS (iOS fix) ------------------
 (function bustCssCache() {
-  // ищем все стили, где есть style.css (включая абсолютные/относительные пути)
   const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
   const styleLink = links.find((l) => (l.getAttribute("href") || "").includes("assets/css/style.css"));
-
   if (!styleLink) return;
 
   const href = styleLink.getAttribute("href") || "";
-  // если уже есть v= — не трогаем
   if (href.includes("v=")) return;
 
   const sep = href.includes("?") ? "&" : "?";
@@ -219,13 +216,11 @@ function initMobileMenu() {
     expanded ? close() : open();
   });
 
-  // close on link click
   panel.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (a) close();
   });
 
-  // close on outside click
   document.addEventListener("click", (e) => {
     const expanded = toggle.getAttribute("aria-expanded") === "true";
     if (!expanded) return;
@@ -233,7 +228,6 @@ function initMobileMenu() {
     if (!inside) close();
   });
 
-  // close on resize to desktop
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 860) close();
   });

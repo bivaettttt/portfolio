@@ -114,11 +114,7 @@ body{
   background-color:var(--bg0);
 }
 
-/* ---- THE MAIN BACKGROUND (no seams) ----
-   Chrome banding is reduced by:
-   1) using a simple linear base + few giant soft radials
-   2) adding subtle dither overlay (body::after)
-*/
+/* ---- THE MAIN BACKGROUND (no seams) ---- */
 body::before{
   content:"";
   position:fixed;
@@ -144,7 +140,6 @@ body::after{
   pointer-events:none;
   z-index:-1;
 
-  /* multi-dot layers, no lines */
   background-image:
     radial-gradient(circle at 12% 18%, rgba(255,255,255,.24) 0.6px, transparent 0.8px),
     radial-gradient(circle at 72% 44%, rgba(255,255,255,.18) 0.6px, transparent 0.8px),
@@ -193,6 +188,19 @@ ul,ol{ margin:0 0 var(--s4); padding-left:20px; }
 li{ margin:0 0 8px; color:var(--text-soft); }
 li strong{ color:var(--text); }
 
+code, pre code{ font-family: var(--mono); }
+pre{
+  margin: 12px 0 0;
+  padding: 14px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-solid) 82%, transparent);
+  overflow:auto;
+}
+html[data-theme="dark"] pre{
+  background: color-mix(in srgb, var(--surface-solid) 70%, transparent);
+}
+
 /* ===================== LAYOUT ===================== */
 
 .container{
@@ -213,6 +221,29 @@ main,.page{
   padding-bottom:calc(var(--footer-h) + var(--footer-safe) + var(--s5)) !important;
 }
 :target{ scroll-margin-top: calc(var(--header-h) + 14px); }
+
+/* ===================== PAGE HEAD / SECTIONS ===================== */
+
+.page__head{
+  max-width: 92ch;
+  margin: 0 0 var(--s6);
+}
+.page__kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted2);
+  margin-bottom: var(--s2);
+}
+.page__title{ margin-bottom: var(--s3); }
+.page__desc{ max-width: 86ch; color: var(--muted); }
+
+.section{
+  margin: var(--s7) 0;
+}
 
 /* ===================== HEADER ===================== */
 
@@ -369,7 +400,7 @@ html.nav-open body{ overflow:hidden; }
   background: var(--surface);
   box-shadow: var(--shadow-3);
   backdrop-filter: blur(16px);
-  color: var(--text); /* ✅ Yandex: force correct text color */
+  color: var(--text);
 }
 
 /* ===================== HERO ===================== */
@@ -472,6 +503,85 @@ html.nav-open body{ overflow:hidden; }
 @media (max-width:980px){ .grid--3{ grid-template-columns:1fr; } }
 @media (max-width:780px){ .grid--2{ grid-template-columns:1fr; } }
 
+/* ===================== COMMON COMPONENTS ===================== */
+
+.item__title{
+  font-weight: 950;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+.item__meta{
+  font-size: 13px;
+  color: var(--muted2);
+  margin-bottom: 10px;
+}
+.item__text{ margin: 0; color: var(--text-soft); }
+.item__links{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; }
+
+.clean-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.clean-list li{
+  margin: 0 0 10px;
+  padding-left: 18px;
+  position: relative;
+}
+.clean-list li::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: color-mix(in srgb, var(--primary) 70%, var(--text));
+}
+
+/* List (cases page) */
+.list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap: var(--s6);
+}
+
+/* Features */
+.features{
+  list-style:none;
+  padding:0;
+  margin: var(--s6) 0 0;
+  display:grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+.features li{
+  margin:0;
+  padding: 14px 14px;
+  border: 1px solid var(--border2);
+  background: var(--surface-2);
+  border-radius: var(--radius-md);
+  color: var(--text-soft);
+}
+.features li strong{ color: var(--text); }
+.features--tight{ margin-top: var(--s5); }
+@media (max-width:780px){
+  .features{ grid-template-columns: 1fr; }
+}
+
+/* Breadcrumbs */
+.breadcrumbs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  font-size: 13px;
+  color: var(--muted2);
+  margin-bottom: var(--s3);
+}
+.breadcrumbs a{ color: var(--muted); }
+.breadcrumbs a:hover{ color: var(--text); }
+.breadcrumbs .sep{ opacity:.7; }
+
 /* ===================== FOOTER ===================== */
 
 .footer{
@@ -521,6 +631,8 @@ html.nav-open body{ overflow:hidden; }
   .theme-toggle{ width:46px; height:46px; padding:0; display:inline-flex; justify-content:center; }
 
   .page{ padding: var(--s6) 0 var(--s7); }
+  .page__head{ margin-bottom: var(--s5); }
+  .section{ margin: var(--s6) 0; }
 
   .hero{
     padding: var(--s6);

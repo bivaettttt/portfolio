@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Кейсы — Тимур Надршин</title>
-  <meta name="description" content="Кейсы системного аналитика: требования, BPMN/UML, интеграции API, спецификации." />
+  <meta name="description" content="Кейсы системного аналитика: требования, BPMN/UML, интеграции (REST API/OpenAPI), спецификации и модели данных." />
+  <meta name="author" content="Тимур Надршин" />
+  <meta name="keywords" content="кейсы, системный аналитик, BPMN, UML, REST API, OpenAPI, требования, acceptance criteria, ERD, SQL" />
+
+  <meta property="og:title" content="Кейсы — Тимур Надршин" />
+  <meta property="og:description" content="Контекст → решение → артефакты → эффект. Требования, процессы, API и данные." />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
 </head>
 
@@ -15,7 +22,10 @@
     <div class="page__head">
       <div class="page__kicker">Портфолио</div>
       <h1 class="page__title">Кейсы</h1>
-      <p class="page__desc">Оформляю как проект: контекст → решение → артефакты → итог.</p>
+      <p class="page__desc">
+        Формат “как в проекте”: контекст → решение → артефакты → эффект.  
+        Цель — показать, как я думаю, оформляю и довожу до уровня реализации.
+      </p>
     </div>
 
     <section class="section">
@@ -23,7 +33,9 @@
         <li class="item">
           <div class="item__title">Автоматизация обработки заявок</div>
           <div class="item__meta">BPMN · backlog · acceptance criteria</div>
-          <p class="item__text">AS-IS/TO-BE, роли, сценарии, user stories, критерии приемки, декомпозиция.</p>
+          <p class="item__text">
+            Формализация процесса AS-IS/TO-BE, роли и статусы, декомпозиция, критерии приемки.
+          </p>
           <div class="item__links">
             <a class="btn btn--primary" href="/portfolio/cases/case-1.html">Открыть кейс</a>
           </div>
@@ -31,8 +43,10 @@
 
         <li class="item">
           <div class="item__title">Интеграция CRM ↔ сервис уведомлений</div>
-          <div class="item__meta">REST API · OpenAPI · errors</div>
-          <p class="item__text">Контракты API, статусы/ошибки, ретраи, идемпотентность (базово), sequence diagram.</p>
+          <div class="item__meta">REST API · OpenAPI · errors · retries</div>
+          <p class="item__text">
+            Контракт API, статусы доставки, коды ошибок, идемпотентность (база), ретраи, UML sequence.
+          </p>
           <div class="item__links">
             <a class="btn btn--primary" href="/portfolio/cases/case-2.html">Открыть кейс</a>
           </div>
@@ -41,12 +55,21 @@
         <li class="item">
           <div class="item__title">Модель данных для каталога</div>
           <div class="item__meta">ERD · rules · SQL</div>
-          <p class="item__text">Сущности/связи, правила целостности, примеры SQL-запросов.</p>
+          <p class="item__text">
+            Проектирование сущностей/связей, правила целостности, примеры SQL-запросов для проверок.
+          </p>
           <div class="item__links">
             <a class="btn btn--primary" href="/portfolio/cases/case-3.html">Открыть кейс</a>
           </div>
         </li>
       </ul>
+    </section>
+
+    <section class="section">
+      <div class="actions">
+        <a class="btn" href="/portfolio/artifacts.html">Смотреть артефакты</a>
+        <a class="btn btn--primary" href="/portfolio/contacts.html">Связаться</a>
+      </div>
     </section>
   </main>
 

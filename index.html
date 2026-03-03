@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Тимур Надршин — Системный аналитик</title>
-  <meta name="description" content="Профессиональное портфолио системного аналитика: требования, BPMN/UML, интеграции API, спецификации, кейсы." />
+  <title>Тимур Надршин — Системный аналитик (Junior)</title>
+  <meta name="description" content="Портфолио junior системного аналитика: требования, BPMN/UML, REST API (OpenAPI), модели данных (ERD/SQL), кейсы и артефакты." />
+  <meta name="author" content="Тимур Надршин" />
+  <meta name="keywords" content="системный аналитик, junior system analyst, требования, BPMN, UML, REST API, OpenAPI, SRS, ТЗ, ERD, SQL, backlog, acceptance criteria" />
+
+  <meta property="og:title" content="Тимур Надршин — Системный аналитик (Junior)" />
+  <meta property="og:description" content="Требования, BPMN/UML, REST API (OpenAPI), ERD/SQL. Кейсы и артефакты." />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
 </head>
 
@@ -14,17 +21,18 @@
   <main class="container page">
     <div class="page__head">
       <div class="page__kicker">Портфолио</div>
-      <h1 class="page__title">Системный аналитик</h1>
+      <h1 class="page__title">Системный аналитик (Junior)</h1>
       <p class="page__desc">
-        Сбор и анализ требований, BPMN/UML, проектирование интеграций (REST API), спецификации (SRS/ТЗ),
-        декомпозиция задач и критерии приемки.
+        Формализую требования, моделирую процессы и проектирую интеграции. Делаю так, чтобы разработке и тестированию было
+        понятно “что строим”, “как работает” и “как принимаем”.
       </p>
     </div>
 
     <section class="section hero">
-      <h2 class="hero__title">Перевожу бизнес-потребности в понятные решения для разработки</h2>
+      <h2 class="hero__title">Перевожу бизнес-запросы в спецификации, процессы и API</h2>
       <p class="hero__text">
-        Моя сильная сторона — структурирование: от хаотичных запросов к четким сценариям, статусам, контрактам API и артефактам.
+        Мой фокус — структурирование: требования → сценарии → статусы → диаграммы → контракт API → критерии приемки.
+        На сайте — кейсы, оформленные как проекты, и примеры артефактов (PDF/MD/YAML).
       </p>
 
       <div class="actions">
@@ -33,11 +41,38 @@
         <a class="btn btn--ghost" href="/portfolio/contacts.html">Связаться</a>
       </div>
 
-      <ul class="features" aria-label="Ключевые направления">
+      <div class="grid grid--2" style="margin-top: 18px;">
+        <div class="item">
+          <div class="item__title">Что я делаю</div>
+          <div class="item__meta">на уровне “можно реализовывать”</div>
+          <ul class="clean-list">
+            <li>Сбор и структурирование требований (User Stories / Use Cases)</li>
+            <li>BPMN AS-IS / TO-BE, статусы, роли, исключения</li>
+            <li>Проектирование REST API (OpenAPI), коды ошибок, ретраи</li>
+            <li>Декомпозиция: epics → stories → acceptance criteria</li>
+            <li>Модели данных: ERD + проверки SQL</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item__title">Обо мне кратко</div>
+          <div class="item__meta">НГТУ · 3 курс</div>
+          <p class="item__text">
+            Бизнес-информатика, профиль “Автоматизация бизнес-процессов и анализ данных”.
+            Развиваюсь в системном анализе: прокачиваю формализацию требований, интеграции и работу с данными.
+          </p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/about.html">Подробнее</a>
+            <a class="btn btn--primary" href="/portfolio/contacts.html">Написать</a>
+          </div>
+        </div>
+      </div>
+
+      <ul class="features features--tight" aria-label="Ключевые направления">
         <li><strong>Требования</strong><br/>User Stories · Use Cases · Acceptance Criteria</li>
         <li><strong>Моделирование</strong><br/>BPMN 2.0 · UML sequence/activity</li>
-        <li><strong>Интеграции</strong><br/>REST · JSON · OpenAPI/Swagger · Postman</li>
-        <li><strong>Данные</strong><br/>ERD · базовый SQL (JOIN/агрегации)</li>
+        <li><strong>Интеграции</strong><br/>REST · JSON · OpenAPI · Postman</li>
+        <li><strong>Данные</strong><br/>ERD · SQL (JOIN/агрегации)</li>
       </ul>
     </section>
 
@@ -46,8 +81,11 @@
       <div class="grid grid--2">
         <div class="item">
           <div class="item__title">Кейсы</div>
-          <div class="item__meta">Контекст → Решение → Артефакты → Результат</div>
-          <p class="item__text">Каждый кейс оформлен как мини-проект: цели, сценарии, диаграммы, спецификации.</p>
+          <div class="item__meta">Контекст → Решение → Артефакты → Эффект</div>
+          <p class="item__text">
+            Каждый кейс — как мини-проект: цели, сценарии, диаграммы, спецификации, критерии приемки.
+            Внутри — мои решения и “почему так”.
+          </p>
           <div class="item__links">
             <a class="btn" href="/portfolio/cases.html">Открыть кейсы</a>
           </div>
@@ -55,8 +93,10 @@
 
         <div class="item">
           <div class="item__title">Артефакты</div>
-          <div class="item__meta">BPMN · SRS · OpenAPI · UML · ERD</div>
-          <p class="item__text">Отдельная страница со ссылками и примерами (PDF/MD/YAML) — удобно для проверяющего.</p>
+          <div class="item__meta">BPMN · SRS/ТЗ · OpenAPI · UML · ERD</div>
+          <p class="item__text">
+            Ссылки на примеры файлов (PDF/MD/YAML), чтобы быстро оценить качество аналитики и оформление.
+          </p>
           <div class="item__links">
             <a class="btn" href="/portfolio/artifacts.html">Открыть артефакты</a>
           </div>

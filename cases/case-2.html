@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Кейс: Интеграция CRM ↔ сервис уведомлений — Тимур Надршин</title>
-  <meta name="description" content="Кейс системного аналитика: интеграция CRM и сервиса уведомлений. REST API, контракты, статусы ошибок, идемпотентность, UML sequence, критерии приемки." />
+  <meta name="description" content="Кейс системного аналитика: интеграция CRM и сервиса уведомлений. REST API, OpenAPI, коды ошибок, ретраи, идемпотентность, UML sequence, acceptance criteria." />
+  <meta name="author" content="Тимур Надршин" />
+  <meta name="keywords" content="интеграция, CRM, уведомления, REST API, OpenAPI, ошибки, ретраи, идемпотентность, UML sequence" />
+
+  <meta property="og:title" content="Кейс: Интеграция CRM ↔ сервис уведомлений" />
+  <meta property="og:description" content="Контракт API, статусы доставки, ошибки, ретраи и критерии приемки." />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
 </head>
 
@@ -21,7 +28,7 @@
 
       <h1 class="page__title">Интеграция CRM ↔ сервис уведомлений</h1>
       <p class="page__desc">
-        Учебный кейс в формате реального проекта: проработка требований, контракта API, ошибок, ретраев и критериев приемки.
+        Кейс про интеграцию через REST API: контракт, статусы, ошибки, ретраи, идемпотентность и критерии приемки.
       </p>
     </div>
 
@@ -30,15 +37,28 @@
         <div class="item">
           <div class="item__title">Цель</div>
           <p class="item__text">
-            Обеспечить отправку уведомлений клиентам из CRM через внешний сервис с прогнозируемыми статусами, ошибками и повторными попытками.
+            Обеспечить отправку уведомлений из CRM через отдельный сервис с предсказуемыми статусами, ошибками и правилами повторных попыток.
           </p>
         </div>
         <div class="item">
-          <div class="item__title">Результат</div>
+          <div class="item__title">Эффект для бизнеса</div>
           <p class="item__text">
-            Единый контракт API, фиксированные коды ошибок и правила ретраев, прозрачный трекинг доставки и аудит событий.
+            Прозрачная доставка и аудит событий, меньше потерь уведомлений, контролируемые ретраи и единый контракт для поддержки/развития.
           </p>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Моя роль</h2>
+      <div class="item">
+        <ul class="clean-list">
+          <li>Собрал требования и зафиксировал границы скоупа</li>
+          <li>Описал сущности, статусы и основные сценарии</li>
+          <li>Сформировал контракт REST API (OpenAPI) + коды ошибок</li>
+          <li>Продумал ретраи, таймауты и идемпотентность (базовый уровень)</li>
+          <li>Подготовил acceptance criteria и описание UML sequence</li>
+        </ul>
       </div>
     </section>
 
@@ -47,8 +67,8 @@
       <div class="item">
         <p class="item__text">
           CRM должна отправлять SMS/Email/Push при событиях (создание заявки, смена статуса, просрочка SLA).
-          Ранее отправка была “вшита” в CRM → сложная поддержка и нестабильная доставка.
-          Решение — вынести отправку в отдельный сервис уведомлений и интегрировать через REST API.
+          Вариант “вшить отправку в CRM” усложняет поддержку и делает доставку менее предсказуемой.
+          Решение — выделить отправку в отдельный сервис уведомлений и интегрировать через REST API.
         </p>
       </div>
     </section>
@@ -59,13 +79,13 @@
         <div class="item">
           <div class="item__title">Входит</div>
           <p class="item__text">
-            Отправка уведомлений по API, получение статуса доставки, обработка ошибок, логирование, правила ретраев.
+            Создание уведомлений по API, получение статуса доставки, обработка ошибок, логирование, правила ретраев.
           </p>
         </div>
         <div class="item">
           <div class="item__title">Не входит</div>
           <p class="item__text">
-            UI для шаблонов, биллинг сообщений, маршрутизация каналов по стоимости, админка провайдеров.
+            UI для шаблонов, биллинг сообщений, выбор провайдера по стоимости, админка провайдеров.
           </p>
         </div>
       </div>
@@ -82,31 +102,7 @@
     </section>
 
     <section class="section">
-      <h2>Требования</h2>
-
-      <div class="grid grid--2">
-        <div class="item">
-          <div class="item__title">Функциональные</div>
-          <p class="item__text">
-            1) CRM отправляет запрос на создание уведомления.<br/>
-            2) Сервис возвращает идентификатор уведомления.<br/>
-            3) CRM может запросить статус доставки.<br/>
-            4) Сервис обрабатывает ошибки провайдера и сохраняет историю попыток.
-          </p>
-        </div>
-
-        <div class="item">
-          <div class="item__title">Нефункциональные (базово)</div>
-          <p class="item__text">
-            Идемпотентность на уровне запроса, таймауты, ретраи по временным ошибкам,
-            аудит и трассировка (correlationId).
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Контракт API (черновик)</h2>
+      <h2>Контракт API (структура)</h2>
 
       <div class="item">
         <div class="item__title">POST /api/v1/notifications</div>
@@ -127,12 +123,12 @@
       </div>
 
       <div class="item" style="margin-top:12px;">
-        <div class="item__title">Ошибки и правила ретраев</div>
-        <div class="item__meta">Согласованные коды</div>
+        <div class="item__title">Ошибки и ретраи</div>
+        <div class="item__meta">предсказуемые коды</div>
         <p class="item__text">
-          400: неверный payload / отсутствуют обязательные поля.<br/>
+          400: неверный payload / отсутствуют поля.<br/>
           401/403: авторизация/права.<br/>
-          409: конфликт идемпотентности (если ключ уже использован с другим payload).<br/>
+          409: конфликт идемпотентности (ключ уже использован с другим payload).<br/>
           429: rate limit (ретрай с backoff).<br/>
           5xx: временная ошибка сервиса/провайдера (ретрай по политике).
         </p>
@@ -156,7 +152,7 @@
       <h2>Критерии приемки (пример)</h2>
       <ul class="features">
         <li><strong>AC-01</strong><br/>При валидном запросе сервис возвращает 202 + notificationId</li>
-        <li><strong>AC-02</strong><br/>При повторе с тем же Idempotency-Key возвращается тот же notificationId</li>
+        <li><strong>AC-02</strong><br/>Повтор с тем же Idempotency-Key возвращает тот же notificationId</li>
         <li><strong>AC-03</strong><br/>GET /{id} возвращает статус и attempts</li>
         <li><strong>AC-04</strong><br/>При 429/5xx выполняются ретраи по политике (фиксируется attempts)</li>
       </ul>
@@ -168,9 +164,9 @@
         <div class="item">
           <div class="item__title">OpenAPI (пример)</div>
           <div class="item__meta">YAML</div>
-          <p class="item__text">Черновой контракт API: схемы, ответы, ошибки.</p>
+          <p class="item__text">Контракт API: схемы, ответы, ошибки.</p>
           <div class="item__links">
-            <a class="btn" href="/portfolio/assets/files/case-2-openapi.yaml" target="_blank" rel="noopener">Открыть YAML</a>
+            <a class="btn btn--primary" href="/portfolio/assets/files/case-2-openapi.yaml" target="_blank" rel="noopener">Открыть YAML</a>
           </div>
         </div>
 
@@ -179,7 +175,7 @@
           <div class="item__meta">PDF/PNG</div>
           <p class="item__text">UML sequence для основного сценария.</p>
           <div class="item__links">
-            <a class="btn" href="/portfolio/assets/files/case-2-sequence.pdf" target="_blank" rel="noopener">Открыть</a>
+            <a class="btn btn--primary" href="/portfolio/assets/files/case-2-sequence.pdf" target="_blank" rel="noopener">Открыть</a>
           </div>
         </div>
       </div>

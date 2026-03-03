@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Обо мне — Тимур Надршин</title>
-  <meta name="description" content="Обо мне: системный аналитик. Подход к работе, компетенции, инструменты, образование." />
+  <meta name="description" content="Обо мне: junior системный аналитик. Подход к работе, компетенции, инструменты, образование (НГТУ)." />
+  <meta name="author" content="Тимур Надршин" />
+  <meta name="keywords" content="системный аналитик, junior, требования, BPMN, UML, REST API, OpenAPI, ERD, SQL, backlog, acceptance criteria" />
+
+  <meta property="og:title" content="Обо мне — Тимур Надршин" />
+  <meta property="og:description" content="Подход, компетенции, инструменты и образование." />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
 </head>
 
@@ -16,155 +23,118 @@
       <div class="page__kicker">Профиль</div>
       <h1 class="page__title">Обо мне</h1>
       <p class="page__desc">
-        Начинающий системный аналитик. Специализируюсь на сборе и структурировании требований,
-        моделировании процессов и проектировании интеграций.
+        Junior системный аналитик. Фокусируюсь на формализации требований, интеграциях и моделировании данных.
+        Мне важно, чтобы решения были реализуемыми: понятные сценарии, статусы, ошибки и критерии приемки.
       </p>
     </div>
 
-    <!-- КТО Я -->
     <section class="section">
       <div class="hero">
-        <h2 class="hero__title">Моя роль — структурировать хаос</h2>
+        <h2 class="hero__title">Сильная сторона — структурирование</h2>
         <p class="hero__text">
-          Я помогаю превращать разрозненные бизнес-запросы в понятные требования для разработки.
-          Работая с процессами, интеграциями и данными, я делаю систему прозрачной и управляемой.
+          Превращаю разрозненные бизнес-запросы в понятные спецификации для разработки и QA.
+          Люблю ясные процессы, предсказуемые статусы и “контрактность” в интеграциях.
         </p>
 
         <div class="actions">
-          <a class="btn btn--primary" href="/portfolio/assets/files/resume.pdf" target="_blank" rel="noopener">
-            Скачать резюме
-          </a>
-          <a class="btn" href="/portfolio/cases.html">Посмотреть кейсы</a>
+          <a class="btn btn--primary" href="/portfolio/cases.html">Посмотреть кейсы</a>
+          <a class="btn" href="/portfolio/artifacts.html">Открыть артефакты</a>
+          <a class="btn btn--ghost" href="/portfolio/contacts.html">Связаться</a>
         </div>
       </div>
     </section>
 
-    <!-- ПОДХОД -->
     <section class="section">
-      <h2>Подход к работе</h2>
-
+      <h2>Как я работаю</h2>
       <div class="grid grid--2">
         <div class="item">
-          <div class="item__title">1. Анализ и уточнение</div>
+          <div class="item__title">1) Уточнение требований</div>
           <p class="item__text">
-            Провожу уточняющие вопросы, выявляю скрытые ограничения, фиксирую договоренности.
-            Отделяю “что нужно бизнесу” от “как это будет реализовано”.
+            Собираю контекст, роли, ожидания и ограничения. Фиксирую договоренности и границы скоупа.
           </p>
         </div>
 
         <div class="item">
-          <div class="item__title">2. Моделирование</div>
+          <div class="item__title">2) Формализация сценариев</div>
           <p class="item__text">
-            Строю BPMN (AS-IS / TO-BE), описываю сценарии, роли и статусы.
-            Формализую процессы так, чтобы их можно было реализовать без двусмысленностей.
+            Описываю Use Cases/User Stories, статусы, правила переходов, исключения и edge cases.
           </p>
         </div>
 
         <div class="item">
-          <div class="item__title">3. Проработка интеграций</div>
+          <div class="item__title">3) Моделирование процессов</div>
           <p class="item__text">
-            Проектирую REST API: методы, структуры JSON, статусы, ошибки.
-            Учитываю граничные случаи и базовые принципы идемпотентности.
+            Строю BPMN AS-IS/TO-BE, чтобы у команды было единое понимание процесса и точек контроля.
           </p>
         </div>
 
         <div class="item">
-          <div class="item__title">4. Декомпозиция</div>
+          <div class="item__title">4) Интеграции и данные</div>
           <p class="item__text">
-            Формирую backlog: epics → user stories → критерии приемки.
-            Помогаю разработке и тестированию работать по четким задачам.
+            Проектирую REST API (OpenAPI): схемы, статусы, ошибки, идемпотентность (база).
+            Для данных — ERD и проверки SQL.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- КОМПЕТЕНЦИИ -->
     <section class="section">
-      <h2>Компетенции</h2>
-
+      <h2>Чем полезен команде</h2>
       <ul class="features">
-        <li>
-          <strong>Требования</strong><br />
-          User Stories · Use Cases · Acceptance Criteria · NFR (базово)
-        </li>
-
-        <li>
-          <strong>Моделирование</strong><br />
-          BPMN 2.0 · UML (sequence/activity)
-        </li>
-
-        <li>
-          <strong>Интеграции</strong><br />
-          REST · JSON · OpenAPI / Swagger · Postman
-        </li>
-
-        <li>
-          <strong>Данные</strong><br />
-          ER-диаграммы · нормализация (базово) · SQL (JOIN, агрегаты)
-        </li>
-
-        <li>
-          <strong>Документация</strong><br />
-          SRS / ТЗ · спецификации · описание статусов и правил
-        </li>
-
-        <li>
-          <strong>Коммуникации</strong><br />
-          Работа со стейкхолдерами · синхронизация с dev / QA
-        </li>
+        <li><strong>Снижаю неоднозначность</strong><br/>фиксирую определения, статусы, правила и исключения</li>
+        <li><strong>Делаю “реализуемо”</strong><br/>декомпозиция задач + критерии приемки</li>
+        <li><strong>Прорабатываю edge cases</strong><br/>ошибки, ретраи, таймауты, валидации</li>
+        <li><strong>Синхронизирую участников</strong><br/>бизнес ↔ dev ↔ QA через понятные артефакты</li>
       </ul>
     </section>
 
-    <!-- ИНСТРУМЕНТЫ -->
+    <section class="section">
+      <h2>Компетенции</h2>
+      <ul class="features">
+        <li><strong>Требования</strong><br/>User Stories · Use Cases · Acceptance Criteria</li>
+        <li><strong>Процессы</strong><br/>BPMN 2.0 · роли · статусы · исключения</li>
+        <li><strong>Интеграции</strong><br/>REST · JSON · OpenAPI · Postman</li>
+        <li><strong>Данные</strong><br/>ERD · SQL (JOIN, агрегаты, простые CTE)</li>
+      </ul>
+    </section>
+
     <section class="section">
       <h2>Инструменты</h2>
-
       <div class="grid grid--3">
         <div class="item">
-          <div class="item__title">Рабочие</div>
-          <p class="item__text">
-            Jira · Confluence · Draw.io · Miro · Postman
-          </p>
+          <div class="item__title">Аналитика</div>
+          <p class="item__text">Jira · Confluence · Miro · Draw.io</p>
         </div>
-
         <div class="item">
-          <div class="item__title">Технические</div>
-          <p class="item__text">
-            SQL · Git · GitHub · JSON · базовое понимание HTML/CSS
-          </p>
+          <div class="item__title">Интеграции</div>
+          <p class="item__text">OpenAPI · Postman · JSON · REST</p>
         </div>
-
         <div class="item">
-          <div class="item__title">Документирование</div>
-          <p class="item__text">
-            Markdown · структурированные спецификации · схемы процессов
-          </p>
+          <div class="item__title">Данные</div>
+          <p class="item__text">ERD · нормализация (база) · SQL</p>
         </div>
       </div>
     </section>
 
-    <!-- ОБРАЗОВАНИЕ / РАЗВИТИЕ -->
     <section class="section">
-      <h2>Образование и развитие</h2>
-
+      <h2>Образование</h2>
       <div class="item">
-        <div class="item__title">Самостоятельное обучение системному анализу</div>
-        <div class="item__meta">Практика на учебных кейсах</div>
+        <div class="item__title">НГТУ — Бизнес-информатика</div>
+        <div class="item__meta">3 курс · профиль: Автоматизация бизнес-процессов и анализ данных</div>
         <p class="item__text">
-          Изучаю BPMN, UML, проектирование API, работу с требованиями и документацией.
-          Практикуюсь на кейсах, оформляя их как реальные проекты.
+          Развиваюсь в системном анализе и проектировании решений: процессы, интеграции, данные, документация.
+          Практикуюсь на кейсах, оформленных как проекты.
         </p>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="section">
       <div class="actions">
         <a class="btn btn--primary" href="/portfolio/cases.html">Перейти к кейсам</a>
-        <a class="btn" href="/portfolio/contacts.html">Связаться</a>
+        <a class="btn" href="/portfolio/artifacts.html">Артефакты</a>
+        <a class="btn btn--ghost" href="/portfolio/contacts.html">Связаться</a>
       </div>
     </section>
-
   </main>
 
   <div data-partial="footer"></div>
