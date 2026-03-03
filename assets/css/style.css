@@ -3,8 +3,7 @@
    FIXED HEADER + FIXED FOOTER
    - Header always visible while scrolling
    - Footer pinned to bottom (always visible)
-   - Body paddings prevent content overlap
-   - Premium readability + cinematic background (no "stripes")
+   - Safe-area so content never goes under footer
    ========================================================================== */
 
 /* ===================== TOKENS ===================== */
@@ -15,6 +14,9 @@
   /* Fixed layout heights (tune if you want) */
   --header-h: 76px;
   --footer-h: 86px;
+
+  /* Extra safe space so last content is always readable */
+  --footer-safe: 28px;
 
   /* Layout */
   --container: 1120px;
@@ -109,7 +111,7 @@ body {
 
   /* IMPORTANT: avoid content under fixed header/footer */
   padding-top: var(--header-h);
-  padding-bottom: var(--footer-h);
+  padding-bottom: calc(var(--footer-h) + var(--footer-safe));
 
   /* Premium background — NO stripes */
   background:
@@ -122,7 +124,7 @@ body {
     linear-gradient(180deg, var(--bg), var(--bg2));
 }
 
-/* subtle grain / vignette (very soft) */
+/* subtle vignette */
 body::before {
   content: "";
   position: fixed;
@@ -162,7 +164,6 @@ code, pre { font-family: var(--mono); }
   border-radius: 12px;
 }
 
-/* Headings defaults */
 h1, h2, h3 {
   margin: 0 0 12px;
   line-height: 1.18;
@@ -199,10 +200,32 @@ p { margin: 0 0 12px; color: var(--text-soft); }
   padding: 0 24px;
 }
 
-/* page spacing (body already has padding for fixed bars) */
-.page { padding: 34px 0 92px; position: relative; z-index: 1; }
+/* IMPORTANT: last content should be scrollable above footer */
+.page {
+  padding: 34px 0 92px;
+  position: relative;
+  z-index: 1;
+}
 
-/* Legacy title blocks (if still used somewhere) */
+/* FOOTER SAFE AREA (fix “text under footer”) */
+main,
+.page {
+  padding-bottom: calc(var(--footer-h) + var(--footer-safe)) !important;
+}
+
+/* As a bulletproof fallback: creates invisible spacer at the end of body */
+body::after {
+  content: "";
+  display: block;
+  height: calc(var(--footer-h) + var(--footer-safe));
+}
+
+/* If you have anchors, prevent them from hiding behind fixed header */
+:target {
+  scroll-margin-top: calc(var(--header-h) + 14px);
+}
+
+/* Legacy title blocks */
 .site-title { font-weight: 950; letter-spacing: -0.01em; }
 .site-subtitle { font-size: 12px; color: var(--muted2); }
 
@@ -229,7 +252,6 @@ p { margin: 0 0 12px; color: var(--text-soft); }
   font-size: 18px;
 }
 
-/* Section separators */
 .section { margin: 44px 0; }
 .section + .section { position: relative; padding-top: 14px; }
 .section + .section::before {
@@ -260,7 +282,6 @@ p { margin: 0 0 12px; color: var(--text-soft); }
   backdrop-filter: blur(16px);
 }
 
-/* a subtle glow edge under header */
 .header::after {
   content: "";
   position: absolute;
@@ -502,10 +523,8 @@ html:not([data-theme="dark"]) .hero::after {
 .btn--primary {
   border-color: transparent;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
-
   color: var(--on-primary) !important;
   -webkit-text-fill-color: var(--on-primary);
-
   box-shadow: 0 18px 44px color-mix(in oklab, var(--primary) 22%, transparent);
 }
 a.btn--primary,
@@ -576,45 +595,6 @@ a.btn--primary:focus {
   .grid--2 { grid-template-columns: 1fr; }
 }
 
-/* ===================== FEATURES ===================== */
-
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
-}
-
-.features li {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--surface-2);
-  padding: 14px 14px;
-  box-shadow: var(--shadow-1);
-  color: var(--text-soft);
-}
-.features strong { color: var(--text); }
-
-.hero ul { margin: 18px 0 0; padding-left: 18px; }
-.hero li { margin: 8px 0; color: var(--text-soft); }
-
-/* ===================== BREADCRUMBS ===================== */
-
-.breadcrumbs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  color: var(--muted2);
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-.breadcrumbs a { color: var(--muted2); }
-.breadcrumbs .sep { opacity: .7; }
-
 /* ===================== CODE BLOCKS ===================== */
 
 pre {
@@ -649,7 +629,6 @@ html[data-theme="dark"] pre code { color: #e5e7eb; }
   color: var(--muted2);
 }
 
-/* subtle glow edge above footer */
 .footer::before {
   content: "";
   position: absolute;
@@ -695,12 +674,11 @@ html[data-theme="dark"] pre code { color: #e5e7eb; }
 /* ===================== RESPONSIVE TUNING ===================== */
 
 @media (max-width: 720px) {
-  :root { --header-h: 92px; --footer-h: 98px; }
+  :root { --header-h: 92px; --footer-h: 98px; --footer-safe: 28px; }
   .header__inner { padding: 12px 0; }
   .nav { gap: 8px; }
 }
 
-/* ===================== SAFETY LOCK (in case old CSS remains) ===================== */
-/* Если где-то вдруг остались старые стили, эти правила гарантируют фиксирование. */
+/* ===================== HARD SAFETY (if old CSS remains) ===================== */
 .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; }
 .footer { position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important; }
