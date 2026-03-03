@@ -1,5 +1,6 @@
 // =========================================================================
-// TIMUR PORTFOLIO APP (stable layout + mobile)
+// TIMUR PORTFOLIO APP (cache-bust + stable layout + mobile)
+// - ✅ Forces CSS refresh on iOS/Telegram by appending ?v=BUILD_ID
 // - Partials injection (header/footer)
 // - Theme toggle (saved)
 // - Active nav + aria-current
@@ -9,9 +10,27 @@
 // - ✅ Mobile burger menu
 // =========================================================================
 
+const BUILD_ID = "2026-03-03-01"; // <- меняй при каждом релизе, если хочешь вручную
 const THEME_KEY = "theme";
 const SHOW_PROGRESS_AFTER_PX = 40;
 
+// ------------------ ✅ CACHE BUST CSS (iOS fix) ------------------
+(function bustCssCache() {
+  // ищем все стили, где есть style.css (включая абсолютные/относительные пути)
+  const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+  const styleLink = links.find((l) => (l.getAttribute("href") || "").includes("assets/css/style.css"));
+
+  if (!styleLink) return;
+
+  const href = styleLink.getAttribute("href") || "";
+  // если уже есть v= — не трогаем
+  if (href.includes("v=")) return;
+
+  const sep = href.includes("?") ? "&" : "?";
+  styleLink.setAttribute("href", `${href}${sep}v=${encodeURIComponent(BUILD_ID)}`);
+})();
+
+// ------------------ THEME ------------------
 function getSystemTheme() {
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
@@ -149,7 +168,6 @@ function bindThemeToggle() {
 
   const isDark = currentTheme() === "dark";
   btn.setAttribute("aria-pressed", String(isDark));
-  btn.classList.toggle("is-dark", isDark);
 
   const iconEl = btn.querySelector(".toggle-icon");
   if (iconEl) iconEl.textContent = isDark ? "☀️" : "🌙";
@@ -229,11 +247,11 @@ async function injectPartials() {
 
   try {
     if (headerMount) {
-      const res = await fetch(`${base}/partials/header.html`, { cache: "no-cache" });
+      const res = await fetch(`${base}/partials/header.html?v=${BUILD_ID}`, { cache: "no-store" });
       headerMount.innerHTML = await res.text();
     }
     if (footerMount) {
-      const res = await fetch(`${base}/partials/footer.html`, { cache: "no-cache" });
+      const res = await fetch(`${base}/partials/footer.html?v=${BUILD_ID}`, { cache: "no-store" });
       footerMount.innerHTML = await res.text();
     }
   } catch (e) {}
