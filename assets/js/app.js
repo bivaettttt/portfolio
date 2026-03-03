@@ -1,11 +1,12 @@
 // =========================================================================
-// TIMUR PORTFOLIO APP (stable layout)
+// TIMUR PORTFOLIO APP (stable layout + mobile)
 // - Partials injection (header/footer)
-// - Premium theme toggle (dark/light, saved)
-// - Active nav + aria-current="page"
-// - Soft reveal animations on scroll
-// - Reading progress bar (appears after 40px)
-// - ✅ Sync CSS vars with REAL header/footer heights (fix overlap forever)
+// - Theme toggle (saved)
+// - Active nav + aria-current
+// - Reveal animations
+// - Reading progress
+// - ✅ Sync REAL header/footer heights (prevents overlap)
+// - ✅ Mobile burger menu
 // =========================================================================
 
 const THEME_KEY = "theme";
@@ -42,7 +43,6 @@ function setActiveNav() {
     const key = a.getAttribute("data-nav");
     const isActive = key === page;
 
-    a.classList.toggle("is-active", isActive);
     if (isActive) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
@@ -58,6 +58,7 @@ function initReveals() {
   const targets = [
     ...document.querySelectorAll(".hero"),
     ...document.querySelectorAll(".item"),
+    ...document.querySelectorAll(".card"),
     ...document.querySelectorAll(".features li"),
     ...document.querySelectorAll("pre"),
   ];
@@ -67,9 +68,8 @@ function initReveals() {
   targets.forEach((el, idx) => {
     el.classList.add("reveal");
     const isHero = el.classList.contains("hero");
-    const delay = isHero ? 0 : Math.min(240, idx * 25);
+    const delay = isHero ? 0 : Math.min(260, idx * 22);
     el.style.setProperty("--delay", `${delay}ms`);
-    el.dataset.delay = "1";
   });
 
   const io = new IntersectionObserver(
@@ -86,7 +86,7 @@ function initReveals() {
   targets.forEach((el) => io.observe(el));
 }
 
-// ------------------ THEME TOGGLE (micro animation) ------------------
+// ------------------ THEME TOGGLE ------------------
 function bindThemeToggle() {
   const btn = document.getElementById("themeToggle");
   if (!btn) return;
@@ -100,7 +100,6 @@ function bindThemeToggle() {
   btn.addEventListener("click", () => {
     btn.classList.add("is-animating");
     setTimeout(() => btn.classList.remove("is-animating"), 140);
-
     btn.classList.toggle("is-flip");
 
     const next = currentTheme() === "dark" ? "light" : "dark";
@@ -113,7 +112,6 @@ function bindThemeToggle() {
     if (iconEl) {
       setTimeout(() => {
         iconEl.textContent = nextIcon;
-        // after theme change footer can wrap -> resync heights
         syncFixedBarsHeights();
       }, 160);
     } else {
@@ -128,9 +126,6 @@ function initReadingProgress() {
   const wrap = document.querySelector(".progress");
   if (!bar || !wrap) return;
 
-  const reduceMotion =
-    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   let ticking = false;
 
   function calcProgress() {
@@ -138,8 +133,7 @@ function initReadingProgress() {
     const scrollTop = window.scrollY || doc.scrollTop || 0;
     const scrollHeight = doc.scrollHeight - window.innerHeight;
 
-    const show = scrollTop > SHOW_PROGRESS_AFTER_PX;
-    wrap.classList.toggle("is-visible", show);
+    wrap.classList.toggle("is-visible", scrollTop > SHOW_PROGRESS_AFTER_PX);
 
     const p = scrollHeight <= 0 ? 0 : Math.min(1, Math.max(0, scrollTop / scrollHeight));
     bar.style.transform = `scaleX(${p})`;
@@ -148,7 +142,6 @@ function initReadingProgress() {
   }
 
   function onScroll() {
-    if (reduceMotion) return;
     if (!ticking) {
       ticking = true;
       requestAnimationFrame(calcProgress);
@@ -163,7 +156,6 @@ function initReadingProgress() {
 // ------------------ ✅ SYNC REAL HEADER/FOOTER HEIGHTS ------------------
 function syncFixedBarsHeights() {
   const root = document.documentElement;
-
   const header = document.querySelector(".header");
   const footer = document.querySelector(".footer");
 
@@ -171,14 +163,12 @@ function syncFixedBarsHeights() {
     const h = Math.ceil(header.getBoundingClientRect().height);
     if (h > 0) root.style.setProperty("--header-h", `${h}px`);
   }
-
   if (footer) {
     const h = Math.ceil(footer.getBoundingClientRect().height);
     if (h > 0) root.style.setProperty("--footer-h", `${h}px`);
   }
 }
 
-// Optional: auto-resync when footer/header size changes (wraps)
 function observeFixedBars() {
   if (!("ResizeObserver" in window)) return;
 
@@ -191,11 +181,59 @@ function observeFixedBars() {
   if (footer) ro.observe(footer);
 }
 
+// ------------------ ✅ MOBILE MENU ------------------
+function initMobileMenu() {
+  const toggle = document.getElementById("navToggle");
+  const panel = document.getElementById("mobileNav");
+  if (!toggle || !panel) return;
+
+  function open() {
+    toggle.setAttribute("aria-expanded", "true");
+    panel.hidden = false;
+    requestAnimationFrame(() => panel.classList.add("is-open"));
+    document.documentElement.classList.add("nav-open");
+    syncFixedBarsHeights();
+  }
+
+  function close() {
+    toggle.setAttribute("aria-expanded", "false");
+    panel.classList.remove("is-open");
+    document.documentElement.classList.remove("nav-open");
+    setTimeout(() => {
+      panel.hidden = true;
+      syncFixedBarsHeights();
+    }, 180);
+  }
+
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    expanded ? close() : open();
+  });
+
+  // close on link click
+  panel.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (a) close();
+  });
+
+  // close on outside click
+  document.addEventListener("click", (e) => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    if (!expanded) return;
+    const insideHeader = e.target.closest(".header");
+    if (!insideHeader) close();
+  });
+
+  // close on resize to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 860) close();
+  });
+}
+
 // ------------------ PARTIALS INJECTION ------------------
 async function injectPartials() {
   const headerMount = document.querySelector('[data-partial="header"]');
   const footerMount = document.querySelector('[data-partial="footer"]');
-
   const base = "/portfolio";
 
   try {
@@ -211,13 +249,12 @@ async function injectPartials() {
     // keep page usable
   }
 
-  // after partials exist
   bindThemeToggle();
   setActiveNav();
   initReadingProgress();
   initReveals();
+  initMobileMenu();
 
-  // ✅ sync after DOM is painted
   requestAnimationFrame(() => {
     syncFixedBarsHeights();
     observeFixedBars();

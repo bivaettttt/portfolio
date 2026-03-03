@@ -10,7 +10,8 @@
       <div class="brand__subtitle">Системный аналитик</div>
     </a>
 
-    <nav class="nav" aria-label="Навигация по сайту">
+    <!-- Desktop nav -->
+    <nav class="nav nav--desktop" aria-label="Навигация по сайту">
       <a class="nav__link" href="/portfolio/index.html" data-nav="home">Главная</a>
       <a class="nav__link" href="/portfolio/about.html" data-nav="about">Обо мне</a>
       <a class="nav__link" href="/portfolio/cases.html" data-nav="cases">Кейсы</a>
@@ -18,9 +19,40 @@
       <a class="nav__link" href="/portfolio/contacts.html" data-nav="contacts">Контакты</a>
     </nav>
 
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему" aria-pressed="false">
-      <span class="toggle-icon" aria-hidden="true">🌙</span>
-      <span class="toggle-text"> Тема</span>
-    </button>
+    <div class="header__actions">
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Переключить тему"
+        aria-pressed="false"
+      >
+        <span class="toggle-icon" aria-hidden="true">🌙</span>
+        <span class="toggle-text"> Тема</span>
+      </button>
+
+      <!-- Mobile burger -->
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-controls="mobileNav"
+        aria-expanded="false"
+      >
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile panel -->
+  <div class="nav-panel" id="mobileNav" hidden>
+    <nav class="nav nav--mobile" aria-label="Навигация (мобильная)">
+      <a class="nav__link" href="/portfolio/index.html" data-nav="home">Главная</a>
+      <a class="nav__link" href="/portfolio/about.html" data-nav="about">Обо мне</a>
+      <a class="nav__link" href="/portfolio/cases.html" data-nav="cases">Кейсы</a>
+      <a class="nav__link" href="/portfolio/artifacts.html" data-nav="artifacts">Артефакты</a>
+      <a class="nav__link" href="/portfolio/contacts.html" data-nav="contacts">Контакты</a>
+    </nav>
   </div>
 </header>
