@@ -3,7 +3,7 @@
    - Dark/Light themes
    - Sticky header + reading progress bar
    - Premium buttons (hard lock for primary text)
-   - Supports BOTH new + legacy classnames (to avoid "broken" layout)
+   - Works with BOTH: new class-based markup AND legacy/plain header/nav markup
    ========================================================================== */
 
 /* ===================== TOKENS ===================== */
@@ -120,6 +120,17 @@ code, pre { font-family: var(--mono); }
   border-radius: 12px;
 }
 
+/* Headings defaults (so text doesn't look "unstyled") */
+h1, h2, h3 {
+  margin: 0 0 12px;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+h1 { font-size: clamp(30px, 4.2vw, 54px); font-weight: 950; }
+h2 { font-size: clamp(22px, 2.8vw, 34px); font-weight: 900; }
+h3 { font-size: 18px; font-weight: 900; letter-spacing: -0.01em; }
+p { margin: 0 0 12px; }
+
 /* Skip link (A11y) */
 .skip-link {
   position: absolute;
@@ -152,7 +163,7 @@ code, pre { font-family: var(--mono); }
 .site-title { font-weight: 950; letter-spacing: -0.01em; }
 .site-subtitle { font-size: 12px; color: var(--muted2); }
 
-/* Page head helpers (if used) */
+/* Page head helpers */
 .page__head { margin: 18px 0 36px; }
 .page__kicker {
   color: var(--muted2);
@@ -199,6 +210,19 @@ code, pre { font-family: var(--mono); }
   backdrop-filter: blur(14px);
 }
 
+/* Support BOTH layouts:
+   - <div class="header__inner">...</div>
+   - or just <div class="container">...</div> inside header (your current) */
+.header__inner,
+.header > .container,
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 0;
+}
+
 /* reading progress wrapper is inside header.html */
 .progress {
   position: absolute;
@@ -212,10 +236,8 @@ code, pre { font-family: var(--mono); }
   transition: opacity .26s var(--ease), transform .26s var(--ease);
   pointer-events: none;
 }
-.progress.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.progress.is-visible { opacity: 1; transform: translateY(0); }
+
 .progress__bar {
   height: 100%;
   width: 100%;
@@ -227,14 +249,7 @@ code, pre { font-family: var(--mono); }
   will-change: transform;
 }
 
-.header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 16px 0;
-}
-
+/* Brand support */
 .brand {
   display: grid;
   gap: 2px;
@@ -245,8 +260,12 @@ code, pre { font-family: var(--mono); }
 .brand__title { font-weight: 950; letter-spacing: -0.01em; }
 .brand__subtitle { font-size: 12px; color: var(--muted2); }
 
+/* If your header has plain text nodes / other structure */
+.header h1, .header h2, .header h3, .header p { margin: 0; }
+
 /* ===================== NAV ===================== */
 
+/* Class-based nav */
 .nav {
   display: flex;
   align-items: center;
@@ -254,7 +273,17 @@ code, pre { font-family: var(--mono); }
   flex-wrap: wrap;
 }
 
-.nav__link {
+/* Legacy/plain nav: .header nav without classes */
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Nav link look (applies to both .nav__link and plain nav <a>) */
+.nav__link,
+.header nav a {
   position: relative;
   padding: 8px 14px;
   border-radius: 999px;
@@ -263,7 +292,9 @@ code, pre { font-family: var(--mono); }
   transition: background .18s var(--ease), transform .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
 }
 
-.nav__link::after {
+/* Premium hover underline */
+.nav__link::after,
+.header nav a::after {
   content: "";
   position: absolute;
   left: 14px;
@@ -276,16 +307,20 @@ code, pre { font-family: var(--mono); }
   transition: opacity .18s var(--ease), transform .18s var(--ease);
 }
 
-.nav__link:hover {
+.nav__link:hover,
+.header nav a:hover {
   transform: translateY(-1px);
   background: var(--surface-2);
   border-color: var(--border2);
   color: var(--text);
 }
-.nav__link:hover::after { opacity: 1; transform: translateY(0); }
+.nav__link:hover::after,
+.header nav a:hover::after { opacity: 1; transform: translateY(0); }
 
+/* Active (with aria-current) */
 .nav__link.is-active,
-.nav__link[aria-current="page"] {
+.nav__link[aria-current="page"],
+.header nav a[aria-current="page"] {
   background: var(--surface);
   border-color: var(--border);
   color: var(--text);
@@ -294,7 +329,8 @@ code, pre { font-family: var(--mono); }
 
 /* ===================== THEME TOGGLE ===================== */
 
-.theme-toggle {
+.theme-toggle,
+#themeToggle {
   position: relative;
   padding: 9px 14px;
   border-radius: 999px;
@@ -309,7 +345,8 @@ code, pre { font-family: var(--mono); }
   transition: transform .18s var(--ease), filter .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
 }
 
-.theme-toggle::before {
+.theme-toggle::before,
+#themeToggle::before {
   content: "";
   position: absolute;
   inset: -2px;
@@ -320,22 +357,29 @@ code, pre { font-family: var(--mono); }
   pointer-events: none;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+#themeToggle:hover {
   transform: translateY(-1px);
   filter: brightness(1.03);
   border-color: color-mix(in oklab, var(--border) 60%, var(--primary-soft));
 }
-.theme-toggle:hover::before { opacity: 1; }
-.theme-toggle:active { transform: translateY(0); }
+.theme-toggle:hover::before,
+#themeToggle:hover::before { opacity: 1; }
 
-.theme-toggle.is-animating { transform: translateY(0) scale(0.98); }
+.theme-toggle:active,
+#themeToggle:active { transform: translateY(0); }
 
-.theme-toggle .toggle-icon {
+.theme-toggle.is-animating,
+#themeToggle.is-animating { transform: translateY(0) scale(0.98); }
+
+.theme-toggle .toggle-icon,
+#themeToggle .toggle-icon {
   display: inline-block;
   transform-origin: 50% 50%;
   transition: transform .36s var(--ease);
 }
-.theme-toggle.is-flip .toggle-icon { transform: rotate(180deg); }
+.theme-toggle.is-flip .toggle-icon,
+#themeToggle.is-flip .toggle-icon { transform: rotate(180deg); }
 
 /* ===================== HERO ===================== */
 
@@ -438,7 +482,7 @@ html:not([data-theme="dark"]) .hero::after {
 
 .btn:active { transform: translateY(0); }
 
-/* PRIMARY — HARD LOCK (prevents "blue/washed text" bug) */
+/* PRIMARY — HARD LOCK (prevents "washed text" bug) */
 .btn--primary {
   border-color: transparent;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
@@ -483,7 +527,6 @@ a.btn--primary:focus {
 
 /* ===================== CARDS / ITEMS ===================== */
 
-/* Legacy "item" blocks */
 .item,
 .card {
   border: 1px solid var(--border);
@@ -536,10 +579,8 @@ a.btn--primary:focus {
   box-shadow: var(--shadow-1);
   color: var(--text-soft);
 }
-
 .features strong { color: var(--text); }
 
-/* If you use standard ULs in hero */
 .hero ul { margin: 18px 0 0; padding-left: 18px; }
 .hero li { margin: 8px 0; color: var(--text-soft); }
 
@@ -604,7 +645,7 @@ html[data-theme="dark"] pre code { color: #e5e7eb; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 .reveal[data-delay] { transition-delay: var(--delay, 0ms); }
 
-/* ===================== SMALL UTILITIES ===================== */
+/* ===================== UTILITIES ===================== */
 
 .muted { color: var(--muted); }
 .text-soft { color: var(--text-soft); }
