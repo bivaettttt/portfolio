@@ -5,7 +5,7 @@
 // - Active nav + aria-current
 // - Reveal animations
 // - Reading progress
-// - ✅ Sync REAL header/footer heights (prevents overlap)
+// - ✅ Sync REAL header/footer heights (prevents overlap forever)
 // - ✅ Mobile burger menu
 // =========================================================================
 
@@ -16,9 +16,6 @@ function getSystemTheme() {
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
-}
-function getSavedTheme() {
-  return localStorage.getItem(THEME_KEY);
 }
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
@@ -32,9 +29,9 @@ function currentTheme() {
 }
 
 // Init theme ASAP
-applyTheme(getSavedTheme() || getSystemTheme());
+applyTheme(localStorage.getItem(THEME_KEY) || getSystemTheme());
 
-// ------------------ NAV ACTIVE + aria-current ------------------
+// ------------------ Active nav + aria-current ------------------
 function setActiveNav() {
   const page = document.body.getAttribute("data-page");
   if (!page) return;
@@ -42,13 +39,12 @@ function setActiveNav() {
   document.querySelectorAll(".nav__link").forEach((a) => {
     const key = a.getAttribute("data-nav");
     const isActive = key === page;
-
     if (isActive) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
 }
 
-// ------------------ REVEALS ------------------
+// ------------------ Reveals ------------------
 function initReveals() {
   const reduceMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -67,8 +63,7 @@ function initReveals() {
 
   targets.forEach((el, idx) => {
     el.classList.add("reveal");
-    const isHero = el.classList.contains("hero");
-    const delay = isHero ? 0 : Math.min(260, idx * 22);
+    const delay = Math.min(260, idx * 22);
     el.style.setProperty("--delay", `${delay}ms`);
   });
 
@@ -86,41 +81,7 @@ function initReveals() {
   targets.forEach((el) => io.observe(el));
 }
 
-// ------------------ THEME TOGGLE ------------------
-function bindThemeToggle() {
-  const btn = document.getElementById("themeToggle");
-  if (!btn) return;
-
-  const isDark = currentTheme() === "dark";
-  const icon = isDark ? "☀️" : "🌙";
-
-  btn.innerHTML = `<span class="toggle-icon" aria-hidden="true">${icon}</span><span class="toggle-text"> Тема</span>`;
-  btn.setAttribute("aria-pressed", String(isDark));
-
-  btn.addEventListener("click", () => {
-    btn.classList.add("is-animating");
-    setTimeout(() => btn.classList.remove("is-animating"), 140);
-    btn.classList.toggle("is-flip");
-
-    const next = currentTheme() === "dark" ? "light" : "dark";
-    setTheme(next);
-
-    const nextIcon = next === "dark" ? "☀️" : "🌙";
-    const iconEl = btn.querySelector(".toggle-icon");
-    btn.setAttribute("aria-pressed", String(next === "dark"));
-
-    if (iconEl) {
-      setTimeout(() => {
-        iconEl.textContent = nextIcon;
-        syncFixedBarsHeights();
-      }, 160);
-    } else {
-      syncFixedBarsHeights();
-    }
-  });
-}
-
-// ------------------ READING PROGRESS ------------------
+// ------------------ Progress ------------------
 function initReadingProgress() {
   const bar = document.getElementById("readProgress");
   const wrap = document.querySelector(".progress");
@@ -128,14 +89,14 @@ function initReadingProgress() {
 
   let ticking = false;
 
-  function calcProgress() {
+  function calc() {
     const doc = document.documentElement;
-    const scrollTop = window.scrollY || doc.scrollTop || 0;
-    const scrollHeight = doc.scrollHeight - window.innerHeight;
+    const y = window.scrollY || doc.scrollTop || 0;
+    const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
 
-    wrap.classList.toggle("is-visible", scrollTop > SHOW_PROGRESS_AFTER_PX);
+    wrap.classList.toggle("is-visible", y > SHOW_PROGRESS_AFTER_PX);
 
-    const p = scrollHeight <= 0 ? 0 : Math.min(1, Math.max(0, scrollTop / scrollHeight));
+    const p = Math.min(1, Math.max(0, y / max));
     bar.style.transform = `scaleX(${p})`;
 
     ticking = false;
@@ -144,16 +105,16 @@ function initReadingProgress() {
   function onScroll() {
     if (!ticking) {
       ticking = true;
-      requestAnimationFrame(calcProgress);
+      requestAnimationFrame(calc);
     }
   }
 
-  calcProgress();
+  calc();
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", calcProgress);
+  window.addEventListener("resize", calc);
 }
 
-// ------------------ ✅ SYNC REAL HEADER/FOOTER HEIGHTS ------------------
+// ------------------ ✅ Sync real fixed bars heights ------------------
 function syncFixedBarsHeights() {
   const root = document.documentElement;
   const header = document.querySelector(".header");
@@ -181,7 +142,37 @@ function observeFixedBars() {
   if (footer) ro.observe(footer);
 }
 
-// ------------------ ✅ MOBILE MENU ------------------
+// ------------------ Theme toggle ------------------
+function bindThemeToggle() {
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+
+  const isDark = currentTheme() === "dark";
+  btn.setAttribute("aria-pressed", String(isDark));
+  btn.classList.toggle("is-dark", isDark);
+
+  const iconEl = btn.querySelector(".toggle-icon");
+  if (iconEl) iconEl.textContent = isDark ? "☀️" : "🌙";
+
+  btn.addEventListener("click", () => {
+    btn.classList.add("is-animating");
+    setTimeout(() => btn.classList.remove("is-animating"), 140);
+    btn.classList.toggle("is-flip");
+
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    setTheme(next);
+
+    const icon = next === "dark" ? "☀️" : "🌙";
+    const iconNode = btn.querySelector(".toggle-icon");
+    if (iconNode) setTimeout(() => (iconNode.textContent = icon), 150);
+
+    btn.setAttribute("aria-pressed", String(next === "dark"));
+
+    requestAnimationFrame(() => syncFixedBarsHeights());
+  });
+}
+
+// ------------------ ✅ Mobile menu ------------------
 function initMobileMenu() {
   const toggle = document.getElementById("navToggle");
   const panel = document.getElementById("mobileNav");
@@ -220,8 +211,8 @@ function initMobileMenu() {
   document.addEventListener("click", (e) => {
     const expanded = toggle.getAttribute("aria-expanded") === "true";
     if (!expanded) return;
-    const insideHeader = e.target.closest(".header");
-    if (!insideHeader) close();
+    const inside = e.target.closest(".header");
+    if (!inside) close();
   });
 
   // close on resize to desktop
@@ -230,7 +221,7 @@ function initMobileMenu() {
   });
 }
 
-// ------------------ PARTIALS INJECTION ------------------
+// ------------------ Partials injection ------------------
 async function injectPartials() {
   const headerMount = document.querySelector('[data-partial="header"]');
   const footerMount = document.querySelector('[data-partial="footer"]');
@@ -245,9 +236,7 @@ async function injectPartials() {
       const res = await fetch(`${base}/partials/footer.html`, { cache: "no-cache" });
       footerMount.innerHTML = await res.text();
     }
-  } catch (e) {
-    // keep page usable
-  }
+  } catch (e) {}
 
   bindThemeToggle();
   setActiveNav();

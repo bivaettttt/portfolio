@@ -1,5 +1,6 @@
 <!-- partials/header.html -->
 <header class="header" role="banner">
+  <!-- reading progress -->
   <div class="progress" aria-hidden="true">
     <div class="progress__bar" id="readProgress"></div>
   </div>
@@ -28,7 +29,7 @@
         aria-pressed="false"
       >
         <span class="toggle-icon" aria-hidden="true">🌙</span>
-        <span class="toggle-text"> Тема</span>
+        <span class="toggle-text">Тема</span>
       </button>
 
       <!-- Mobile burger -->
@@ -47,12 +48,14 @@
 
   <!-- Mobile panel -->
   <div class="nav-panel" id="mobileNav" hidden>
-    <nav class="nav nav--mobile" aria-label="Навигация (мобильная)">
-      <a class="nav__link" href="/portfolio/index.html" data-nav="home">Главная</a>
-      <a class="nav__link" href="/portfolio/about.html" data-nav="about">Обо мне</a>
-      <a class="nav__link" href="/portfolio/cases.html" data-nav="cases">Кейсы</a>
-      <a class="nav__link" href="/portfolio/artifacts.html" data-nav="artifacts">Артефакты</a>
-      <a class="nav__link" href="/portfolio/contacts.html" data-nav="contacts">Контакты</a>
-    </nav>
+    <div class="container nav-panel__inner">
+      <nav class="nav nav--mobile" aria-label="Навигация (мобильная)">
+        <a class="nav__link" href="/portfolio/index.html" data-nav="home">Главная</a>
+        <a class="nav__link" href="/portfolio/about.html" data-nav="about">Обо мне</a>
+        <a class="nav__link" href="/portfolio/cases.html" data-nav="cases">Кейсы</a>
+        <a class="nav__link" href="/portfolio/artifacts.html" data-nav="artifacts">Артефакты</a>
+        <a class="nav__link" href="/portfolio/contacts.html" data-nav="contacts">Контакты</a>
+      </nav>
+    </div>
   </div>
 </header>
