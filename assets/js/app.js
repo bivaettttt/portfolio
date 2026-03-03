@@ -1,16 +1,16 @@
 // =========================================================================
-// TIMUR PORTFOLIO APP
+// TIMUR PORTFOLIO APP (stable layout)
 // - Partials injection (header/footer)
 // - Premium theme toggle (dark/light, saved)
 // - Active nav + aria-current="page"
 // - Soft reveal animations on scroll
 // - Reading progress bar (appears after 40px)
+// - ✅ Sync CSS vars with REAL header/footer heights (fix overlap forever)
 // =========================================================================
 
 const THEME_KEY = "theme";
 const SHOW_PROGRESS_AFTER_PX = 40;
 
-// ------------------ THEME ------------------
 function getSystemTheme() {
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
@@ -91,9 +91,6 @@ function bindThemeToggle() {
   const btn = document.getElementById("themeToggle");
   if (!btn) return;
 
-  // Wrap icon in span for flip animation
-  // If already wrapped (after partial re-inject or hot reload), keep it
-  const raw = btn.textContent.trim();
   const isDark = currentTheme() === "dark";
   const icon = isDark ? "☀️" : "🌙";
 
@@ -101,26 +98,26 @@ function bindThemeToggle() {
   btn.setAttribute("aria-pressed", String(isDark));
 
   btn.addEventListener("click", () => {
-    // premium press
     btn.classList.add("is-animating");
     setTimeout(() => btn.classList.remove("is-animating"), 140);
 
-    // flip icon
     btn.classList.toggle("is-flip");
 
     const next = currentTheme() === "dark" ? "light" : "dark";
     setTheme(next);
 
-    // update icon after short delay to match flip
     const nextIcon = next === "dark" ? "☀️" : "🌙";
     const iconEl = btn.querySelector(".toggle-icon");
-    const pressed = next === "dark";
-    btn.setAttribute("aria-pressed", String(pressed));
+    btn.setAttribute("aria-pressed", String(next === "dark"));
 
     if (iconEl) {
       setTimeout(() => {
         iconEl.textContent = nextIcon;
+        // after theme change footer can wrap -> resync heights
+        syncFixedBarsHeights();
       }, 160);
+    } else {
+      syncFixedBarsHeights();
     }
   });
 }
@@ -141,7 +138,6 @@ function initReadingProgress() {
     const scrollTop = window.scrollY || doc.scrollTop || 0;
     const scrollHeight = doc.scrollHeight - window.innerHeight;
 
-    // show/hide after threshold
     const show = scrollTop > SHOW_PROGRESS_AFTER_PX;
     wrap.classList.toggle("is-visible", show);
 
@@ -159,10 +155,40 @@ function initReadingProgress() {
     }
   }
 
-  // initial
   calcProgress();
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", calcProgress);
+}
+
+// ------------------ ✅ SYNC REAL HEADER/FOOTER HEIGHTS ------------------
+function syncFixedBarsHeights() {
+  const root = document.documentElement;
+
+  const header = document.querySelector(".header");
+  const footer = document.querySelector(".footer");
+
+  if (header) {
+    const h = Math.ceil(header.getBoundingClientRect().height);
+    if (h > 0) root.style.setProperty("--header-h", `${h}px`);
+  }
+
+  if (footer) {
+    const h = Math.ceil(footer.getBoundingClientRect().height);
+    if (h > 0) root.style.setProperty("--footer-h", `${h}px`);
+  }
+}
+
+// Optional: auto-resync when footer/header size changes (wraps)
+function observeFixedBars() {
+  if (!("ResizeObserver" in window)) return;
+
+  const header = document.querySelector(".header");
+  const footer = document.querySelector(".footer");
+  if (!header && !footer) return;
+
+  const ro = new ResizeObserver(() => syncFixedBarsHeights());
+  if (header) ro.observe(header);
+  if (footer) ro.observe(footer);
 }
 
 // ------------------ PARTIALS INJECTION ------------------
@@ -170,26 +196,34 @@ async function injectPartials() {
   const headerMount = document.querySelector('[data-partial="header"]');
   const footerMount = document.querySelector('[data-partial="footer"]');
 
-  // IMPORTANT: change if repo name differs
   const base = "/portfolio";
 
   try {
     if (headerMount) {
-      const res = await fetch(`${base}/partials/header.html`);
+      const res = await fetch(`${base}/partials/header.html`, { cache: "no-cache" });
       headerMount.innerHTML = await res.text();
     }
     if (footerMount) {
-      const res = await fetch(`${base}/partials/footer.html`);
+      const res = await fetch(`${base}/partials/footer.html`, { cache: "no-cache" });
       footerMount.innerHTML = await res.text();
     }
   } catch (e) {
-    // If partials fail (e.g. file://), keep page usable.
+    // keep page usable
   }
 
+  // after partials exist
   bindThemeToggle();
   setActiveNav();
   initReadingProgress();
   initReveals();
+
+  // ✅ sync after DOM is painted
+  requestAnimationFrame(() => {
+    syncFixedBarsHeights();
+    observeFixedBars();
+  });
+
+  window.addEventListener("resize", () => syncFixedBarsHeights(), { passive: true });
 }
 
 injectPartials();

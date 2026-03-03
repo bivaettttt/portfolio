@@ -1,9 +1,9 @@
 /* ==========================================================================
-   PREMIUM PORTFOLIO UI (System Analyst) — FINAL
-   FIXED HEADER + FIXED FOOTER
-   - Header always visible while scrolling
-   - Footer pinned to bottom (always visible)
-   - Safe-area so content never goes under footer
+   PREMIUM PORTFOLIO UI (System Analyst) — STABLE UX
+   FIXED HEADER + FIXED FOOTER (always visible)
+   ✅ Footer overlap fix via REAL heights (JS updates --header-h/--footer-h)
+   - Beautiful & readable
+   - Premium dark/light
    ========================================================================== */
 
 /* ===================== TOKENS ===================== */
@@ -11,26 +11,22 @@
 :root {
   color-scheme: light;
 
-  /* Fixed layout heights (tune if you want) */
+  /* JS will override these with actual px heights */
   --header-h: 76px;
   --footer-h: 86px;
 
-  /* Extra safe space so last content is always readable */
+  /* extra breathing room so last line never touches footer */
   --footer-safe: 28px;
 
-  /* Layout */
   --container: 1120px;
 
-  /* Radii */
   --radius-xl: 22px;
   --radius-lg: 16px;
   --radius-md: 12px;
 
-  /* Typography */
   --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Light */
   --bg: #f6f7fb;
   --bg2: #eef2f8;
 
@@ -53,7 +49,7 @@
 
   --shadow-1: 0 1px 0 rgba(15, 23, 42, 0.05) inset;
   --shadow-2: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-3: 0 24px 70px rgba(15, 23, 42, 0.12);
+  --shadow-3: 0 34px 110px rgba(15, 23, 42, 0.14);
 
   --focus: rgba(37, 99, 235, 0.35);
 
@@ -68,7 +64,7 @@ html[data-theme="dark"] {
   --bg: #070c16;
   --bg2: #0b1220;
 
-  --surface: rgba(15, 23, 42, 0.70);
+  --surface: rgba(15, 23, 42, 0.72);
   --surface-solid: #0f172a;
   --surface-2: rgba(15, 23, 42, 0.52);
 
@@ -85,7 +81,7 @@ html[data-theme="dark"] {
   --primary-soft: rgba(59, 130, 246, 0.18);
 
   --shadow-2: 0 12px 36px rgba(0, 0, 0, 0.45);
-  --shadow-3: 0 34px 110px rgba(0, 0, 0, 0.62);
+  --shadow-3: 0 40px 130px rgba(0, 0, 0, 0.62);
 
   --focus: rgba(59, 130, 246, 0.38);
 }
@@ -105,15 +101,16 @@ body {
   font-size: 16px;
   line-height: 1.75;
   color: var(--text);
+
+  /* ✅ key: always respect actual header/footer heights */
+  padding-top: var(--header-h);
+  padding-bottom: calc(var(--footer-h) + var(--footer-safe));
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  /* IMPORTANT: avoid content under fixed header/footer */
-  padding-top: var(--header-h);
-  padding-bottom: calc(var(--footer-h) + var(--footer-safe));
-
-  /* Premium background — NO stripes */
+  /* Premium background (no stripes) */
   background:
     radial-gradient(1200px 600px at 20% -10%,
       color-mix(in oklab, var(--primary) 12%, transparent),
@@ -124,7 +121,7 @@ body {
     linear-gradient(180deg, var(--bg), var(--bg2));
 }
 
-/* subtle vignette */
+/* soft vignette */
 body::before {
   content: "";
   position: fixed;
@@ -164,6 +161,7 @@ code, pre { font-family: var(--mono); }
   border-radius: 12px;
 }
 
+/* Headings */
 h1, h2, h3 {
   margin: 0 0 12px;
   line-height: 1.18;
@@ -174,7 +172,7 @@ h2 { font-size: clamp(22px, 2.9vw, 34px); font-weight: 900; }
 h3 { font-size: 18px; font-weight: 900; letter-spacing: -0.01em; }
 p { margin: 0 0 12px; color: var(--text-soft); }
 
-/* Skip link (A11y) */
+/* Skip link */
 .skip-link {
   position: fixed;
   left: 12px;
@@ -200,68 +198,21 @@ p { margin: 0 0 12px; color: var(--text-soft); }
   padding: 0 24px;
 }
 
-/* IMPORTANT: last content should be scrollable above footer */
 .page {
   padding: 34px 0 92px;
   position: relative;
   z-index: 1;
 }
 
-/* FOOTER SAFE AREA (fix “text under footer”) */
+/* ✅ bulletproof: ensure main/page always has enough bottom space */
 main,
 .page {
   padding-bottom: calc(var(--footer-h) + var(--footer-safe)) !important;
 }
 
-/* As a bulletproof fallback: creates invisible spacer at the end of body */
-body::after {
-  content: "";
-  display: block;
-  height: calc(var(--footer-h) + var(--footer-safe));
-}
-
-/* If you have anchors, prevent them from hiding behind fixed header */
+/* anchors should not hide behind fixed header */
 :target {
   scroll-margin-top: calc(var(--header-h) + 14px);
-}
-
-/* Legacy title blocks */
-.site-title { font-weight: 950; letter-spacing: -0.01em; }
-.site-subtitle { font-size: 12px; color: var(--muted2); }
-
-/* Page head helpers */
-.page__head { margin: 10px 0 30px; }
-.page__kicker {
-  color: var(--muted2);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 800;
-}
-.page__title {
-  margin: 12px 0 10px;
-  font-size: clamp(32px, 5vw, 54px);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-  font-weight: 950;
-}
-.page__desc {
-  margin: 0;
-  max-width: 78ch;
-  color: var(--muted);
-  font-size: 18px;
-}
-
-.section { margin: 44px 0; }
-.section + .section { position: relative; padding-top: 14px; }
-.section + .section::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  top: -18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-  opacity: 0.95;
 }
 
 /* ===================== HEADER (FIXED) ===================== */
@@ -272,10 +223,6 @@ body::after {
   left: 0;
   right: 0;
   z-index: 2000;
-
-  height: var(--header-h);
-  display: flex;
-  align-items: stretch;
 
   background: color-mix(in oklab, var(--bg) 78%, transparent);
   border-bottom: 1px solid var(--border2);
@@ -292,13 +239,27 @@ body::after {
   pointer-events: none;
 }
 
-/* reading progress inside header */
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  width: 100%;
+  padding: 14px 0;
+}
+
+.brand { display: grid; gap: 2px; color: inherit; }
+.brand:hover { text-decoration: none; }
+.brand__title { font-weight: 950; letter-spacing: -0.01em; }
+.brand__subtitle { font-size: 12px; color: var(--muted2); }
+
+/* Progress */
 .progress {
   position: absolute;
   left: 0; right: 0;
   top: 0;
   height: 3px;
-  background: transparent;
 
   opacity: 0;
   transform: translateY(-2px);
@@ -318,22 +279,6 @@ body::after {
   will-change: transform;
 }
 
-.header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-
-  width: 100%;
-  padding: 14px 0;
-}
-
-/* Brand */
-.brand { display: grid; gap: 2px; color: inherit; }
-.brand:hover { text-decoration: none; }
-.brand__title { font-weight: 950; letter-spacing: -0.01em; }
-.brand__subtitle { font-size: 12px; color: var(--muted2); }
-
 /* ===================== NAV ===================== */
 
 .nav {
@@ -344,35 +289,18 @@ body::after {
 }
 
 .nav__link {
-  position: relative;
   padding: 8px 14px;
   border-radius: 999px;
   color: color-mix(in oklab, var(--text) 86%, var(--muted));
   border: 1px solid transparent;
   transition: background .18s var(--ease), transform .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
 }
-
-.nav__link::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 6px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--primary) 40%, transparent), transparent);
-  opacity: 0;
-  transform: translateY(3px);
-  transition: opacity .18s var(--ease), transform .18s var(--ease);
-}
-
 .nav__link:hover {
   transform: translateY(-1px);
   background: var(--surface-2);
   border-color: var(--border2);
   color: var(--text);
 }
-.nav__link:hover::after { opacity: 1; transform: translateY(0); }
-
 .nav__link[aria-current="page"] {
   background: var(--surface);
   border-color: var(--border);
@@ -383,7 +311,6 @@ body::after {
 /* ===================== THEME TOGGLE ===================== */
 
 .theme-toggle {
-  position: relative;
   padding: 9px 14px;
   border-radius: 999px;
   border: 1px solid var(--border);
@@ -394,32 +321,13 @@ body::after {
   box-shadow: var(--shadow-2);
   backdrop-filter: blur(10px);
 
-  transition: transform .18s var(--ease), filter .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+  transition: transform .18s var(--ease), filter .18s var(--ease);
 }
-.theme-toggle::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, var(--primary-soft), transparent);
-  opacity: 0;
-  transition: opacity .22s var(--ease);
-  pointer-events: none;
-}
-.theme-toggle:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.03);
-  border-color: color-mix(in oklab, var(--border) 60%, var(--primary-soft));
-}
-.theme-toggle:hover::before { opacity: 1; }
+.theme-toggle:hover { transform: translateY(-1px); filter: brightness(1.03); }
 .theme-toggle:active { transform: translateY(0); }
 
 .theme-toggle.is-animating { transform: translateY(0) scale(0.98); }
-.theme-toggle .toggle-icon {
-  display: inline-block;
-  transform-origin: 50% 50%;
-  transition: transform .36s var(--ease);
-}
+.theme-toggle .toggle-icon { display: inline-block; transition: transform .36s var(--ease); }
 .theme-toggle.is-flip .toggle-icon { transform: rotate(180deg); }
 
 /* ===================== HERO ===================== */
@@ -450,19 +358,6 @@ body::after {
       transparent 66%);
   opacity: 0.55;
   pointer-events: none;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(1200px 700px at 50% 8%, transparent 58%, rgba(0,0,0,0.14) 100%);
-  opacity: 0.7;
-  pointer-events: none;
-}
-html:not([data-theme="dark"]) .hero::after {
-  background: radial-gradient(1200px 700px at 50% 8%, transparent 62%, rgba(15,23,42,0.06) 100%);
-  opacity: 1;
 }
 
 .hero > * { position: relative; z-index: 1; }
@@ -507,19 +402,13 @@ html:not([data-theme="dark"]) .hero::after {
   letter-spacing: 0.01em;
   cursor: pointer;
 
-  transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease), background .18s var(--ease);
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
   box-shadow: var(--shadow-1);
   backdrop-filter: blur(10px);
 }
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-2);
-  filter: brightness(1.02);
-  text-decoration: none;
-}
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-2); filter: brightness(1.02); }
 .btn:active { transform: translateY(0); }
 
-/* PRIMARY — HARD LOCK */
 .btn--primary {
   border-color: transparent;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
@@ -536,14 +425,6 @@ a.btn--primary:focus {
   -webkit-text-fill-color: var(--on-primary);
   text-decoration: none;
 }
-.btn--primary * {
-  color: var(--on-primary) !important;
-  -webkit-text-fill-color: var(--on-primary);
-}
-.btn--primary:hover {
-  box-shadow: 0 22px 64px color-mix(in oklab, var(--primary) 26%, transparent);
-  filter: brightness(1.03);
-}
 
 .btn--ghost {
   background: transparent;
@@ -551,13 +432,9 @@ a.btn--primary:focus {
   color: var(--muted);
   box-shadow: none;
 }
-.btn--ghost:hover {
-  background: var(--surface-2);
-  border-color: var(--border2);
-  color: var(--text);
-}
+.btn--ghost:hover { background: var(--surface-2); border-color: var(--border2); color: var(--text); }
 
-/* ===================== CARDS / ITEMS ===================== */
+/* ===================== CARDS ===================== */
 
 .item,
 .card {
@@ -570,30 +447,15 @@ a.btn--primary:focus {
 }
 
 .item { padding: 20px; }
-
-.item__title { font-weight: 950; margin: 0 0 6px; letter-spacing: -0.01em; }
-.item__meta { font-size: 13px; color: var(--muted2); margin: 0 0 10px; }
-.item__text { margin: 0; color: var(--muted); }
-.item__links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
-
-.item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-3);
-  border-color: color-mix(in oklab, var(--border) 70%, var(--primary-soft));
-}
+.item:hover { transform: translateY(-2px); box-shadow: var(--shadow-3); }
 
 /* ===================== GRID ===================== */
 
 .grid { display: grid; gap: 18px; }
 .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-@media (max-width: 900px) {
-  .grid--3 { grid-template-columns: 1fr; }
-}
-@media (max-width: 780px) {
-  .grid--2 { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .grid--3 { grid-template-columns: 1fr; } }
+@media (max-width: 780px) { .grid--2 { grid-template-columns: 1fr; } }
 
 /* ===================== CODE BLOCKS ===================== */
 
@@ -607,8 +469,6 @@ pre {
   box-shadow: var(--shadow-1);
 }
 html[data-theme="dark"] pre { background: rgba(2, 6, 23, 0.55); }
-pre code { color: var(--text); }
-html[data-theme="dark"] pre code { color: #e5e7eb; }
 
 /* ===================== FOOTER (FIXED) ===================== */
 
@@ -619,24 +479,14 @@ html[data-theme="dark"] pre code { color: #e5e7eb; }
   bottom: 0;
   z-index: 1900;
 
-  height: var(--footer-h);
-  display: flex;
-  align-items: center;
-
   border-top: 1px solid var(--border2);
   background: color-mix(in oklab, var(--bg) 84%, var(--surface-solid));
   backdrop-filter: blur(16px);
   color: var(--muted2);
-}
 
-.footer::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; top: -1px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--primary) 18%, transparent), transparent);
-  opacity: 0.28;
-  pointer-events: none;
+  /* IMPORTANT: allow auto height (it may wrap) */
+  height: auto;
+  padding: 14px 0;
 }
 
 .footer__inner {
@@ -671,14 +521,9 @@ html[data-theme="dark"] pre code { color: #e5e7eb; }
   .progress { opacity: 1 !important; transform: none !important; }
 }
 
-/* ===================== RESPONSIVE TUNING ===================== */
+/* ===================== RESPONSIVE ===================== */
 
 @media (max-width: 720px) {
-  :root { --header-h: 92px; --footer-h: 98px; --footer-safe: 28px; }
   .header__inner { padding: 12px 0; }
   .nav { gap: 8px; }
 }
-
-/* ===================== HARD SAFETY (if old CSS remains) ===================== */
-.header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; }
-.footer { position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important; }
