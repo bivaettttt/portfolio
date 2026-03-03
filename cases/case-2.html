@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кейс: Интеграция CRM ↔ сервис уведомлений — Тимур Надршин</title>
+  <meta name="description" content="Кейс системного аналитика: интеграция CRM и сервиса уведомлений. REST API, контракты, статусы ошибок, идемпотентность, UML sequence, критерии приемки." />
+  <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
+</head>
+
+<body data-page="cases">
+  <div data-partial="header"></div>
+
+  <main class="container page">
+    <div class="page__head">
+      <div class="breadcrumbs">
+        <a href="/portfolio/cases.html">Кейсы</a>
+        <span class="sep">/</span>
+        <span>Интеграция CRM ↔ сервис уведомлений</span>
+      </div>
+
+      <h1 class="page__title">Интеграция CRM ↔ сервис уведомлений</h1>
+      <p class="page__desc">
+        Учебный кейс в формате реального проекта: проработка требований, контракта API, ошибок, ретраев и критериев приемки.
+      </p>
+    </div>
+
+    <section class="section">
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">Цель</div>
+          <p class="item__text">
+            Обеспечить отправку уведомлений клиентам из CRM через внешний сервис с прогнозируемыми статусами, ошибками и повторными попытками.
+          </p>
+        </div>
+        <div class="item">
+          <div class="item__title">Результат</div>
+          <p class="item__text">
+            Единый контракт API, фиксированные коды ошибок и правила ретраев, прозрачный трекинг доставки и аудит событий.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Контекст</h2>
+      <div class="item">
+        <p class="item__text">
+          CRM должна отправлять SMS/Email/Push при событиях (создание заявки, смена статуса, просрочка SLA).
+          Ранее отправка была “вшита” в CRM → сложная поддержка и нестабильная доставка.
+          Решение — вынести отправку в отдельный сервис уведомлений и интегрировать через REST API.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Скоуп</h2>
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">Входит</div>
+          <p class="item__text">
+            Отправка уведомлений по API, получение статуса доставки, обработка ошибок, логирование, правила ретраев.
+          </p>
+        </div>
+        <div class="item">
+          <div class="item__title">Не входит</div>
+          <p class="item__text">
+            UI для шаблонов, биллинг сообщений, маршрутизация каналов по стоимости, админка провайдеров.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Роли и сущности</h2>
+      <ul class="features">
+        <li><strong>CRM</strong><br/>источник события, инициатор отправки</li>
+        <li><strong>Notification Service</strong><br/>валидирует, ставит в очередь, отправляет, трекает</li>
+        <li><strong>Provider</strong><br/>внешний SMS/Email/Push шлюз</li>
+        <li><strong>Notification</strong><br/>объект отправки с id, статусом, payload</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Требования</h2>
+
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">Функциональные</div>
+          <p class="item__text">
+            1) CRM отправляет запрос на создание уведомления.<br/>
+            2) Сервис возвращает идентификатор уведомления.<br/>
+            3) CRM может запросить статус доставки.<br/>
+            4) Сервис обрабатывает ошибки провайдера и сохраняет историю попыток.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item__title">Нефункциональные (базово)</div>
+          <p class="item__text">
+            Идемпотентность на уровне запроса, таймауты, ретраи по временным ошибкам,
+            аудит и трассировка (correlationId).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Контракт API (черновик)</h2>
+
+      <div class="item">
+        <div class="item__title">POST /api/v1/notifications</div>
+        <div class="item__meta">Создать уведомление</div>
+        <p class="item__text">
+          Заголовки: <code>Idempotency-Key</code>, <code>X-Correlation-Id</code>.<br/>
+          Тело: канал (sms/email/push), получатель, шаблон/текст, параметры, приоритет.
+        </p>
+      </div>
+
+      <div class="item" style="margin-top:12px;">
+        <div class="item__title">GET /api/v1/notifications/{id}</div>
+        <div class="item__meta">Получить статус</div>
+        <p class="item__text">
+          Статусы: <code>NEW</code> → <code>QUEUED</code> → <code>SENT</code> → <code>DELIVERED</code> / <code>FAILED</code>.<br/>
+          Дополнительно: <code>attempts</code>, <code>lastError</code>, <code>providerMessageId</code>.
+        </p>
+      </div>
+
+      <div class="item" style="margin-top:12px;">
+        <div class="item__title">Ошибки и правила ретраев</div>
+        <div class="item__meta">Согласованные коды</div>
+        <p class="item__text">
+          400: неверный payload / отсутствуют обязательные поля.<br/>
+          401/403: авторизация/права.<br/>
+          409: конфликт идемпотентности (если ключ уже использован с другим payload).<br/>
+          429: rate limit (ретрай с backoff).<br/>
+          5xx: временная ошибка сервиса/провайдера (ретрай по политике).
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>UML sequence (описание)</h2>
+      <div class="item">
+        <p class="item__text">
+          1) CRM → Notification Service: POST createNotification (Idempotency-Key).<br/>
+          2) Service валидирует → пишет запись NEW → ставит в очередь → возвращает 202 + id.<br/>
+          3) Worker → Provider: sendMessage → получает providerMessageId.<br/>
+          4) Service обновляет статус SENT, затем DELIVERED/FAILED по callback/опросу провайдера.<br/>
+          5) CRM → Service: GET status → получает текущий статус и историю попыток.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Критерии приемки (пример)</h2>
+      <ul class="features">
+        <li><strong>AC-01</strong><br/>При валидном запросе сервис возвращает 202 + notificationId</li>
+        <li><strong>AC-02</strong><br/>При повторе с тем же Idempotency-Key возвращается тот же notificationId</li>
+        <li><strong>AC-03</strong><br/>GET /{id} возвращает статус и attempts</li>
+        <li><strong>AC-04</strong><br/>При 429/5xx выполняются ретраи по политике (фиксируется attempts)</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Артефакты</h2>
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">OpenAPI (пример)</div>
+          <div class="item__meta">YAML</div>
+          <p class="item__text">Черновой контракт API: схемы, ответы, ошибки.</p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/assets/files/case-2-openapi.yaml" target="_blank" rel="noopener">Открыть YAML</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__title">Диаграмма последовательностей</div>
+          <div class="item__meta">PDF/PNG</div>
+          <p class="item__text">UML sequence для основного сценария.</p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/assets/files/case-2-sequence.pdf" target="_blank" rel="noopener">Открыть</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="actions">
+        <a class="btn" href="/portfolio/cases.html">← Назад к кейсам</a>
+        <a class="btn btn--primary" href="/portfolio/contacts.html">Связаться</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-partial="footer"></div>
+  <script src="/portfolio/assets/js/app.js"></script>
+</body>
+</html>

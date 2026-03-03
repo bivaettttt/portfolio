@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кейс: Модель данных для каталога — Тимур Надршин</title>
+  <meta name="description" content="Кейс системного аналитика: проектирование модели данных (ERD), правила целостности, примеры SQL, требования к каталогу." />
+  <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
+</head>
+
+<body data-page="cases">
+  <div data-partial="header"></div>
+
+  <main class="container page">
+    <div class="page__head">
+      <div class="breadcrumbs">
+        <a href="/portfolio/cases.html">Кейсы</a>
+        <span class="sep">/</span>
+        <span>Модель данных для каталога</span>
+      </div>
+
+      <h1 class="page__title">Модель данных для каталога</h1>
+      <p class="page__desc">
+        Учебный кейс: как я проектирую сущности/связи, правила целостности и проверяю модель SQL-запросами.
+      </p>
+    </div>
+
+    <section class="section">
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">Цель</div>
+          <p class="item__text">
+            Спроектировать модель данных каталога товаров: категории, товары, SKU/варианты, атрибуты, цены и остатки.
+          </p>
+        </div>
+        <div class="item">
+          <div class="item__title">Результат</div>
+          <p class="item__text">
+            ERD + правила, которые предотвращают “кривые” данные, и набор SQL-запросов для ключевых отчетов.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Контекст</h2>
+      <div class="item">
+        <p class="item__text">
+          Каталог используется витриной и внутренними системами. Важно корректно хранить варианты (SKU),
+          атрибуты (цвет/размер), цены (история), остатки по складам и принадлежность категорий.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Сущности</h2>
+      <ul class="features">
+        <li><strong>Category</strong><br/>иерархия категорий, parentId</li>
+        <li><strong>Product</strong><br/>карточка товара (название, описание, бренд)</li>
+        <li><strong>SKU</strong><br/>вариант товара (цвет/размер), barcode</li>
+        <li><strong>Attribute</strong><br/>справочник атрибутов (color, size…)</li>
+        <li><strong>SKU_Attribute</strong><br/>значения атрибутов для SKU</li>
+        <li><strong>Price</strong><br/>цена по SKU (с периодом действия)</li>
+        <li><strong>Stock</strong><br/>остатки по складам</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Правила и ограничения</h2>
+
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">Целостность</div>
+          <p class="item__text">
+            • У SKU обязателен ProductId.<br/>
+            • Barcode уникален.<br/>
+            • Для SKU нельзя иметь 2 активные цены в один период.<br/>
+            • Остаток не может быть отрицательным.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item__title">Бизнес-правила</div>
+          <p class="item__text">
+            • Категории могут быть вложенными (дерево).<br/>
+            • Product может быть в нескольких категориях (M:N).<br/>
+            • Атрибуты расширяемые (без изменения схемы БД).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>ERD (описание)</h2>
+      <div class="item">
+        <p class="item__text">
+          Category(id, parentId, name) — дерево категорий.<br/>
+          Product(id, name, brand, description).<br/>
+          ProductCategory(productId, categoryId) — связь M:N.<br/>
+          SKU(id, productId, barcode, isActive).<br/>
+          Attribute(id, code, name, dataType).<br/>
+          SKUAttribute(skuId, attributeId, value) — значения атрибутов.<br/>
+          Price(id, skuId, amount, currency, validFrom, validTo).<br/>
+          Warehouse(id, name).<br/>
+          Stock(skuId, warehouseId, quantity, updatedAt).
+        </p>
+      </div>
+
+      <div class="item" style="margin-top:12px;">
+        <div class="item__title">Артефакт ERD</div>
+        <div class="item__meta">PDF/PNG</div>
+        <p class="item__text">Диаграмма сущностей и связей.</p>
+        <div class="item__links">
+          <a class="btn" href="/portfolio/assets/files/case-3-erd.pdf" target="_blank" rel="noopener">Открыть</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Примеры SQL (для проверки модели)</h2>
+
+      <div class="item">
+        <div class="item__title">1) Товары в категории (включая подкатегории)</div>
+        <p class="item__text">
+          Если используешь рекурсивный CTE (PostgreSQL), можно собрать всё поддерево и вывести товары.
+        </p>
+        <pre><code>WITH RECURSIVE cat AS (
+  SELECT id
+  FROM category
+  WHERE id = :categoryId
+  UNION ALL
+  SELECT c.id
+  FROM category c
+  JOIN cat ON c.parent_id = cat.id
+)
+SELECT p.id, p.name
+FROM product p
+JOIN product_category pc ON pc.product_id = p.id
+JOIN cat ON cat.id = pc.category_id
+ORDER BY p.name;</code></pre>
+      </div>
+
+      <div class="item" style="margin-top:12px;">
+        <div class="item__title">2) Текущая цена по SKU</div>
+        <pre><code>SELECT sku_id, amount, currency
+FROM price
+WHERE sku_id = :skuId
+  AND now() >= valid_from
+  AND (valid_to IS NULL OR now() &lt; valid_to)
+ORDER BY valid_from DESC
+LIMIT 1;</code></pre>
+      </div>
+
+      <div class="item" style="margin-top:12px;">
+        <div class="item__title">3) Топ-10 SKU с минимальными остатками</div>
+        <pre><code>SELECT s.sku_id, SUM(s.quantity) AS total_qty
+FROM stock s
+GROUP BY s.sku_id
+ORDER BY total_qty ASC
+LIMIT 10;</code></pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Критерии приемки (пример)</h2>
+      <ul class="features">
+        <li><strong>AC-01</strong><br/>Нельзя создать SKU без productId</li>
+        <li><strong>AC-02</strong><br/>Barcode уникален, дубликаты запрещены</li>
+        <li><strong>AC-03</strong><br/>У SKU нет пересекающихся активных цен</li>
+        <li><strong>AC-04</strong><br/>Stock.quantity не допускает отрицательных значений</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Артефакты</h2>
+      <div class="grid grid--2">
+        <div class="item">
+          <div class="item__title">ERD</div>
+          <div class="item__meta">PDF/PNG</div>
+          <p class="item__text">Диаграмма сущностей и связей.</p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/assets/files/case-3-erd.pdf" target="_blank" rel="noopener">Открыть</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item__title">SQL-шпаргалка</div>
+          <div class="item__meta">TXT/MD</div>
+          <p class="item__text">Набор запросов для проверок и отчетов.</p>
+          <div class="item__links">
+            <a class="btn" href="/portfolio/assets/files/case-3-sql.md" target="_blank" rel="noopener">Открыть</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="actions">
+        <a class="btn" href="/portfolio/cases.html">← Назад к кейсам</a>
+        <a class="btn btn--primary" href="/portfolio/contacts.html">Связаться</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-partial="footer"></div>
+  <script src="/portfolio/assets/js/app.js"></script>
+</body>
+</html>
