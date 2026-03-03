@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Страница не найдена</title>
+  <title>Страница не найдена — Тимур Надршин</title>
+  <meta name="description" content="Ошибка 404. Страница не найдена." />
   <link rel="stylesheet" href="/portfolio/assets/css/style.css" />
 </head>
+
 <body data-page="home">
   <div data-partial="header"></div>
 
@@ -13,14 +15,28 @@
     <div class="page__head">
       <div class="page__kicker">404</div>
       <h1 class="page__title">Страница не найдена</h1>
-      <p class="page__desc">Похоже, такой страницы нет. Вернись на главную или открой кейсы.</p>
+      <p class="page__desc">
+        Похоже, ссылка ведёт в пустоту. Вернись на главную или открой кейсы — там самая полезная часть портфолио.
+      </p>
     </div>
 
-    <section class="section">
+    <section class="section hero">
+      <h2 class="hero__title">Иногда требования меняются…</h2>
+      <p class="hero__text">
+        Но интерфейсы должны быть предсказуемыми. Я оставил тебе короткий маршрут назад:
+      </p>
+
       <div class="actions">
         <a class="btn btn--primary" href="/portfolio/">На главную</a>
         <a class="btn" href="/portfolio/cases.html">Кейсы</a>
+        <a class="btn btn--ghost" href="/portfolio/contacts.html">Связаться</a>
       </div>
+
+      <ul class="features" aria-label="Подсказки">
+        <li><strong>Если искал страницу</strong><br/>Проверь URL или открой навигацию сверху</li>
+        <li><strong>Если нужен пример</strong><br/>Смотри “Кейсы” — там структура “контекст → решение → артефакты”</li>
+        <li><strong>Если хочешь связаться</strong><br/>Контакты доступны из меню и по кнопке</li>
+      </ul>
     </section>
   </main>
 
