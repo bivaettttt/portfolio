@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380">
+<rect width="1000" height="380" rx="20" fill="#eef3ed"/>
+<g font-family="system-ui,sans-serif" fill="#173b30">
+<text x="40" y="68" font-size="30" font-weight="700">Объекты инвестиционного обслуживания</text>
+<text x="40" y="108" font-size="19">Учебная реконструкция для портфолио</text>
+<rect x="40" y="166" width="280" height="120" rx="12" fill="#fff" stroke="#537268" stroke-width="2"/>
+<text x="180" y="211" text-anchor="middle" font-size="22">Клиент</text>
+<text x="180" y="244" text-anchor="middle" font-size="22">Заявка и проверка</text>
+<path d="M313 226h30m-10-8 10 8-10 8" fill="none" stroke="#406357" stroke-width="3"/>
+<rect x="355" y="166" width="280" height="120" rx="12" fill="#fff" stroke="#537268" stroke-width="2"/>
+<text x="495" y="211" text-anchor="middle" font-size="22">Договор</text>
+<text x="495" y="244" text-anchor="middle" font-size="22">Счёт и портфель</text>
+<path d="M628 226h30m-10-8 10 8-10 8" fill="none" stroke="#406357" stroke-width="3"/>
+<rect x="670" y="166" width="280" height="120" rx="12" fill="#fff" stroke="#537268" stroke-width="2"/>
+<text x="810" y="211" text-anchor="middle" font-size="22">Поручение</text>
+<text x="810" y="244" text-anchor="middle" font-size="22">Сделка и позиция</text>
+</g></svg>

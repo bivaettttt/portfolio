@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Учебный сервис курсов валют
+  version: 1.0.0
+  description: >
+    Дополненная документация по rate_service.py. Сервис использует
+    статические учебные значения. Курс выражается в рублях за единицу валюты.
+paths:
+  /rate:
+    get:
+      operationId: getRate
+      summary: Получить учебный курс валюты
+      parameters:
+        - name: currency
+          in: query
+          required: true
+          description: USD или EUR. Обработчик нормализует регистр.
+          schema:
+            type: string
+          example: USD
+      responses:
+        '200':
+          description: Курс найден
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [rate]
+                properties:
+                  rate:
+                    type: number
+              examples:
+                usd:
+                  value: { rate: 90.5 }
+                eur:
+                  value: { rate: 98.75 }
+        '400':
+          description: Код отсутствует или отсутствует в учебном справочнике
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [message]
+                properties:
+                  message:
+                    type: string
+              example: { message: UNKNOWN CURRENCY }
+        '500':
+          description: Непредвиденная ошибка получения курса внутри обработчика
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [message]
+                properties:
+                  message:
+                    type: string
+              example: { message: UNEXPECTED ERROR }
