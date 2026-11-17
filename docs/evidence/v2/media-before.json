@@ -1,0 +1,2318 @@
+{
+  "rows": [
+    {
+      "path": "",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 1440,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 390,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 1920,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 1280,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 1024,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 768,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "profile/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "contact/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/credit-cabinet/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "projects/practice/merch/",
+      "width": 320,
+      "status": 200,
+      "reflow": true
+    },
+    {
+      "path": "en/",
+      "theme": "dark",
+      "status": 200
+    },
+    {
+      "path": "en/profile/",
+      "theme": "dark",
+      "status": 200
+    },
+    {
+      "path": "en/projects/personal/flowent/",
+      "theme": "dark",
+      "status": 200
+    },
+    {
+      "path": "projects/",
+      "theme": "dark",
+      "status": 200
+    }
+  ],
+  "measured": [
+    {
+      "path": "projects/personal/credence/",
+      "width": 1440,
+      "src": "/portfolio/media/credence/details.webp",
+      "selected": "/portfolio/media/credence/details.webp",
+      "intrinsic": [
+        1150,
+        758
+      ],
+      "css": [
+        1031,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/credence/details-640.webp 640w, /portfolio/media/credence/details.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 40196
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 1440,
+      "src": "/portfolio/media/credence/risk.webp",
+      "selected": "/portfolio/media/credence/risk-640.webp",
+      "intrinsic": [
+        580,
+        382
+      ],
+      "css": [
+        559,
+        369
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/credence/risk-640.webp 640w, /portfolio/media/credence/risk.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 8104
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 1440,
+      "src": "/portfolio/media/credence/offer.webp",
+      "selected": "/portfolio/media/credence/offer-640.webp",
+      "intrinsic": [
+        580,
+        382
+      ],
+      "css": [
+        559,
+        369
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/credence/offer-640.webp 640w, /portfolio/media/credence/offer.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 10070
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1440,
+      "src": "/portfolio/media/flowent/expense-editor.webp",
+      "selected": "/portfolio/media/flowent/expense-editor.webp",
+      "intrinsic": [
+        1150,
+        646
+      ],
+      "css": [
+        1150,
+        647
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/flowent/expense-editor-640.webp 640w, /portfolio/media/flowent/expense-editor.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 42226
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1440,
+      "src": "/portfolio/media/flowent/runtime-viewer.webp",
+      "selected": "/portfolio/media/flowent/runtime-viewer-640.webp",
+      "intrinsic": [
+        580,
+        426
+      ],
+      "css": [
+        559,
+        412
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/flowent/runtime-viewer-640.webp 640w, /portfolio/media/flowent/runtime-viewer.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 17826
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1440,
+      "src": "/portfolio/media/flowent/incident-details.webp",
+      "selected": "/portfolio/media/flowent/incident-details-640.webp",
+      "intrinsic": [
+        580,
+        382
+      ],
+      "css": [
+        559,
+        369
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/flowent/incident-details-640.webp 640w, /portfolio/media/flowent/incident-details.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 13746
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 1440,
+      "src": "/portfolio/media/flowent/recovery-history.webp",
+      "selected": "/portfolio/media/flowent/recovery-history-640.webp",
+      "intrinsic": [
+        580,
+        418
+      ],
+      "css": [
+        559,
+        404
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/flowent/recovery-history-640.webp 640w, /portfolio/media/flowent/recovery-history.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 17072
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1440,
+      "src": "/portfolio/media/nexora/workbench.webp",
+      "selected": "/portfolio/media/nexora/workbench.webp",
+      "intrinsic": [
+        1150,
+        798
+      ],
+      "css": [
+        979,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/nexora/workbench-640.webp 640w, /portfolio/media/nexora/workbench.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 65850
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1440,
+      "src": "/portfolio/media/nexora/partial-delivery.webp",
+      "selected": "/portfolio/media/nexora/partial-delivery-640.webp",
+      "intrinsic": [
+        580,
+        402
+      ],
+      "css": [
+        559,
+        388
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/nexora/partial-delivery-640.webp 640w, /portfolio/media/nexora/partial-delivery.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 15944
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1440,
+      "src": "/portfolio/media/nexora/error-inspector.webp",
+      "selected": "/portfolio/media/nexora/error-inspector-640.webp",
+      "intrinsic": [
+        580,
+        695
+      ],
+      "css": [
+        559,
+        670
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/nexora/error-inspector-640.webp 640w, /portfolio/media/nexora/error-inspector.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 22642
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 1440,
+      "src": "/portfolio/media/nexora/reconciliation.webp",
+      "selected": "/portfolio/media/nexora/reconciliation-640.webp",
+      "intrinsic": [
+        580,
+        402
+      ],
+      "css": [
+        559,
+        388
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/nexora/reconciliation-640.webp 640w, /portfolio/media/nexora/reconciliation.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 7312
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1440,
+      "src": "/portfolio/media/quantara/dashboard.webp",
+      "selected": "/portfolio/media/quantara/dashboard.webp",
+      "intrinsic": [
+        1150,
+        728
+      ],
+      "css": [
+        1074,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/quantara/dashboard-640.webp 640w, /portfolio/media/quantara/dashboard.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 54494
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1440,
+      "src": "/portfolio/media/quantara/lineage.webp",
+      "selected": "/portfolio/media/quantara/lineage-640.webp",
+      "intrinsic": [
+        580,
+        367
+      ],
+      "css": [
+        559,
+        354
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/quantara/lineage-640.webp 640w, /portfolio/media/quantara/lineage.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 11348
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 1440,
+      "src": "/portfolio/media/quantara/comparison.webp",
+      "selected": "/portfolio/media/quantara/comparison-640.webp",
+      "intrinsic": [
+        580,
+        367
+      ],
+      "css": [
+        559,
+        354
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/quantara/comparison-640.webp 640w, /portfolio/media/quantara/comparison.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 13258
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1440,
+      "src": "/portfolio/media/sentrix/alerts.webp",
+      "selected": "/portfolio/media/sentrix/alerts.webp",
+      "intrinsic": [
+        1150,
+        728
+      ],
+      "css": [
+        1074,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/sentrix/alerts-640.webp 640w, /portfolio/media/sentrix/alerts.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 58438
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1440,
+      "src": "/portfolio/media/sentrix/investigation.webp",
+      "selected": "/portfolio/media/sentrix/investigation-640.webp",
+      "intrinsic": [
+        580,
+        367
+      ],
+      "css": [
+        559,
+        354
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/sentrix/investigation-640.webp 640w, /portfolio/media/sentrix/investigation.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 10880
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 1440,
+      "src": "/portfolio/media/sentrix/review.webp",
+      "selected": "/portfolio/media/sentrix/review-640.webp",
+      "intrinsic": [
+        580,
+        367
+      ],
+      "css": [
+        559,
+        354
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/sentrix/review-640.webp 640w, /portfolio/media/sentrix/review.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 10304
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1440,
+      "src": "/portfolio/media/traceon/requirement.webp",
+      "selected": "/portfolio/media/traceon/requirement.webp",
+      "intrinsic": [
+        1150,
+        798
+      ],
+      "css": [
+        979,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/traceon/requirement-640.webp 640w, /portfolio/media/traceon/requirement.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 55146
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1440,
+      "src": "/portfolio/media/traceon/impact.webp",
+      "selected": "/portfolio/media/traceon/impact-640.webp",
+      "intrinsic": [
+        580,
+        899
+      ],
+      "css": [
+        438,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/traceon/impact-640.webp 640w, /portfolio/media/traceon/impact.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 29966
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1440,
+      "src": "/portfolio/media/traceon/review.webp",
+      "selected": "/portfolio/media/traceon/review-640.webp",
+      "intrinsic": [
+        580,
+        667
+      ],
+      "css": [
+        559,
+        644
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/traceon/review-640.webp 640w, /portfolio/media/traceon/review.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 18708
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 1440,
+      "src": "/portfolio/media/traceon/baseline.webp",
+      "selected": "/portfolio/media/traceon/baseline-640.webp",
+      "intrinsic": [
+        580,
+        402
+      ],
+      "css": [
+        559,
+        388
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/traceon/baseline-640.webp 640w, /portfolio/media/traceon/baseline.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 13824
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1440,
+      "src": "/portfolio/media/vaultix/accounts.webp",
+      "selected": "/portfolio/media/vaultix/accounts.webp",
+      "intrinsic": [
+        1150,
+        798
+      ],
+      "css": [
+        979,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/vaultix/accounts-640.webp 640w, /portfolio/media/vaultix/accounts.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 42974
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1440,
+      "src": "/portfolio/media/vaultix/journal.webp",
+      "selected": "/portfolio/media/vaultix/journal-640.webp",
+      "intrinsic": [
+        580,
+        402
+      ],
+      "css": [
+        559,
+        388
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/vaultix/journal-640.webp 640w, /portfolio/media/vaultix/journal.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 6570
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 1440,
+      "src": "/portfolio/media/vaultix/lab.webp",
+      "selected": "/portfolio/media/vaultix/lab-640.webp",
+      "intrinsic": [
+        580,
+        728
+      ],
+      "css": [
+        541,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/vaultix/lab-640.webp 640w, /portfolio/media/vaultix/lab.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 19560
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1440,
+      "src": "/portfolio/media/veridion/research-desk.webp",
+      "selected": "/portfolio/media/veridion/research-desk.webp",
+      "intrinsic": [
+        1150,
+        798
+      ],
+      "css": [
+        979,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/veridion/research-desk-640.webp 640w, /portfolio/media/veridion/research-desk.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 66544
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1440,
+      "src": "/portfolio/media/veridion/citation-inspector.webp",
+      "selected": "/portfolio/media/veridion/citation-inspector-640.webp",
+      "intrinsic": [
+        580,
+        402
+      ],
+      "css": [
+        559,
+        388
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/veridion/citation-inspector-640.webp 640w, /portfolio/media/veridion/citation-inspector.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 17528
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 1440,
+      "src": "/portfolio/media/veridion/human-review.webp",
+      "selected": "/portfolio/media/veridion/human-review-640.webp",
+      "intrinsic": [
+        580,
+        402
+      ],
+      "css": [
+        559,
+        388
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/veridion/human-review-640.webp 640w, /portfolio/media/veridion/human-review.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 16508
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1440,
+      "src": "/portfolio/media/wayline/trips.webp",
+      "selected": "/portfolio/media/wayline/trips.webp",
+      "intrinsic": [
+        1150,
+        728
+      ],
+      "css": [
+        1074,
+        680
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/wayline/trips-640.webp 640w, /portfolio/media/wayline/trips.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 16888
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1440,
+      "src": "/portfolio/media/wayline/disruption-details.webp",
+      "selected": "/portfolio/media/wayline/disruption-details-640.webp",
+      "intrinsic": [
+        580,
+        367
+      ],
+      "css": [
+        559,
+        354
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/wayline/disruption-details-640.webp 640w, /portfolio/media/wayline/disruption-details.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 10894
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 1440,
+      "src": "/portfolio/media/wayline/alternatives.webp",
+      "selected": "/portfolio/media/wayline/alternatives-640.webp",
+      "intrinsic": [
+        580,
+        367
+      ],
+      "css": [
+        559,
+        354
+      ],
+      "dpr": 1,
+      "set": "/portfolio/media/wayline/alternatives-640.webp 640w, /portfolio/media/wayline/alternatives.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 13236
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/bank-original.png",
+      "selected": "/portfolio/artifacts/bank-original.png",
+      "intrinsic": [
+        2065,
+        1801
+      ],
+      "css": [
+        780,
+        680
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 672857
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/bank-catalog.svg",
+      "selected": "/portfolio/artifacts/bank-catalog.svg",
+      "intrinsic": [
+        4309,
+        2225
+      ],
+      "css": [
+        559,
+        289
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 24656
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/bks-original-archimate.png",
+      "selected": "/portfolio/artifacts/bks-original-archimate.png",
+      "intrinsic": [
+        1173,
+        662
+      ],
+      "css": [
+        1173,
+        662
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 25110
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/bks-original-sequence.png",
+      "selected": "/portfolio/artifacts/bks-original-sequence.png",
+      "intrinsic": [
+        640,
+        583
+      ],
+      "css": [
+        559,
+        509
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 52501
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/bks-original-bpmn.png",
+      "selected": "/portfolio/artifacts/bks-original-bpmn.png",
+      "intrinsic": [
+        1484,
+        1049
+      ],
+      "css": [
+        559,
+        395
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 104272
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/bks-original-elma.png",
+      "selected": "/portfolio/artifacts/bks-original-elma.png",
+      "intrinsic": [
+        2459,
+        1265
+      ],
+      "css": [
+        1182,
+        608
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 124039
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/finance-runtime.png",
+      "selected": "/portfolio/artifacts/finance-runtime.png",
+      "intrinsic": [
+        897,
+        304
+      ],
+      "css": [
+        897,
+        304
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 21779
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 1440,
+      "src": "/portfolio/artifacts/finance-form.png",
+      "selected": "/portfolio/artifacts/finance-form.png",
+      "intrinsic": [
+        510,
+        397
+      ],
+      "css": [
+        510,
+        397
+      ],
+      "dpr": 1,
+      "set": "",
+      "sizes": "",
+      "encoded": 19986
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 390,
+      "src": "/portfolio/media/credence/details.webp",
+      "selected": "/portfolio/media/credence/details.webp",
+      "intrinsic": [
+        351,
+        231
+      ],
+      "css": [
+        308,
+        203
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/credence/details-640.webp 640w, /portfolio/media/credence/details.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 40196
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 390,
+      "src": "/portfolio/media/credence/risk.webp",
+      "selected": "/portfolio/media/credence/risk.webp",
+      "intrinsic": [
+        351,
+        231
+      ],
+      "css": [
+        308,
+        203
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/credence/risk-640.webp 640w, /portfolio/media/credence/risk.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 32500
+    },
+    {
+      "path": "projects/personal/credence/",
+      "width": 390,
+      "src": "/portfolio/media/credence/offer.webp",
+      "selected": "/portfolio/media/credence/offer.webp",
+      "intrinsic": [
+        351,
+        231
+      ],
+      "css": [
+        308,
+        203
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/credence/offer-640.webp 640w, /portfolio/media/credence/offer.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 41190
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 390,
+      "src": "/portfolio/media/flowent/expense-editor.webp",
+      "selected": "/portfolio/media/flowent/expense-editor.webp",
+      "intrinsic": [
+        351,
+        197
+      ],
+      "css": [
+        308,
+        173
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/flowent/expense-editor-640.webp 640w, /portfolio/media/flowent/expense-editor.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 42226
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 390,
+      "src": "/portfolio/media/flowent/runtime-viewer.webp",
+      "selected": "/portfolio/media/flowent/runtime-viewer.webp",
+      "intrinsic": [
+        351,
+        258
+      ],
+      "css": [
+        308,
+        227
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/flowent/runtime-viewer-640.webp 640w, /portfolio/media/flowent/runtime-viewer.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 67428
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 390,
+      "src": "/portfolio/media/flowent/incident-details.webp",
+      "selected": "/portfolio/media/flowent/incident-details.webp",
+      "intrinsic": [
+        351,
+        231
+      ],
+      "css": [
+        308,
+        203
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/flowent/incident-details-640.webp 640w, /portfolio/media/flowent/incident-details.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 54094
+    },
+    {
+      "path": "projects/personal/flowent/",
+      "width": 390,
+      "src": "/portfolio/media/flowent/recovery-history.webp",
+      "selected": "/portfolio/media/flowent/recovery-history.webp",
+      "intrinsic": [
+        351,
+        253
+      ],
+      "css": [
+        308,
+        223
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/flowent/recovery-history-640.webp 640w, /portfolio/media/flowent/recovery-history.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 67220
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 390,
+      "src": "/portfolio/media/nexora/workbench.webp",
+      "selected": "/portfolio/media/nexora/workbench.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/nexora/workbench-640.webp 640w, /portfolio/media/nexora/workbench.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 65850
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 390,
+      "src": "/portfolio/media/nexora/partial-delivery.webp",
+      "selected": "/portfolio/media/nexora/partial-delivery.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/nexora/partial-delivery-640.webp 640w, /portfolio/media/nexora/partial-delivery.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 75422
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 390,
+      "src": "/portfolio/media/nexora/error-inspector.webp",
+      "selected": "/portfolio/media/nexora/error-inspector.webp",
+      "intrinsic": [
+        351,
+        420
+      ],
+      "css": [
+        308,
+        369
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/nexora/error-inspector-640.webp 640w, /portfolio/media/nexora/error-inspector.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 105972
+    },
+    {
+      "path": "projects/personal/nexora/",
+      "width": 390,
+      "src": "/portfolio/media/nexora/reconciliation.webp",
+      "selected": "/portfolio/media/nexora/reconciliation.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/nexora/reconciliation-640.webp 640w, /portfolio/media/nexora/reconciliation.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 33274
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 390,
+      "src": "/portfolio/media/quantara/dashboard.webp",
+      "selected": "/portfolio/media/quantara/dashboard.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/quantara/dashboard-640.webp 640w, /portfolio/media/quantara/dashboard.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 54494
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 390,
+      "src": "/portfolio/media/quantara/lineage.webp",
+      "selected": "/portfolio/media/quantara/lineage.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/quantara/lineage-640.webp 640w, /portfolio/media/quantara/lineage.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 45446
+    },
+    {
+      "path": "projects/personal/quantara/",
+      "width": 390,
+      "src": "/portfolio/media/quantara/comparison.webp",
+      "selected": "/portfolio/media/quantara/comparison.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/quantara/comparison-640.webp 640w, /portfolio/media/quantara/comparison.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 52816
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 390,
+      "src": "/portfolio/media/sentrix/alerts.webp",
+      "selected": "/portfolio/media/sentrix/alerts.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/sentrix/alerts-640.webp 640w, /portfolio/media/sentrix/alerts.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 58438
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 390,
+      "src": "/portfolio/media/sentrix/investigation.webp",
+      "selected": "/portfolio/media/sentrix/investigation.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/sentrix/investigation-640.webp 640w, /portfolio/media/sentrix/investigation.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 43188
+    },
+    {
+      "path": "projects/personal/sentrix/",
+      "width": 390,
+      "src": "/portfolio/media/sentrix/review.webp",
+      "selected": "/portfolio/media/sentrix/review.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/sentrix/review-640.webp 640w, /portfolio/media/sentrix/review.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 41304
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 390,
+      "src": "/portfolio/media/traceon/requirement.webp",
+      "selected": "/portfolio/media/traceon/requirement.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/traceon/requirement-640.webp 640w, /portfolio/media/traceon/requirement.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 55146
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 390,
+      "src": "/portfolio/media/traceon/impact.webp",
+      "selected": "/portfolio/media/traceon/impact.webp",
+      "intrinsic": [
+        351,
+        544
+      ],
+      "css": [
+        308,
+        478
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/traceon/impact-640.webp 640w, /portfolio/media/traceon/impact.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 119640
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 390,
+      "src": "/portfolio/media/traceon/review.webp",
+      "selected": "/portfolio/media/traceon/review.webp",
+      "intrinsic": [
+        351,
+        404
+      ],
+      "css": [
+        308,
+        355
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/traceon/review-640.webp 640w, /portfolio/media/traceon/review.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 73986
+    },
+    {
+      "path": "projects/personal/traceon/",
+      "width": 390,
+      "src": "/portfolio/media/traceon/baseline.webp",
+      "selected": "/portfolio/media/traceon/baseline.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/traceon/baseline-640.webp 640w, /portfolio/media/traceon/baseline.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 54504
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 390,
+      "src": "/portfolio/media/vaultix/accounts.webp",
+      "selected": "/portfolio/media/vaultix/accounts.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/vaultix/accounts-640.webp 640w, /portfolio/media/vaultix/accounts.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 42974
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 390,
+      "src": "/portfolio/media/vaultix/journal.webp",
+      "selected": "/portfolio/media/vaultix/journal.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/vaultix/journal-640.webp 640w, /portfolio/media/vaultix/journal.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 24196
+    },
+    {
+      "path": "projects/personal/vaultix/",
+      "width": 390,
+      "src": "/portfolio/media/vaultix/lab.webp",
+      "selected": "/portfolio/media/vaultix/lab.webp",
+      "intrinsic": [
+        351,
+        440
+      ],
+      "css": [
+        308,
+        387
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/vaultix/lab-640.webp 640w, /portfolio/media/vaultix/lab.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 78884
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 390,
+      "src": "/portfolio/media/veridion/research-desk.webp",
+      "selected": "/portfolio/media/veridion/research-desk.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/veridion/research-desk-640.webp 640w, /portfolio/media/veridion/research-desk.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 66544
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 390,
+      "src": "/portfolio/media/veridion/citation-inspector.webp",
+      "selected": "/portfolio/media/veridion/citation-inspector.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/veridion/citation-inspector-640.webp 640w, /portfolio/media/veridion/citation-inspector.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 67668
+    },
+    {
+      "path": "projects/personal/veridion/",
+      "width": 390,
+      "src": "/portfolio/media/veridion/human-review.webp",
+      "selected": "/portfolio/media/veridion/human-review.webp",
+      "intrinsic": [
+        351,
+        243
+      ],
+      "css": [
+        308,
+        214
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/veridion/human-review-640.webp 640w, /portfolio/media/veridion/human-review.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 67238
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 390,
+      "src": "/portfolio/media/wayline/trips.webp",
+      "selected": "/portfolio/media/wayline/trips.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/wayline/trips-640.webp 640w, /portfolio/media/wayline/trips.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 1150px",
+      "encoded": 16888
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 390,
+      "src": "/portfolio/media/wayline/disruption-details.webp",
+      "selected": "/portfolio/media/wayline/disruption-details.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/wayline/disruption-details-640.webp 640w, /portfolio/media/wayline/disruption-details.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 41362
+    },
+    {
+      "path": "projects/personal/wayline/",
+      "width": 390,
+      "src": "/portfolio/media/wayline/alternatives.webp",
+      "selected": "/portfolio/media/wayline/alternatives.webp",
+      "intrinsic": [
+        351,
+        222
+      ],
+      "css": [
+        308,
+        195
+      ],
+      "dpr": 2,
+      "set": "/portfolio/media/wayline/alternatives-640.webp 640w, /portfolio/media/wayline/alternatives.webp 1440w",
+      "sizes": "(max-width: 690px) 90vw, 580px",
+      "encoded": 50580
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 390,
+      "src": "/portfolio/artifacts/bank-original.png",
+      "selected": "/portfolio/artifacts/bank-original.png",
+      "intrinsic": [
+        2065,
+        1801
+      ],
+      "css": [
+        308,
+        269
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 672857
+    },
+    {
+      "path": "projects/academic/bank/",
+      "width": 390,
+      "src": "/portfolio/artifacts/bank-catalog.svg",
+      "selected": "/portfolio/artifacts/bank-catalog.svg",
+      "intrinsic": [
+        4309,
+        2225
+      ],
+      "css": [
+        308,
+        159
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 24656
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 390,
+      "src": "/portfolio/artifacts/bks-original-archimate.png",
+      "selected": "/portfolio/artifacts/bks-original-archimate.png",
+      "intrinsic": [
+        1173,
+        662
+      ],
+      "css": [
+        308,
+        174
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 25110
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 390,
+      "src": "/portfolio/artifacts/bks-original-sequence.png",
+      "selected": "/portfolio/artifacts/bks-original-sequence.png",
+      "intrinsic": [
+        640,
+        583
+      ],
+      "css": [
+        308,
+        281
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 52501
+    },
+    {
+      "path": "projects/academic/bks-architecture/",
+      "width": 390,
+      "src": "/portfolio/artifacts/bks-original-bpmn.png",
+      "selected": "/portfolio/artifacts/bks-original-bpmn.png",
+      "intrinsic": [
+        1484,
+        1049
+      ],
+      "css": [
+        308,
+        218
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 104272
+    },
+    {
+      "path": "projects/academic/bks-processes/",
+      "width": 390,
+      "src": "/portfolio/artifacts/bks-original-elma.png",
+      "selected": "/portfolio/artifacts/bks-original-elma.png",
+      "intrinsic": [
+        2459,
+        1265
+      ],
+      "css": [
+        308,
+        159
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 124039
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 390,
+      "src": "/portfolio/artifacts/finance-runtime.png",
+      "selected": "/portfolio/artifacts/finance-runtime.png",
+      "intrinsic": [
+        897,
+        304
+      ],
+      "css": [
+        308,
+        105
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 21779
+    },
+    {
+      "path": "projects/academic/finance/",
+      "width": 390,
+      "src": "/portfolio/artifacts/finance-form.png",
+      "selected": "/portfolio/artifacts/finance-form.png",
+      "intrinsic": [
+        510,
+        397
+      ],
+      "css": [
+        308,
+        240
+      ],
+      "dpr": 2,
+      "set": "",
+      "sizes": "",
+      "encoded": 19986
+    }
+  ]
+}
