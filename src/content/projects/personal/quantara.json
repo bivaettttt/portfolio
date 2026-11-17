@@ -1,0 +1,328 @@
+{
+  "id": "quantara",
+  "category": "personal",
+  "featured": false,
+  "title": {
+    "ru": "Quantara",
+    "en": "Quantara"
+  },
+  "headline": {
+    "ru": "От финансового показателя к исходной записи",
+    "en": "Trace a financial metric to its source"
+  },
+  "description": {
+    "ru": "Финансовая аналитика, загрузки, исправления и происхождение данных.",
+    "en": "Financial reporting, data ingestion, corrections and lineage."
+  },
+  "context": {
+    "ru": "Начисление, движение денег и план могут расходиться. Нужна объяснимая связь отчёта с курсом валюты и источником.",
+    "en": "Accruals, cash movement and budget can differ. Reports need an explainable link to the FX rate and upstream record."
+  },
+  "model": {
+    "ru": "Три REST-источника. PostgreSQL хранит raw, staging, факты, отчёты и историю загрузок. Допущения сценариев отделены.",
+    "en": "Three REST sources feed PostgreSQL raw, staging, fact, report and load history layers. Scenario assumptions live separately."
+  },
+  "decision": {
+    "ru": "Повтор не дублирует факты. Исправление создаёт версию и оставляет исторический отчёт читаемым.",
+    "en": "Replays do not duplicate facts. Corrections create a new version and preserve the original report."
+  },
+  "verification": {
+    "ru": "В демонстрационном наборе проверены сохранение предыдущего снимка и повтор ETL с контрольной точки.",
+    "en": "Fixtures verify historical snapshots and ETL replay from a checkpoint."
+  },
+  "limits": {
+    "ru": "Учебная методология и синтетические источники.",
+    "en": "Educational methodology and synthetic sources."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Открыть KPI",
+      "en": "Open a KPI"
+    },
+    {
+      "ru": "Проследить валютную запись и курс",
+      "en": "Trace the FX record and rate"
+    },
+    {
+      "ru": "Сравнить снимки после исправления",
+      "en": "Compare snapshots after a correction"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/quantara/dashboard.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Финансовый обзор",
+        "en": "Financial workspace"
+      },
+      "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/assets/screenshots/dashboard.png",
+      "preview": "media/quantara/dashboard-640.webp"
+    },
+    {
+      "path": "media/quantara/lineage.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Происхождение показателя",
+        "en": "Metric lineage"
+      },
+      "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/assets/screenshots/lineage.png",
+      "preview": "media/quantara/lineage-640.webp"
+    },
+    {
+      "path": "media/quantara/comparison.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Сравнение отчётов",
+        "en": "Report comparison"
+      },
+      "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/assets/screenshots/comparison.png",
+      "preview": "media/quantara/comparison-640.webp"
+    }
+  ],
+  "sha": "d4142f4cb3fc87a630e230fe7c60c2eda084363e",
+  "repo": "https://github.com/bivaettttt/quantara",
+  "links": [
+    {
+      "label": {
+        "ru": "Модель данных и правила",
+        "en": "Data model and rules"
+      },
+      "url": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/docs/design.md"
+    },
+    {
+      "label": {
+        "ru": "Проверки",
+        "en": "Verification"
+      },
+      "url": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/docs/verification.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/docs/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/audit",
+      "method": "GET",
+      "summary": "Audit Log",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "summary": "Login",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/import",
+      "method": "POST",
+      "summary": "Import Csv",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/kpis",
+      "method": "GET",
+      "summary": "Registry",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/lab",
+      "method": "GET",
+      "summary": "Lab Config",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/lab/{name}",
+      "method": "POST",
+      "summary": "Lab",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/mapping",
+      "method": "GET",
+      "summary": "Mappings",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/mapping",
+      "method": "POST",
+      "summary": "Mapping",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/quality",
+      "method": "GET",
+      "summary": "Issues",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/quarantine",
+      "method": "GET",
+      "summary": "Quarantine",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/raw",
+      "method": "GET",
+      "summary": "Raw Records",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/raw/{id}",
+      "method": "GET",
+      "summary": "Raw",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports",
+      "method": "GET",
+      "summary": "List Reports",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports",
+      "method": "POST",
+      "summary": "Build Report",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/reports/{id}",
+      "method": "GET",
+      "summary": "Get Report",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports/{id}/compare/{other}",
+      "method": "GET",
+      "summary": "Compare",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports/{id}/export",
+      "method": "GET",
+      "summary": "Export Report",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports/{id}/scenarios",
+      "method": "GET",
+      "summary": "Scenarios",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports/{id}/scenarios",
+      "method": "POST",
+      "summary": "Scenario",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/runs",
+      "method": "GET",
+      "summary": "Runs",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/runs",
+      "method": "POST",
+      "summary": "Run Etl",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/runs/{id}",
+      "method": "GET",
+      "summary": "Run Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/sources",
+      "method": "GET",
+      "summary": "Sources",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "New User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/warehouse",
+      "method": "GET",
+      "summary": "Warehouse",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-04",
+      "title": {
+        "ru": "Объяснить показатель",
+        "en": "Explain a metric"
+      },
+      "rule": {
+        "ru": "Снимок хранит связь с исходной записью и курсом.",
+        "en": "A snapshot links to the source and FX rate."
+      },
+      "check": {
+        "ru": "Открыть первичную запись из показателя.",
+        "en": "Follow a metric to the raw record."
+      }
+    },
+    {
+      "id": "FR-05",
+      "title": {
+        "ru": "Сравнить отчёты",
+        "en": "Compare reports"
+      },
+      "rule": {
+        "ru": "Исправление не изменяет прежний снимок.",
+        "en": "A correction preserves the prior snapshot."
+      },
+      "check": {
+        "ru": "Выполнить коррекцию и сравнить результаты.",
+        "en": "Apply a correction and compare the results."
+      }
+    }
+  ],
+  "video": "media/quantara/demo.mp4",
+  "diagram": {
+    "path": "media/quantara/lineage.svg",
+    "width": 456,
+    "height": 648,
+    "title": {
+      "ru": "Происхождение показателя",
+      "en": "Metric lineage"
+    },
+    "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/docs/diagrams/lineage.mmd"
+  }
+}

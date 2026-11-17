@@ -1,0 +1,59 @@
+{
+  "id": "bks-technical",
+  "category": "academic",
+  "featured": false,
+  "archived": true,
+  "screens": [],
+  "api": [],
+  "links": [],
+  "title": {
+    "ru": "Технический проект ELMA365",
+    "en": "ELMA365 technical design"
+  },
+  "headline": {
+    "ru": "Данные и роли в проекте автоматизации",
+    "en": "Data and roles in an automation design"
+  },
+  "description": {
+    "ru": "Учебный технический проект по подключению и инвестиционному обслуживанию клиента.",
+    "en": "A coursework design for customer onboarding and investment services."
+  },
+  "context": {
+    "ru": "Определить состав операций, ролей и данных для сценариев обслуживания.",
+    "en": "Identify operations, roles and information needed by service workflows."
+  },
+  "model": {
+    "ru": "В исходном проекте описаны роли, объектная модель и SQL-инвентарь.",
+    "en": "The project describes roles, object relationships and an SQL object inventory."
+  },
+  "decision": {
+    "ru": "Разделить клиентскую активность и ответственность сотрудников за сопровождение.",
+    "en": "Distinguish customer activity from staff responsibilities."
+  },
+  "role": {
+    "ru": "Работа выполнена в соавторстве в рамках обучения.",
+    "en": "Co-authored coursework."
+  },
+  "verification": {
+    "ru": "Состав сверялся по техническому проекту и SQL-инвентарю.",
+    "en": "The published description was checked against the design and SQL inventory."
+  },
+  "limits": {
+    "ru": "Публична обезличенная реконструкция шагов. Исходные документы в соавторстве закрыты.",
+    "en": "The sanitized flow is public. The co-authored originals are private."
+  },
+  "flow": [
+    {
+      "ru": "Приём запроса",
+      "en": "Capture the request"
+    },
+    {
+      "ru": "Оформление данных",
+      "en": "Record the details"
+    },
+    {
+      "ru": "Сопровождение клиента",
+      "en": "Support the customer"
+    }
+  ]
+}

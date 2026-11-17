@@ -1,0 +1,316 @@
+{
+  "id": "wayline",
+  "category": "personal",
+  "featured": false,
+  "title": {
+    "ru": "Wayline",
+    "en": "Wayline"
+  },
+  "headline": {
+    "ru": "Как задержка меняет всю поездку",
+    "en": "How one delay changes the whole trip"
+  },
+  "description": {
+    "ru": "Оценка пересадок по событиям расписания и поиск допустимых альтернатив.",
+    "en": "Evaluate connections from schedule events and find viable alternatives."
+  },
+  "context": {
+    "ru": "Сдвиг прогноза одного рейса может сделать пересадку невозможной. Нужно объяснить причину и показать варианты.",
+    "en": "A revised flight estimate can invalidate a connection. Travelers need a reason and viable alternatives."
+  },
+  "model": {
+    "ru": "Отдельный источник отдаёт версионированный поток. FastAPI и PostgreSQL хранят курсор, рейсы, поездки и прогнозы.",
+    "en": "A separate provider serves versioned events. FastAPI and PostgreSQL store the cursor, flights, trips and predictions."
+  },
+  "decision": {
+    "ru": "Храним UTC и отображаем локальную зону аэропорта. Прогноз не затирает план. Альтернативы проверяются по минимальному времени пересадки.",
+    "en": "Store UTC and display airport-local time. Estimates preserve the schedule. Alternatives must satisfy the minimum connection time."
+  },
+  "verification": {
+    "ru": "В стенде проверен переход с 95 до 35 минут при пороге 60, а также повтор, тайм-аут и восстановление с курсора.",
+    "en": "The fixture checks a connection shrinking from 95 to 35 minutes against a 60-minute minimum, plus replay, timeout and cursor recovery."
+  },
+  "limits": {
+    "ru": "Синтетический провайдер и поиск по ограниченному расписанию, без бронирования.",
+    "en": "Synthetic provider, bounded timetable search and no booking."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Собрать поездку",
+      "en": "Build a trip"
+    },
+    {
+      "ru": "Принять изменение рейса",
+      "en": "Apply a flight update"
+    },
+    {
+      "ru": "Проверить альтернативы",
+      "en": "Inspect alternatives"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/wayline/trips.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Поездки",
+        "en": "Trips"
+      },
+      "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/trips.png",
+      "preview": "media/wayline/trips-640.webp"
+    },
+    {
+      "path": "media/wayline/disruption-details.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Причина риска",
+        "en": "Disruption details"
+      },
+      "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/disruption-details.png",
+      "preview": "media/wayline/disruption-details-640.webp"
+    },
+    {
+      "path": "media/wayline/alternatives.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Альтернативные маршруты",
+        "en": "Alternative routes"
+      },
+      "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/alternatives.png",
+      "preview": "media/wayline/alternatives-640.webp"
+    }
+  ],
+  "sha": "6b29602c23335fb7b18d5f62782827fae1102521",
+  "repo": "https://github.com/bivaettttt/wayline",
+  "links": [
+    {
+      "label": {
+        "ru": "Требования и архитектура",
+        "en": "Requirements and architecture"
+      },
+      "url": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/docs/design.md"
+    },
+    {
+      "label": {
+        "ru": "Проверки",
+        "en": "Verification"
+      },
+      "url": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/docs/verification.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/docs/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/airlines",
+      "method": "GET",
+      "summary": "Airlines",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/airports",
+      "method": "GET",
+      "summary": "Airports",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/audit",
+      "method": "GET",
+      "summary": "Log",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "summary": "Login",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/flights",
+      "method": "GET",
+      "summary": "Flights",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/flights/{id}",
+      "method": "GET",
+      "summary": "Flight",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/lab",
+      "method": "GET",
+      "summary": "Lab Config",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/lab/{scenario}",
+      "method": "POST",
+      "summary": "Lab Run",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/notifications",
+      "method": "GET",
+      "summary": "Notifications",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/notifications/{id}/read",
+      "method": "POST",
+      "summary": "Read Notice",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/operations",
+      "method": "GET",
+      "summary": "Operations",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/operations/sync",
+      "method": "POST",
+      "summary": "Synchronize",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/policies",
+      "method": "GET",
+      "summary": "Policies",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/policies/{airport}",
+      "method": "POST",
+      "summary": "Publish Policy",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/routes",
+      "method": "POST",
+      "summary": "Find Routes",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/searches/{id}",
+      "method": "GET",
+      "summary": "Show Search",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/trips",
+      "method": "GET",
+      "summary": "List Trips",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/trips",
+      "method": "POST",
+      "summary": "Create Trip",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/trips/{id}",
+      "method": "GET",
+      "summary": "Trip",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/trips/{id}/alternatives",
+      "method": "POST",
+      "summary": "Alternatives",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/trips/{id}/incidents/{incident}/acknowledge",
+      "method": "POST",
+      "summary": "Acknowledge",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/trips/{id}/recalculate",
+      "method": "POST",
+      "summary": "Recalculate",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-05",
+      "title": {
+        "ru": "Оценить пересадку",
+        "en": "Evaluate a connection"
+      },
+      "rule": {
+        "ru": "Порог и прогноз времени объясняют риск.",
+        "en": "The threshold and estimate explain the risk."
+      },
+      "check": {
+        "ru": "Сверить 35 минут с порогом 60.",
+        "en": "Compare a 35-minute connection against a 60-minute threshold."
+      }
+    },
+    {
+      "id": "FR-06",
+      "title": {
+        "ru": "Искать альтернативы",
+        "en": "Find alternatives"
+      },
+      "rule": {
+        "ru": "Невыполнимые маршруты отфильтрованы.",
+        "en": "Impossible itineraries are excluded."
+      },
+      "check": {
+        "ru": "Открыть альтернативы после задержки.",
+        "en": "Inspect alternatives after a delay."
+      }
+    }
+  ],
+  "video": "media/wayline/demo.mp4",
+  "diagram": {
+    "path": "media/wayline/poll.svg",
+    "width": 703,
+    "height": 641,
+    "title": {
+      "ru": "Обновление поставщика",
+      "en": "Provider polling"
+    },
+    "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/docs/diagrams/poll.mmd"
+  }
+}

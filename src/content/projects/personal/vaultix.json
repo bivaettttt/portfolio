@@ -1,0 +1,267 @@
+{
+  "id": "vaultix",
+  "category": "personal",
+  "featured": false,
+  "title": {
+    "ru": "Vaultix",
+    "en": "Vaultix"
+  },
+  "headline": {
+    "ru": "Перевод, который можно проверить по проводкам",
+    "en": "A transfer that can be verified in the ledger"
+  },
+  "description": {
+    "ru": "Внутренние переводы и инварианты финансовых операций.",
+    "en": "Internal transfers and financial invariants."
+  },
+  "context": {
+    "ru": "Повтор запроса, параллельное списание и сбой не должны приводить к двойной операции или неверному остатку.",
+    "en": "A replay, concurrent debit or interruption must not duplicate a transfer or corrupt the balance."
+  },
+  "model": {
+    "ru": "FastAPI и PostgreSQL хранят счета, операции, проводки и квитанции. Клиент и оператор работают через React.",
+    "en": "FastAPI and PostgreSQL store accounts, operations, ledger entries and receipts. Customer and operations views use React."
+  },
+  "decision": {
+    "ru": "Два встречных движения записываются атомарно. Счета блокируются в согласованном порядке. Суммы хранятся в минимальных единицах.",
+    "en": "Two balanced entries commit atomically. Accounts lock in a consistent order and amounts use minor units."
+  },
+  "verification": {
+    "ru": "Интеграционный сценарий конкурентного списания дал HTTP 201 и 409 и один перевод. Проверен откат.",
+    "en": "The concurrent debit integration scenario produced HTTP 201 and 409 with one transfer. Rollback was checked."
+  },
+  "limits": {
+    "ru": "Синтетические счета, RUB и внутренние переводы.",
+    "en": "Synthetic accounts, RUB and internal transfers."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Открыть счёт",
+      "en": "Open an account"
+    },
+    {
+      "ru": "Выполнить перевод",
+      "en": "Send a transfer"
+    },
+    {
+      "ru": "Сопоставить операции и проводки",
+      "en": "Reconcile transactions and ledger entries"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/vaultix/accounts.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Счета клиента",
+        "en": "Customer accounts"
+      },
+      "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/assets/screenshots/accounts.png",
+      "preview": "media/vaultix/accounts-640.webp"
+    },
+    {
+      "path": "media/vaultix/journal.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Журнал операций",
+        "en": "Transaction journal"
+      },
+      "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/assets/screenshots/journal.png",
+      "preview": "media/vaultix/journal-640.webp"
+    },
+    {
+      "path": "media/vaultix/lab.webp",
+      "width": 1440,
+      "height": 1809,
+      "title": {
+        "ru": "Лаборатория надёжности",
+        "en": "Reliability lab"
+      },
+      "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/assets/screenshots/lab.png",
+      "preview": "media/vaultix/lab-640.webp"
+    }
+  ],
+  "sha": "9d1971294ca9f96e2f6fb820691863df6f57050d",
+  "repo": "https://github.com/bivaettttt/vaultix",
+  "links": [
+    {
+      "label": {
+        "ru": "Разбор решения",
+        "en": "Decision walkthrough"
+      },
+      "url": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/docs/portfolio.md"
+    },
+    {
+      "label": {
+        "ru": "Проверки",
+        "en": "Verification"
+      },
+      "url": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/docs/testing/results.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/docs/api/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/accounts",
+      "method": "GET",
+      "summary": "Accounts",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/accounts",
+      "method": "POST",
+      "summary": "Create Account",
+      "responses": ["201", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/accounts/{account_id}",
+      "method": "GET",
+      "summary": "Account",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/accounts/{account_id}",
+      "method": "PATCH",
+      "summary": "Change Status",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/audit",
+      "method": "GET",
+      "summary": "Events",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/lab/{scenario}",
+      "method": "POST",
+      "summary": "Lab",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/limits",
+      "method": "GET",
+      "summary": "Get Limits",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/limits",
+      "method": "PUT",
+      "summary": "Change Limits",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/login",
+      "method": "POST",
+      "summary": "Login",
+      "responses": ["204", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/me",
+      "method": "GET",
+      "summary": "Me",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/transfers",
+      "method": "GET",
+      "summary": "History",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/transfers",
+      "method": "POST",
+      "summary": "Post Transfer",
+      "responses": ["201", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/transfers/{journal_id}",
+      "method": "GET",
+      "summary": "Detail",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "Add User",
+      "responses": ["201", "401", "403", "404", "409", "422", "500"]
+    },
+    {
+      "path": "/api/users/{user_id}",
+      "method": "PATCH",
+      "summary": "Change User",
+      "responses": ["200", "401", "403", "404", "409", "422", "500"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-003",
+      "title": {
+        "ru": "Перевести RUB",
+        "en": "Transfer RUB"
+      },
+      "rule": {
+        "ru": "Проведённая операция сбалансирована.",
+        "en": "The ledger entry must balance."
+      },
+      "check": {
+        "ru": "Сверить HTTP 201 и две встречные записи.",
+        "en": "Match HTTP 201 to two balanced entries."
+      }
+    },
+    {
+      "id": "FR-004",
+      "title": {
+        "ru": "Повторить команду",
+        "en": "Replay a command"
+      },
+      "rule": {
+        "ru": "Тело и ключ сопоставляются с сохранённым ответом.",
+        "en": "Payload and key are matched to the saved response."
+      },
+      "check": {
+        "ru": "Повторить запрос с прежним и изменённым телом.",
+        "en": "Replay with identical and changed payloads."
+      }
+    }
+  ],
+  "diagram": {
+    "path": "media/vaultix/transfer.svg",
+    "width": 1178,
+    "height": 926,
+    "title": {
+      "ru": "Последовательность перевода",
+      "en": "Transfer sequence"
+    },
+    "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/docs/diagrams/transfer.mmd"
+  }
+}

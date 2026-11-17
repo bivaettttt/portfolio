@@ -1,0 +1,144 @@
+---
+import { github, name, resume, telegram, url, type Lang } from "../lib/site";
+const { lang, contact = false } = Astro.props as {
+  lang: Lang;
+  contact?: boolean;
+};
+const ru = lang === "ru";
+const items = [
+  {
+    title: ru ? "Требования и приёмка" : "Requirements and acceptance",
+    desc: ru
+      ? "Жизненный цикл требования, анализ влияния и сравнение базовых линий."
+      : "Requirement lifecycle, impact analysis and baseline comparison.",
+    href: "projects/personal/traceon",
+  },
+  {
+    title: ru ? "Интеграции и API" : "Integration and APIs",
+    desc: ru
+      ? "Контракты REST и SOAP, доставка событий, ошибки и восстановление."
+      : "REST and SOAP contracts, event delivery, failure and recovery.",
+    href: "projects/personal/nexora",
+  },
+  {
+    title: ru ? "Процессы и состояния" : "Processes and states",
+    desc: ru
+      ? "BPMN, задачи, таймеры и отслеживание исполнения."
+      : "BPMN, tasks, timers and process execution.",
+    href: "projects/personal/flowent",
+  },
+  {
+    title: ru ? "Модели данных и SQL" : "Data models and SQL",
+    desc: ru
+      ? "ER-модель, связи и проверка реального каталога PostgreSQL."
+      : "Entity relationships and inspection of the PostgreSQL catalog.",
+    href: "projects/academic/bank",
+  },
+];
+---
+
+<header class="page-intro">
+  <p class="eyebrow">
+    {contact
+      ? ru
+        ? "КОНТАКТЫ"
+        : "CONTACT"
+      : ru
+        ? "ПРОФЕССИОНАЛЬНЫЙ ПРОФИЛЬ"
+        : "PROFESSIONAL PROFILE"}
+  </p>
+  <h1>{contact ? (ru ? "Связаться со мной" : "Get in touch") : name[lang]}</h1>
+  <p class="lede">
+    {contact
+      ? ru
+        ? "Готов обсудить позиции Junior System Analyst и ответить на вопросы о кейсах."
+        : "Available to discuss junior system analyst roles and answer questions about the cases."
+      : ru
+        ? "Junior System Analyst · Новосибирск"
+        : "Junior System Analyst · Novosibirsk"}
+  </p>
+</header>
+{contact ? (
+  <div class="contact-list">
+    {[
+      {
+        label: "Telegram",
+        href: telegram,
+        desc: ru ? "Написать мне" : "Send me a message",
+      },
+      {
+        label: "HH.ru",
+        href: resume,
+        desc: ru ? "Открыть актуальное резюме" : "Open the current résumé",
+      },
+      {
+        label: "GitHub",
+        href: github,
+        desc: ru
+          ? "Посмотреть исходный код проектов"
+          : "Browse project source code",
+      },
+    ].map((item) => (
+      <a href={item.href}>
+        <div>
+          <h2>{item.label}</h2>
+          <p>{item.desc}</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+) : (
+  <>
+    <section class="spread profile-spread">
+      <div>
+        <p class="eyebrow">{ru ? "ОБРАЗОВАНИЕ" : "EDUCATION"}</p>
+        <h2>{ru ? "Бизнес-информатика" : "Business Informatics"}</h2>
+      </div>
+      <div class="prose">
+        <p>
+          {ru
+            ? "НГТУ НЭТИ, факультет бизнеса. Бакалавриат, планируемый выпуск в 2027 году. Профиль — технологии анализа данных в управлении бизнесом."
+            : "NSTU NETI, Faculty of Business. Bachelor’s degree expected in 2027, with a focus on data analysis technologies for business management."}
+        </p>
+        <a href={resume}>{ru ? "Резюме на HH.ru" : "Résumé on HH.ru"} ↗</a>
+      </div>
+    </section>
+    <section class="method profile-skills">
+      <p class="eyebrow">{ru ? "КОМПЕТЕНЦИИ" : "COMPETENCIES"}</p>
+      <h2>
+        {ru ? "Что умею показать на кейсах" : "What the cases demonstrate"}
+      </h2>
+      <ul>
+        {items.map((i) => (
+          <li>
+            <h3>
+              <a href={url(i.href, lang)}>
+                {i.title} <span aria-hidden="true">↗</span>
+              </a>
+            </h3>
+            <p>{i.desc}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section class="spread profile-spread">
+      <div>
+        <p class="eyebrow">{ru ? "ОПЫТ" : "EXPERIENCE"}</p>
+        <h2>
+          {ru ? "Практика и командная работа" : "Placement and team work"}
+        </h2>
+      </div>
+      <div class="prose">
+        <p>
+          {ru
+            ? "На производственной практике в «Лаборатории БПМ» в июне–июле 2026 года спроектировал объектную модель и настроил учебный процесс в ELMA365. На хакатоне Альфа-Банка отвечал за требования, пользовательские сценарии, UX и критерии приёмки в составе команды."
+            : "In June–July 2026, I designed an object model and configured an ELMA365 prototype during placement at BPM Laboratory. At the Alfa Bank hackathon, my team role covered requirements, user flows, UX and acceptance criteria."}
+        </p>
+        <a href={url("projects/practice", lang)}>
+          {ru ? "Кейсы практики и хакатона" : "Placement and hackathon cases"} ↗
+        </a>
+      </div>
+    </section>
+  </>
+)}

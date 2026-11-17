@@ -1,0 +1,142 @@
+---
+import { name, resume, url, type Lang } from "../lib/site";
+const { lang } = Astro.props as { lang: Lang };
+const ru = lang === "ru";
+const phases = ru
+  ? ["Требования", "Модель системы", "Проверка"]
+  : ["Requirements", "System model", "Verification"];
+const approach = ru
+  ? [
+      [
+        "Понять задачу",
+        "Уточнить цель, участников и ограничения. Согласовать, по каким признакам результат можно будет принять.",
+      ],
+      [
+        "Собрать модель",
+        "Связать процесс, состояния, данные и контракты. Проверить, что исключения видны на схеме и в требованиях.",
+      ],
+      [
+        "Проверить решение",
+        "Пройти основной и альтернативный сценарии. Найти доказательство для каждого важного правила.",
+      ],
+    ]
+  : [
+      [
+        "Understand the problem",
+        "Clarify the goal, stakeholders and constraints. Agree on what would make the outcome acceptable.",
+      ],
+      [
+        "Build the model",
+        "Connect the process, states, data and contracts. Make exceptions visible in the models and requirements.",
+      ],
+      [
+        "Verify the outcome",
+        "Walk through the main and alternate scenarios. Find evidence for every important rule.",
+      ],
+    ];
+---
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">
+      <span class="signal" aria-hidden="true"></span>
+      {ru ? "СИСТЕМНЫЙ АНАЛИТИК · JUNIOR" : "SYSTEM ANALYST · JUNIOR"}
+    </p>
+    <h1>{name[lang]}</h1>
+    <p class="headline">
+      {ru
+        ? "От требований — к работающей системе."
+        : "From requirements to a working system."}
+    </p>
+    <p class="lede">
+      {ru
+        ? "Формализую требования, моделирую процессы и данные, описываю API и проверяю ключевые сценарии."
+        : "I define requirements, model processes and data, document APIs and verify key scenarios."}
+    </p>
+    <div class="actions">
+      <a class="button primary" href={url("projects", lang)}>
+        {ru ? "Смотреть проекты" : "Explore projects"}{" "}
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a class="button secondary" href={url("profile", lang)}>
+        {ru ? "Профессиональный профиль" : "Professional profile"}
+      </a>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="art-grid"></div>
+    <div class="art-emblem">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="art-layers">
+      {phases.map((title, i) => (
+        <div class={"art-sheet sheet-" + i}>
+          <span class="sheet-icon">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+          <span>{title}</span>
+          <b>↘</b>
+        </div>
+      ))}
+    </div>
+    <div class="art-index">TN / SYSTEM ANALYSIS</div>
+  </div>
+</section>
+<section class="intro-strip">
+  <span>
+    {ru ? "НГТУ НЭТИ · Бизнес-информатика" : "NSTU NETI · Business Informatics"}
+  </span>
+  <span>{ru ? "Новосибирск" : "Novosibirsk"}</span>
+  <a href={resume}>
+    {ru ? "Резюме на HH.ru" : "Résumé on HH.ru"}{" "}
+    <span aria-hidden="true">↗</span>
+  </a>
+</section>
+<section class="spread">
+  <div>
+    <p class="eyebrow">{ru ? "ОБО МНЕ" : "ABOUT"}</p>
+    <h2>{ru ? "Разбираюсь, как устроены системы" : "How systems work"}</h2>
+  </div>
+  <div class="prose">
+    <p>
+      {ru
+        ? "Учусь на бизнес-информатике в НГТУ НЭТИ. В университете моделировал процессы и базы данных, на практике собрал учебный процесс в ELMA365, а на командном хакатоне отвечал за требования и сценарии."
+        : "I study business informatics at NSTU NETI. My coursework covers process and data modeling. During placement I configured a prototype in ELMA365, and at a team hackathon I owned requirements and user flows."}
+    </p>
+    <p>
+      {ru
+        ? "Ищу позицию Junior System Analyst. Хочу развивать навыки проектирования интеграций и API, моделирования данных и проверки решений вместе с командой."
+        : "I am looking for a Junior System Analyst role. I want to advance my work in integrations, APIs and data modeling, and verify designs with a team."}
+    </p>
+  </div>
+</section>
+<section class="method">
+  <p class="eyebrow">{ru ? "ПОДХОД" : "APPROACH"}</p>
+  <h2>{ru ? "Как веду работу" : "How I work"}</h2>
+  <ol>
+    {approach.map(([title, description], i) => (
+      <li>
+        <span class="step-number">{String(i + 1).padStart(2, "0")}</span>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+<section class="contact-band">
+  <div>
+    <h2>{ru ? "Обсудим работу?" : "Let’s talk about the work"}</h2>
+    <p>
+      {ru
+        ? "Открыт к позициям начинающего системного аналитика."
+        : "Open to junior system analyst roles."}
+    </p>
+  </div>
+  <a class="button primary" href={url("contact", lang)}>
+    {ru ? "Связаться" : "Get in touch"} <span aria-hidden="true">↗</span>
+  </a>
+</section>

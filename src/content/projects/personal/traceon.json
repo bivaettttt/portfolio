@@ -1,0 +1,433 @@
+{
+  "id": "traceon",
+  "category": "personal",
+  "featured": true,
+  "title": {
+    "ru": "Traceon",
+    "en": "Traceon"
+  },
+  "headline": {
+    "ru": "Требования, у которых видны последствия",
+    "en": "Requirements with visible consequences"
+  },
+  "description": {
+    "ru": "От изменения одного требования до решения о новой версии базовой линии.",
+    "en": "Follow a changed requirement through impact analysis, approval and a new baseline."
+  },
+  "context": {
+    "ru": "Правка условия ServiceHub может затронуть API, состояния и тесты. У аналитика должен быть воспроизводимый путь к каждому затронутому артефакту.",
+    "en": "Changing a ServiceHub rule can affect APIs, states and tests. Analysts need a reproducible path to each affected artifact."
+  },
+  "model": {
+    "ru": "Требование имеет стабильный ID, редакции и типизированные связи. Решение привязано к редакции, baseline фиксирует опубликованный состав. FastAPI хранит граф в PostgreSQL, React Flow визуализирует путь.",
+    "en": "Requirements keep a stable ID, revisions and typed links. Decisions bind to a revision and a baseline captures the released set. FastAPI stores the graph in PostgreSQL and React Flow renders paths."
+  },
+  "decision": {
+    "ru": "Обход BFS записывает путь по допустимому направлению. Эпоха графа показывает, когда оценку надо повторить. Снимки сохраняют исходный результат.",
+    "en": "Breadth-first search records a valid path. A graph epoch signals when the assessment needs to run again. Snapshots preserve the original result."
+  },
+  "verification": {
+    "ru": "В отчёте проекта проверены конфликт редакций, изоляция проекта, согласование и неизменность снимков.",
+    "en": "The project report covers revision conflicts, isolation, approval and snapshot immutability."
+  },
+  "limits": {
+    "ru": "Синтетический проект, локальные роли, один воспроизводимый путь на находку.",
+    "en": "Synthetic project, local roles and one reproducible path per result."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Найти FR-014",
+      "en": "Find FR-014"
+    },
+    {
+      "ru": "Проследить зависимости",
+      "en": "Trace dependencies"
+    },
+    {
+      "ru": "Оценить влияние и согласовать",
+      "en": "Assess impact and approve"
+    },
+    {
+      "ru": "Сравнить базовые линии",
+      "en": "Compare baselines"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/traceon/requirement.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Карточка требования",
+        "en": "Requirement workspace"
+      },
+      "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/requirement.png",
+      "preview": "media/traceon/requirement-640.webp"
+    },
+    {
+      "path": "media/traceon/impact.webp",
+      "width": 1440,
+      "height": 2234,
+      "title": {
+        "ru": "Анализ влияния",
+        "en": "Impact analysis"
+      },
+      "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/impact.png",
+      "preview": "media/traceon/impact-640.webp"
+    },
+    {
+      "path": "media/traceon/review.webp",
+      "width": 1440,
+      "height": 1658,
+      "title": {
+        "ru": "Согласование изменения",
+        "en": "Change review"
+      },
+      "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/review.png",
+      "preview": "media/traceon/review-640.webp"
+    },
+    {
+      "path": "media/traceon/baseline.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Сравнение базовых линий",
+        "en": "Baseline comparison"
+      },
+      "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/baseline.png",
+      "preview": "media/traceon/baseline-640.webp"
+    }
+  ],
+  "sha": "6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0",
+  "repo": "https://github.com/bivaettttt/traceon",
+  "links": [
+    {
+      "label": {
+        "ru": "Требования",
+        "en": "Requirements"
+      },
+      "url": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/docs/analysis/mvp.md"
+    },
+    {
+      "label": {
+        "ru": "Протокол проверок",
+        "en": "Verification results"
+      },
+      "url": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/docs/testing/results.md"
+    },
+    {
+      "label": {
+        "ru": "Сценарий демонстрации",
+        "en": "Interview walkthrough"
+      },
+      "url": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/docs/demo/interview.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/docs/api/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/login",
+      "method": "POST",
+      "summary": "Sign In",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/logout",
+      "method": "POST",
+      "summary": "Sign Out",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/me",
+      "method": "GET",
+      "summary": "Me",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/projects",
+      "method": "GET",
+      "summary": "Projects",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/projects",
+      "method": "POST",
+      "summary": "Add Project",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}",
+      "method": "GET",
+      "summary": "Project Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}",
+      "method": "PATCH",
+      "summary": "Edit Project",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/analyses",
+      "method": "GET",
+      "summary": "Analyses",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/analyses",
+      "method": "POST",
+      "summary": "Analyze",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/analyses/{identifier}",
+      "method": "GET",
+      "summary": "Analysis",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/analyses/{identifier}/decisions/{node}",
+      "method": "PUT",
+      "summary": "Decision",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/artifacts",
+      "method": "GET",
+      "summary": "Artifacts",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/artifacts",
+      "method": "POST",
+      "summary": "Add Artifact",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/audit",
+      "method": "GET",
+      "summary": "History",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/baseline-comparison",
+      "method": "GET",
+      "summary": "Compare Baselines",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/baselines",
+      "method": "GET",
+      "summary": "Baselines",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/baselines",
+      "method": "POST",
+      "summary": "Add Baseline",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/baselines/{identifier}",
+      "method": "GET",
+      "summary": "Baseline",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/changes",
+      "method": "GET",
+      "summary": "Changes",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/changes",
+      "method": "POST",
+      "summary": "Add Change",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/changes/{identifier}",
+      "method": "GET",
+      "summary": "Change",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/changes/{identifier}/transition",
+      "method": "POST",
+      "summary": "Change State",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/coverage",
+      "method": "GET",
+      "summary": "Coverage",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/export/{kind}",
+      "method": "GET",
+      "summary": "Export",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/graph",
+      "method": "GET",
+      "summary": "Get Graph",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/links",
+      "method": "POST",
+      "summary": "Link",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/links/{identifier}",
+      "method": "DELETE",
+      "summary": "Unlink",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/members",
+      "method": "GET",
+      "summary": "Members",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/members",
+      "method": "PUT",
+      "summary": "Assign",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/nodes/{identifier}",
+      "method": "GET",
+      "summary": "Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/nodes/{identifier}/compare",
+      "method": "GET",
+      "summary": "Version Diff",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/nodes/{identifier}/versions",
+      "method": "POST",
+      "summary": "Revision",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/requirements",
+      "method": "GET",
+      "summary": "Registry",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/requirements",
+      "method": "POST",
+      "summary": "Add Requirement",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/reviews",
+      "method": "GET",
+      "summary": "Review Queue",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/stats",
+      "method": "GET",
+      "summary": "Stats",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/versions/{identifier}",
+      "method": "PATCH",
+      "summary": "Edit",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/versions/{identifier}/review",
+      "method": "POST",
+      "summary": "Review",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/projects/{project}/versions/{identifier}/submit",
+      "method": "POST",
+      "summary": "Submit",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "Add User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-005",
+      "title": {
+        "ru": "Оценить влияние",
+        "en": "Assess impact"
+      },
+      "rule": {
+        "ru": "Путь содержит направление связи и редакцию исходного объекта.",
+        "en": "A result records link direction and the starting revision."
+      },
+      "check": {
+        "ru": "Повторить обход графа и сопоставить маршрут.",
+        "en": "Repeat graph traversal and compare the path."
+      }
+    },
+    {
+      "id": "FR-007",
+      "title": {
+        "ru": "Зафиксировать baseline",
+        "en": "Capture a baseline"
+      },
+      "rule": {
+        "ru": "Снимок содержит точные редакции.",
+        "en": "A snapshot stores exact revisions."
+      },
+      "check": {
+        "ru": "Новая правка не меняет прежний состав.",
+        "en": "A later edit does not change the earlier set."
+      }
+    }
+  ],
+  "diagram": {
+    "path": "media/traceon/container.svg",
+    "width": 932,
+    "height": 1051,
+    "title": {
+      "ru": "Контейнеры Traceon",
+      "en": "Traceon containers"
+    },
+    "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/docs/diagrams/container.mmd"
+  }
+}

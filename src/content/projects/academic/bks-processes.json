@@ -1,0 +1,68 @@
+{
+  "id": "bks-processes",
+  "category": "academic",
+  "featured": false,
+  "title": {
+    "ru": "Процессы в ELMA365",
+    "en": "Processes in ELMA365"
+  },
+  "headline": {
+    "ru": "Моделирование клиентского маршрута",
+    "en": "Model a customer journey"
+  },
+  "description": {
+    "ru": "Курсовая работа по моделированию процессов инвестиционного обслуживания.",
+    "en": "Coursework modeling investment service processes."
+  },
+  "context": {
+    "ru": "Работа описывает этапы привлечения и сопровождения клиента.",
+    "en": "The work maps customer acquisition and service stages."
+  },
+  "model": {
+    "ru": "В редакторе ELMA365 описаны роли, задачи и переходы.",
+    "en": "The ELMA365 editor captures roles, tasks and transitions."
+  },
+  "decision": {
+    "ru": "Модели разделены по рабочим сценариям, пригодным для обсуждения отдельных точек передачи.",
+    "en": "Models are organized by business scenarios so that handoffs can be reviewed individually."
+  },
+  "verification": {
+    "ru": "Снимок — фрагмент оригинального индивидуального отчёта.",
+    "en": "The image is an excerpt of the original individual report."
+  },
+  "limits": {
+    "ru": "Университетская работа без доступа к промышленной конфигурации.",
+    "en": "University coursework without access to a production configuration."
+  },
+  "role": {
+    "ru": "Подготовил модели и пояснения индивидуальной курсовой.",
+    "en": "Prepared the models and commentary in individual coursework."
+  },
+  "flow": [
+    {
+      "ru": "Описать этапы",
+      "en": "Identify stages"
+    },
+    {
+      "ru": "Развести ответственность",
+      "en": "Assign responsibilities"
+    },
+    {
+      "ru": "Проверить маршрут в модели",
+      "en": "Review the modeled journey"
+    }
+  ],
+  "screens": [
+    {
+      "path": "artifacts/bks-original-elma.png",
+      "width": 2459,
+      "height": 1265,
+      "title": {
+        "ru": "Учебная модель процесса в ELMA365",
+        "en": "Course process model in ELMA365"
+      }
+    }
+  ],
+  "links": [],
+  "api": []
+}

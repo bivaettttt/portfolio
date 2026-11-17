@@ -1,0 +1,373 @@
+{
+  "id": "veridion",
+  "category": "personal",
+  "featured": false,
+  "title": {
+    "ru": "Veridion",
+    "en": "Veridion"
+  },
+  "headline": {
+    "ru": "Каждый вывод связан с редакцией и цитатой",
+    "en": "Each finding links to a revision and a citation"
+  },
+  "description": {
+    "ru": "Исследование документов, противоречий и доказательств.",
+    "en": "Research documents, contradictions and evidence."
+  },
+  "context": {
+    "ru": "Похожие цифры могут относиться к требованию или измерению. Источник и конкретная редакция нужны для проверки ответа.",
+    "en": "Similar figures may describe a requirement or a measurement. A source and exact revision are needed to verify an answer."
+  },
+  "model": {
+    "ru": "FastAPI, worker и PostgreSQL/pgvector хранят источники, версии, цитаты и решения. Гибридное ранжирование помогает найти фрагменты.",
+    "en": "FastAPI, a worker and PostgreSQL/pgvector store sources, versions, citations and decisions. Hybrid ranking locates evidence snippets."
+  },
+  "decision": {
+    "ru": "Вывод закрепляет редакцию. Правила различают конфликт свидетельств и разный тип утверждений. Ручное решение попадает в аудит.",
+    "en": "A finding pins a revision. Rules distinguish conflicting evidence from different claim types. Human review is recorded in the audit log."
+  },
+  "verification": {
+    "ru": "Отчёт включает поиск, отказ провайдера, проверку ссылок и конкурентное согласование.",
+    "en": "The report covers search, provider failure, citation validation and concurrent review."
+  },
+  "limits": {
+    "ru": "Синтетический корпус и локальные модели, итог требует проверки исследователем.",
+    "en": "Synthetic corpus and local models. Findings require human verification."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Задать вопрос",
+      "en": "Ask a research question"
+    },
+    {
+      "ru": "Проверить цитату",
+      "en": "Inspect the citation"
+    },
+    {
+      "ru": "Сравнить редакции",
+      "en": "Compare document revisions"
+    },
+    {
+      "ru": "Зафиксировать решение",
+      "en": "Record a review decision"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/veridion/research-desk.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Рабочее место исследователя",
+        "en": "Research desk"
+      },
+      "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/assets/screenshots/research-desk.png",
+      "preview": "media/veridion/research-desk-640.webp"
+    },
+    {
+      "path": "media/veridion/citation-inspector.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Источник и цитата",
+        "en": "Citation inspector"
+      },
+      "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/assets/screenshots/citation-inspector.png",
+      "preview": "media/veridion/citation-inspector-640.webp"
+    },
+    {
+      "path": "media/veridion/human-review.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Ручное решение",
+        "en": "Human review"
+      },
+      "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/assets/screenshots/human-review.png",
+      "preview": "media/veridion/human-review-640.webp"
+    }
+  ],
+  "sha": "9bea917d073cb62108f88a9b2c9eb29236618d6d",
+  "repo": "https://github.com/bivaettttt/veridion",
+  "links": [
+    {
+      "label": {
+        "ru": "Материал для кейса",
+        "en": "Case materials"
+      },
+      "url": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/docs/PORTFOLIO.md"
+    },
+    {
+      "label": {
+        "ru": "Проверки и ограничения",
+        "en": "Verification and limits"
+      },
+      "url": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/docs/PROJECT_STATUS.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/docs/api/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/v1/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "method": "POST",
+      "summary": "Login",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/auth/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "method": "GET",
+      "summary": "Me",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/v1/users",
+      "method": "POST",
+      "summary": "New User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects",
+      "method": "GET",
+      "summary": "Projects",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects",
+      "method": "POST",
+      "summary": "Create Project",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}",
+      "method": "GET",
+      "summary": "Project Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/members",
+      "method": "GET",
+      "summary": "Members",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/members",
+      "method": "PUT",
+      "summary": "Set Member",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/sources",
+      "method": "GET",
+      "summary": "List Sources",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/documents",
+      "method": "POST",
+      "summary": "Upload",
+      "responses": ["202", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/sources/{source_id}",
+      "method": "DELETE",
+      "summary": "Archive",
+      "responses": ["204", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/sources/{source_id}/versions",
+      "method": "GET",
+      "summary": "Versions",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/sources/{source_id}/versions/{number}",
+      "method": "GET",
+      "summary": "Version",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/sources/{source_id}/versions/{number}/original",
+      "method": "GET",
+      "summary": "Download",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/jobs",
+      "method": "GET",
+      "summary": "Ingestion",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/audit",
+      "method": "GET",
+      "summary": "Audit",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/models",
+      "method": "GET",
+      "summary": "Models",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/search",
+      "method": "POST",
+      "summary": "Search",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/search/runs",
+      "method": "GET",
+      "summary": "Search History",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/answers",
+      "method": "POST",
+      "summary": "Ask",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/answers",
+      "method": "GET",
+      "summary": "Answer List",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/answers/{answer_id}",
+      "method": "GET",
+      "summary": "Answer Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/citations/verify",
+      "method": "POST",
+      "summary": "Verify",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/answers/{answer_id}/reviews",
+      "method": "POST",
+      "summary": "Review",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/reports",
+      "method": "GET",
+      "summary": "Reports",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/reports",
+      "method": "POST",
+      "summary": "Create Report",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/reports/{report_id}",
+      "method": "GET",
+      "summary": "Report Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/reports/{report_id}/snapshots",
+      "method": "POST",
+      "summary": "Report Snapshot",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/reports/{report_id}/snapshots/{revision}/export",
+      "method": "GET",
+      "summary": "Export Report",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/evaluations",
+      "method": "POST",
+      "summary": "Run Evaluation",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/evaluations",
+      "method": "GET",
+      "summary": "Evaluation History",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/lab",
+      "method": "POST",
+      "summary": "Run Lab",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/v1/projects/{project}/lab",
+      "method": "GET",
+      "summary": "Lab History",
+      "responses": ["200", "422"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-04",
+      "title": {
+        "ru": "Проверить цитату",
+        "en": "Verify a citation"
+      },
+      "rule": {
+        "ru": "Ссылка идентифицирует конкретную версию и диапазон.",
+        "en": "A citation identifies a specific version and range."
+      },
+      "check": {
+        "ru": "Открыть цитату из ответа и сверить текст.",
+        "en": "Open the answer citation and compare its text."
+      }
+    },
+    {
+      "id": "FR-06",
+      "title": {
+        "ru": "Зафиксировать заключение",
+        "en": "Record a review"
+      },
+      "rule": {
+        "ru": "Ревизионный конфликт отклоняется.",
+        "en": "A revision conflict is rejected."
+      },
+      "check": {
+        "ru": "Проверить конкурирующие согласования.",
+        "en": "Check competing reviews."
+      }
+    }
+  ],
+  "diagram": {
+    "path": "media/veridion/question.svg",
+    "width": 1109,
+    "height": 550,
+    "title": {
+      "ru": "Обработка вопроса",
+      "en": "Question sequence"
+    },
+    "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/docs/diagrams/question.mmd"
+  }
+}

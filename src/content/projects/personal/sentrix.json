@@ -1,0 +1,310 @@
+{
+  "id": "sentrix",
+  "category": "personal",
+  "featured": false,
+  "title": {
+    "ru": "Sentrix",
+    "en": "Sentrix"
+  },
+  "headline": {
+    "ru": "От сигнала до обоснованного решения",
+    "en": "From an alert to a justified decision"
+  },
+  "description": {
+    "ru": "Учебный мониторинг операций и расследование предупреждений.",
+    "en": "Educational transaction monitoring and alert investigations."
+  },
+  "context": {
+    "ru": "Аналитику нужно понять, какие признаки и версия правил породили сигнал, и сохранить основания итогового решения.",
+    "en": "An analyst needs to see which signals and rule version produced the alert, and preserve the rationale for the decision."
+  },
+  "model": {
+    "ru": "Событие, оценка, предупреждение, дело и аудит связаны в PostgreSQL. FastAPI и React поддерживают проверяющего и независимое согласование.",
+    "en": "Event, assessment, alert, case and audit are linked in PostgreSQL. FastAPI and React support investigators and independent review."
+  },
+  "decision": {
+    "ru": "Дедупликация защищает вход. Версии правил и признаков закреплены за оценкой. Блокировка и revision упорядочивают итоговое решение.",
+    "en": "Deduplication protects ingestion. Assessments pin rule and feature versions. Row locking and revision checks protect the final decision."
+  },
+  "verification": {
+    "ru": "Проверены воспроизводимость оценки, журнал и конкурентная фиксация решения.",
+    "en": "Verification covers reproducible assessment, audit and concurrent decision submission."
+  },
+  "limits": {
+    "ru": "Синтетические события и правила. Учебный скоринг требует отдельной оценки для реального применения.",
+    "en": "Synthetic transactions and rules. Real-world use would need independent validation."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Открыть предупреждение",
+      "en": "Open an alert"
+    },
+    {
+      "ru": "Проверить признаки и правила",
+      "en": "Inspect indicators and rules"
+    },
+    {
+      "ru": "Передать дело на согласование",
+      "en": "Submit the case for review"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/sentrix/alerts.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Предупреждения",
+        "en": "Alert queue"
+      },
+      "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/assets/screenshots/alerts.png",
+      "preview": "media/sentrix/alerts-640.webp"
+    },
+    {
+      "path": "media/sentrix/investigation.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Расследование",
+        "en": "Investigation"
+      },
+      "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/assets/screenshots/investigation.png",
+      "preview": "media/sentrix/investigation-640.webp"
+    },
+    {
+      "path": "media/sentrix/review.webp",
+      "width": 1440,
+      "height": 912,
+      "title": {
+        "ru": "Согласование",
+        "en": "Review"
+      },
+      "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/assets/screenshots/review.png",
+      "preview": "media/sentrix/review-640.webp"
+    }
+  ],
+  "sha": "7addc9671ebd287f1d5633b174da038af90471d2",
+  "repo": "https://github.com/bivaettttt/sentrix",
+  "links": [
+    {
+      "label": {
+        "ru": "Проектирование",
+        "en": "Design"
+      },
+      "url": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/docs/design.md"
+    },
+    {
+      "label": {
+        "ru": "Трассируемость и проверки",
+        "en": "Traceability and verification"
+      },
+      "url": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/docs/verification.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/docs/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/accounts",
+      "method": "GET",
+      "summary": "Accounts",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/alerts",
+      "method": "GET",
+      "summary": "Alerts",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/analytics",
+      "method": "GET",
+      "summary": "Analytics",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/audit",
+      "method": "GET",
+      "summary": "History",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "summary": "Login",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/cases",
+      "method": "GET",
+      "summary": "List Cases",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/cases/{id}",
+      "method": "GET",
+      "summary": "Case",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/cases/{id}/commands",
+      "method": "POST",
+      "summary": "Case Command",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/lab",
+      "method": "GET",
+      "summary": "Lab Status",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/lab/{scenario}",
+      "method": "POST",
+      "summary": "Lab Run",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/rules",
+      "method": "GET",
+      "summary": "Rules",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/rules/versions/{id}/{action}",
+      "method": "POST",
+      "summary": "Edit Rule",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/rules/{code}/preview",
+      "method": "POST",
+      "summary": "Preview",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/rules/{code}/status",
+      "method": "PUT",
+      "summary": "Switch Rule",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/rules/{code}/versions",
+      "method": "POST",
+      "summary": "Draft",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/transactions",
+      "method": "GET",
+      "summary": "Transactions",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/transactions",
+      "method": "POST",
+      "summary": "Accept",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/transactions/batch",
+      "method": "POST",
+      "summary": "Batch",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/transactions/import",
+      "method": "POST",
+      "summary": "Import Csv",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/transactions/{id}",
+      "method": "GET",
+      "summary": "Transaction",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/transactions/{id}/evaluations",
+      "method": "POST",
+      "summary": "Evaluate",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "Add User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-02",
+      "title": {
+        "ru": "Объяснить сигнал",
+        "en": "Explain an alert"
+      },
+      "rule": {
+        "ru": "Оценка сохраняет версии правил и признаки.",
+        "en": "The assessment records rule versions and indicators."
+      },
+      "check": {
+        "ru": "Открыть историческую оценку после обновления правил.",
+        "en": "Inspect a historical assessment after rule updates."
+      }
+    },
+    {
+      "id": "FR-05",
+      "title": {
+        "ru": "Подтвердить итог",
+        "en": "Confirm an outcome"
+      },
+      "rule": {
+        "ru": "Решение принимает отдельный проверяющий.",
+        "en": "An independent reviewer records the decision."
+      },
+      "check": {
+        "ru": "Отправить конкурирующие команды и сверить историю.",
+        "en": "Submit competing commands and verify history."
+      }
+    }
+  ],
+  "video": "media/sentrix/demo.mp4",
+  "diagram": {
+    "path": "media/sentrix/ingest.svg",
+    "width": 1120,
+    "height": 808,
+    "title": {
+      "ru": "Приём операции",
+      "en": "Transaction ingestion"
+    },
+    "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/docs/diagrams/ingest.mmd"
+  }
+}

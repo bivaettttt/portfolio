@@ -1,0 +1,26 @@
+---
+import Shell from "../layouts/Shell.astro";
+import { url } from "../lib/site";
+---
+
+<Shell
+  lang="ru"
+  route=""
+  title="Страница не найдена"
+  description="Страница не найдена."
+  noindex
+>
+  <section class="page-intro">
+    <p class="eyebrow">404</p>
+    <h1>Страница не найдена</h1>
+    <p class="lede">Откройте каталог или вернитесь на главную.</p>
+    <div class="actions">
+      <a class="button primary" href={url("projects")}>
+        Проекты
+      </a>
+      <a class="button secondary" href={url("")}>
+        Главная
+      </a>
+    </div>
+  </section>
+</Shell>

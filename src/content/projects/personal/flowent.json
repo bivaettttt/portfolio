@@ -1,0 +1,337 @@
+{
+  "id": "flowent",
+  "category": "personal",
+  "featured": true,
+  "title": {
+    "ru": "Flowent",
+    "en": "Flowent"
+  },
+  "headline": {
+    "ru": "От BPMN-схемы до работающего процесса",
+    "en": "From a BPMN model to a running process"
+  },
+  "description": {
+    "ru": "Моделирование, публикация и наблюдение за экземпляром в одном сценарии.",
+    "en": "Model, publish and inspect a running instance in one workflow."
+  },
+  "context": {
+    "ru": "Правило согласования расходов может измениться. Аналитику нужно обновить модель, оператору — объяснить состояние уже запущенной заявки.",
+    "en": "An expense approval rule can change. The analyst needs to update the model and the operator needs to explain an existing request."
+  },
+  "model": {
+    "ru": "Редактор bpmn-js отдаёт XML в FastAPI. PostgreSQL хранит опубликованный граф, экземпляр, токены, задачи и задания worker.",
+    "en": "The bpmn-js editor sends XML to FastAPI. PostgreSQL stores the published graph, instance, tokens, tasks and worker jobs."
+  },
+  "decision": {
+    "ru": "Публикация проверяет редакцию и XML. Экземпляру закрепляется версия, JOIN ждёт ветви одной активации. Очередь повтора и подтверждённое восстановление — разные состояния.",
+    "en": "Publication checks the revision and XML. Instances pin a version, and joins wait for branches from the same activation. Queued retries and confirmed recovery are distinct states."
+  },
+  "verification": {
+    "ru": "На финальном коммите редизайна прошли 15 pytest, 7 Playwright и 14 Flowent Lab. Таймер после перезапуска сработал один раз.",
+    "en": "The redesign commit passed 15 pytest cases, 7 Playwright cases and 14 Flowent Lab scenarios. A persisted timer fired once after restart."
+  },
+  "limits": {
+    "ru": "Поддерживаемое подмножество BPMN, три учебных модели, локальный стенд.",
+    "en": "A documented subset of BPMN, three learning models and a local environment."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Проверить и опубликовать BPMN",
+      "en": "Validate and publish BPMN"
+    },
+    {
+      "ru": "Запустить экземпляр",
+      "en": "Start an instance"
+    },
+    {
+      "ru": "Объяснить ожидание JOIN",
+      "en": "Explain a waiting join"
+    },
+    {
+      "ru": "Подтвердить восстановление",
+      "en": "Confirm recovery"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/flowent/expense-editor.webp",
+      "width": 1440,
+      "height": 810,
+      "title": {
+        "ru": "Редактор корпоративных расходов",
+        "en": "Corporate expense modeler"
+      },
+      "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/expense-editor.png",
+      "preview": "media/flowent/expense-editor-640.webp"
+    },
+    {
+      "path": "media/flowent/runtime-viewer.webp",
+      "width": 1440,
+      "height": 1060,
+      "title": {
+        "ru": "Исполнение и ожидание ветви",
+        "en": "Execution and waiting branch"
+      },
+      "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/runtime-viewer.png",
+      "preview": "media/flowent/runtime-viewer-640.webp"
+    },
+    {
+      "path": "media/flowent/incident-details.webp",
+      "width": 1440,
+      "height": 950,
+      "title": {
+        "ru": "История попыток",
+        "en": "Incident attempt history"
+      },
+      "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/incident-details.png",
+      "preview": "media/flowent/incident-details-640.webp"
+    },
+    {
+      "path": "media/flowent/recovery-history.webp",
+      "width": 1440,
+      "height": 1040,
+      "title": {
+        "ru": "Подтверждение восстановления",
+        "en": "Confirmed recovery"
+      },
+      "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/recovery-history.png",
+      "preview": "media/flowent/recovery-history-640.webp"
+    }
+  ],
+  "sha": "ee5d419aada38fce45343f04850882ebeee12d17",
+  "repo": "https://github.com/bivaettttt/flowent",
+  "links": [
+    {
+      "label": {
+        "ru": "Контекст и требования",
+        "en": "Context and requirements"
+      },
+      "url": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/docs/analysis.md"
+    },
+    {
+      "label": {
+        "ru": "Семантика BPMN и архитектура",
+        "en": "BPMN semantics and architecture"
+      },
+      "url": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/docs/architecture.md"
+    },
+    {
+      "label": {
+        "ru": "Проверки рабочего пространства",
+        "en": "Workbench verification"
+      },
+      "url": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/docs/ux-ui-redesign.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/docs/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/audit",
+      "method": "GET",
+      "summary": "Audit",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "summary": "Login",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/incidents",
+      "method": "GET",
+      "summary": "Incidents",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/incidents/{id}/retry",
+      "method": "POST",
+      "summary": "Restart",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/lab/clock",
+      "method": "PUT",
+      "summary": "Clock",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/lab/run/{scenario}",
+      "method": "POST",
+      "summary": "Experiment",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/me",
+      "method": "GET",
+      "summary": "Me",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/process-definitions",
+      "method": "GET",
+      "summary": "Definitions",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/process-definitions",
+      "method": "POST",
+      "summary": "Add Definition",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/process-definitions/{id}",
+      "method": "GET",
+      "summary": "Definition",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/process-definitions/{id}",
+      "method": "PUT",
+      "summary": "Update Definition",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/process-definitions/{id}/archive",
+      "method": "POST",
+      "summary": "Archive",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/process-definitions/{id}/publish",
+      "method": "POST",
+      "summary": "Deploy",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/process-definitions/{id}/start",
+      "method": "POST",
+      "summary": "Launch",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/process-definitions/{id}/versions/{version}",
+      "method": "GET",
+      "summary": "Version Detail",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/process-instances",
+      "method": "GET",
+      "summary": "Instances",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/process-instances/{id}",
+      "method": "GET",
+      "summary": "Instance",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reports",
+      "method": "GET",
+      "summary": "Reports",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/tasks",
+      "method": "GET",
+      "summary": "Inbox",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/tasks/{id}",
+      "method": "GET",
+      "summary": "Task",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/tasks/{id}/{action}",
+      "method": "POST",
+      "summary": "Perform",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "Create User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/validate",
+      "method": "POST",
+      "summary": "Validate",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "UC-01",
+      "title": {
+        "ru": "Опубликовать BPMN",
+        "en": "Publish BPMN"
+      },
+      "rule": {
+        "ru": "Публикация относится к сохранённому XML и редакции.",
+        "en": "Publication binds to the saved XML and revision."
+      },
+      "check": {
+        "ru": "Проверить отклонение устаревшей редакции.",
+        "en": "Check that a stale revision is rejected."
+      }
+    },
+    {
+      "id": "NFR-02",
+      "title": {
+        "ru": "Синхронизировать ветви",
+        "en": "Synchronize branches"
+      },
+      "rule": {
+        "ru": "JOIN ждёт токены одной активации.",
+        "en": "The join waits for tokens from a single activation."
+      },
+      "check": {
+        "ru": "Завершить ветви по очереди и найти один JOINED.",
+        "en": "Complete both branches and find one JOINED."
+      }
+    }
+  ],
+  "diagram": {
+    "path": "media/flowent/join.svg",
+    "width": 1061,
+    "height": 587,
+    "title": {
+      "ru": "Ожидание параллельных ветвей",
+      "en": "Parallel branch join"
+    },
+    "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/docs/diagrams/join.mmd"
+  }
+}

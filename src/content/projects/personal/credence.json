@@ -1,0 +1,370 @@
+{
+  "id": "credence",
+  "category": "personal",
+  "featured": false,
+  "title": {
+    "ru": "Credence",
+    "en": "Credence"
+  },
+  "headline": {
+    "ru": "Решение по той редакции, которую проверяли",
+    "en": "A decision on the revision that was reviewed"
+  },
+  "description": {
+    "ru": "Кредитная заявка, уточнения, независимое решение и предложение.",
+    "en": "Credit application, clarifications, independent decision and offer."
+  },
+  "context": {
+    "ru": "Уточнение данных не должно оставлять старую оценку основанием нового решения.",
+    "en": "A clarification must not leave a stale assessment as the basis for the next decision."
+  },
+  "model": {
+    "ru": "Заявка, снимок материалов, оценка, решение и предложение хранятся отдельно в PostgreSQL. FastAPI ограничивает переходы по ролям.",
+    "en": "Application, evidence snapshot, assessment, decision and offer are separate PostgreSQL records. FastAPI constrains transitions by role."
+  },
+  "decision": {
+    "ru": "Редакция и блокировка защищают конкурентное решение; квитанция воспроизводит результат повторной команды.",
+    "en": "Revisions and row locks guard competing decisions. A receipt replays the result of a repeated command."
+  },
+  "verification": {
+    "ru": "Лаборатория сверяет API и данные PostgreSQL. Браузер покрывает запрос уточнений и принятие предложения.",
+    "en": "The lab checks HTTP and PostgreSQL state. The browser covers clarification and offer acceptance."
+  },
+  "limits": {
+    "ru": "Учебная объяснимая модель оценки, синтетические данные.",
+    "en": "Educational explainable score and synthetic data."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Зафиксировать заявку",
+      "en": "Submit an application"
+    },
+    {
+      "ru": "Запросить уточнение",
+      "en": "Request clarification"
+    },
+    {
+      "ru": "Переоценить и сформировать предложение",
+      "en": "Reassess and issue an offer"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/credence/details.webp",
+      "width": 1440,
+      "height": 950,
+      "title": {
+        "ru": "Детали заявки",
+        "en": "Application details"
+      },
+      "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/assets/screenshots/details.png",
+      "preview": "media/credence/details-640.webp"
+    },
+    {
+      "path": "media/credence/risk.webp",
+      "width": 1440,
+      "height": 950,
+      "title": {
+        "ru": "Объяснение оценки",
+        "en": "Assessment explanation"
+      },
+      "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/assets/screenshots/risk.png",
+      "preview": "media/credence/risk-640.webp"
+    },
+    {
+      "path": "media/credence/offer.webp",
+      "width": 1440,
+      "height": 950,
+      "title": {
+        "ru": "Предложение",
+        "en": "Offer"
+      },
+      "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/assets/screenshots/offer.png",
+      "preview": "media/credence/offer-640.webp"
+    }
+  ],
+  "sha": "b8dc127da708225191f0f0450ec69a49cb605dff",
+  "repo": "https://github.com/bivaettttt/credence",
+  "links": [
+    {
+      "label": {
+        "ru": "Модель и правила",
+        "en": "Domain model and rules"
+      },
+      "url": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/docs/domain.md"
+    },
+    {
+      "label": {
+        "ru": "Проверки",
+        "en": "Verification"
+      },
+      "url": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/docs/verification.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/docs/openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/applications",
+      "method": "GET",
+      "summary": "Applications",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/applications",
+      "method": "POST",
+      "summary": "New Application",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/applications/{id}",
+      "method": "GET",
+      "summary": "Get Application",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/applications/{id}",
+      "method": "PATCH",
+      "summary": "Edit Application",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/assess",
+      "method": "POST",
+      "summary": "Assess",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/claim",
+      "method": "POST",
+      "summary": "Claim",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/decide",
+      "method": "POST",
+      "summary": "Decide",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/documents",
+      "method": "POST",
+      "summary": "Attach",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/expire",
+      "method": "POST",
+      "summary": "Expire",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/lab-expire",
+      "method": "POST",
+      "summary": "Lab Expire",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/recommend",
+      "method": "POST",
+      "summary": "Recommend",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/request_info",
+      "method": "POST",
+      "summary": "Request Info",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/respond",
+      "method": "POST",
+      "summary": "Respond",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/return",
+      "method": "POST",
+      "summary": "Return",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/submit",
+      "method": "POST",
+      "summary": "Submit",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/validate",
+      "method": "POST",
+      "summary": "Validate",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/withdraw",
+      "method": "POST",
+      "summary": "Withdraw",
+      "responses": ["200", "403", "409", "422"]
+    },
+    {
+      "path": "/api/applications/{id}/{section}",
+      "method": "GET",
+      "summary": "History",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/audit",
+      "method": "GET",
+      "summary": "Audit",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "summary": "Sign In",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/auth/logout",
+      "method": "POST",
+      "summary": "Logout",
+      "responses": ["204"]
+    },
+    {
+      "path": "/api/lab/{scenario}",
+      "method": "POST",
+      "summary": "Lab",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/loan-products",
+      "method": "GET",
+      "summary": "Products",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/loan-products",
+      "method": "POST",
+      "summary": "Create Product",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/me",
+      "method": "GET",
+      "summary": "Me",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/notifications",
+      "method": "GET",
+      "summary": "Notifications",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/notifications/{id}/read",
+      "method": "POST",
+      "summary": "Read Notice",
+      "responses": ["204", "422"]
+    },
+    {
+      "path": "/api/organizations",
+      "method": "GET",
+      "summary": "Organizations",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/organizations",
+      "method": "POST",
+      "summary": "Create Org",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/organizations/{id}",
+      "method": "PUT",
+      "summary": "Edit Org",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/stats",
+      "method": "GET",
+      "summary": "Stats",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/tasks",
+      "method": "GET",
+      "summary": "Tasks",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "GET",
+      "summary": "Users",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/users",
+      "method": "POST",
+      "summary": "New User",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-02",
+      "title": {
+        "ru": "Отправить материалы",
+        "en": "Submit evidence"
+      },
+      "rule": {
+        "ru": "Решение использует неизменяемый снимок.",
+        "en": "A decision uses an immutable submission snapshot."
+      },
+      "check": {
+        "ru": "Проверить, что повторная подача сохраняет новую версию.",
+        "en": "Verify that resubmission stores a new revision."
+      }
+    },
+    {
+      "id": "FR-05",
+      "title": {
+        "ru": "Зафиксировать решение",
+        "en": "Record a decision"
+      },
+      "rule": {
+        "ru": "Роль и редакция проверяются на сервере.",
+        "en": "The server checks role and revision."
+      },
+      "check": {
+        "ru": "Воспроизвести конфликт решений.",
+        "en": "Reproduce competing decisions."
+      }
+    }
+  ],
+  "video": "media/credence/demo.mp4",
+  "diagram": {
+    "path": "media/credence/sequence.svg",
+    "width": 1328,
+    "height": 825,
+    "title": {
+      "ru": "Последовательность решения",
+      "en": "Decision sequence"
+    },
+    "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/docs/diagrams/sequence.mmd"
+  }
+}

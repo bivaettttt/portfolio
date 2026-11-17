@@ -1,0 +1,58 @@
+{
+  "id": "credit-cabinet",
+  "category": "practice",
+  "featured": false,
+  "title": {
+    "ru": "Кредитный кабинет для малого бизнеса",
+    "en": "Small business loan workspace"
+  },
+  "headline": {
+    "ru": "Ясный маршрут заявки и решения",
+    "en": "A clear path from application to decision"
+  },
+  "description": {
+    "ru": "Командный прототип хакатона Альфа-Банка.",
+    "en": "Team prototype from the Alfa Bank hackathon."
+  },
+  "context": {
+    "ru": "Клиенту нужен путь подачи заявки и понятный статус, сотруднику — контекст для проверки.",
+    "en": "Applicants need a submission flow and clear status. Reviewers need context for their decision."
+  },
+  "model": {
+    "ru": "В команде разделены клиентский интерфейс, backend и контракт оценки.",
+    "en": "The team divided responsibility across the customer interface, backend and assessment contract."
+  },
+  "decision": {
+    "ru": "Я описал шаги, состояния и критерии для дальнейшего согласования контракта с командой.",
+    "en": "I documented steps, states and acceptance criteria to align the contract with the team."
+  },
+  "verification": {
+    "ru": "Проверены командные материалы и код в исходном закрытом репозитории.",
+    "en": "Team materials and code were examined in the original private repository."
+  },
+  "limits": {
+    "ru": "Командный учебный прототип. Скриншоты и исходный контракт команды не публикуются. Ниже схема по описанию.",
+    "en": "Team learning prototype. Screenshots and the original team contract are private. The flow below is a documented reconstruction."
+  },
+  "role": {
+    "ru": "Отвечал за требования, сценарии, UX и критерии приёмки. Реализация — вклад команды.",
+    "en": "Owned requirements, scenarios, UX and acceptance criteria. Implementation was a team contribution."
+  },
+  "flow": [
+    {
+      "ru": "Подать заявку",
+      "en": "Submit an application"
+    },
+    {
+      "ru": "Проверить материалы",
+      "en": "Review evidence"
+    },
+    {
+      "ru": "Сообщить решение",
+      "en": "Communicate the decision"
+    }
+  ],
+  "screens": [],
+  "links": [],
+  "api": []
+}

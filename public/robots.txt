@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bivaettttt.github.io/portfolio/sitemap.xml

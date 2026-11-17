@@ -1,0 +1,77 @@
+{
+  "id": "bank",
+  "category": "academic",
+  "featured": false,
+  "title": {
+    "ru": "Банковская модель данных",
+    "en": "Banking data model"
+  },
+  "headline": {
+    "ru": "От понятий предметной области к PostgreSQL",
+    "en": "From domain concepts to PostgreSQL"
+  },
+  "description": {
+    "ru": "Концептуальная модель, DDL, ключи и фактические связи в каталоге СУБД.",
+    "en": "Conceptual model, DDL, keys and foreign keys in the PostgreSQL catalog."
+  },
+  "context": {
+    "ru": "Нужно описать клиентов, счета и операции и проверить, отражены ли ограничения на уровне базы.",
+    "en": "Represent clients, accounts and operations, then check that database constraints enforce the intended relationships."
+  },
+  "model": {
+    "ru": "Концептуальная ER-модель сопоставлена с физическими ключами, представлениями и процедурами.",
+    "en": "The conceptual model is mapped to physical keys, views and procedures."
+  },
+  "decision": {
+    "ru": "Физическая схема на сайте построена из системного каталога после загрузки DDL.",
+    "en": "The physical diagram was generated from the database catalog after applying the DDL."
+  },
+  "verification": {
+    "ru": "Проверка каталога обнаружила 16 таблиц, 25 FK и 11 представлений.",
+    "en": "Catalog inspection found 16 tables, 25 foreign keys and 11 views."
+  },
+  "limits": {
+    "ru": "Загружена только схема. Конкурентность переводов не измерялась.",
+    "en": "Schema-only validation. Concurrent transfers were not benchmarked."
+  },
+  "role": {
+    "ru": "Спроектировал модель и SQL в индивидуальной работе.",
+    "en": "Designed the model and SQL in individual coursework."
+  },
+  "flow": [
+    {
+      "ru": "Зафиксировать сущности",
+      "en": "Identify entities"
+    },
+    {
+      "ru": "Развернуть DDL",
+      "en": "Apply DDL"
+    },
+    {
+      "ru": "Сверить внешние ключи",
+      "en": "Verify foreign keys"
+    }
+  ],
+  "screens": [
+    {
+      "path": "artifacts/bank-original.png",
+      "width": 2065,
+      "height": 1801,
+      "title": {
+        "ru": "Концептуальная ER-модель",
+        "en": "Conceptual ER model"
+      }
+    },
+    {
+      "path": "artifacts/bank-catalog.svg",
+      "width": 3232,
+      "height": 1669,
+      "title": {
+        "ru": "Схема по каталогу PostgreSQL",
+        "en": "PostgreSQL catalog diagram"
+      }
+    }
+  ],
+  "links": [],
+  "api": []
+}

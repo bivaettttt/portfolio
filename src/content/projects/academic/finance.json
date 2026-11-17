@@ -1,0 +1,85 @@
+{
+  "id": "finance",
+  "category": "academic",
+  "featured": false,
+  "title": {
+    "ru": "Учёт личных финансов",
+    "en": "Personal finance tracker"
+  },
+  "headline": {
+    "ru": "Операции с явным пересчётом валют",
+    "en": "Transactions with explicit currency conversion"
+  },
+  "description": {
+    "ru": "Командное учебное приложение на Flask и PostgreSQL.",
+    "en": "Team coursework using Flask and PostgreSQL."
+  },
+  "context": {
+    "ru": "Пользователь добавляет расход или доход, сервис показывает итог в выбранной валюте.",
+    "en": "A user records an expense or income and sees totals in the selected currency."
+  },
+  "model": {
+    "ru": "Flask обслуживает формы и операции. PostgreSQL хранит записи, отдельный сервис сообщает курс.",
+    "en": "Flask handles forms and transactions. PostgreSQL stores records and a separate service supplies the exchange rate."
+  },
+  "decision": {
+    "ru": "Целостность структуры проверена отдельным запуском. Спецификация курсов подготовлена ретроспективно по коду.",
+    "en": "A local run verified the structure. The exchange-rate contract was documented retrospectively from code."
+  },
+  "verification": {
+    "ru": "На синтетике проверены две операции по фиксированному курсу и HTTP 400 при нулевой сумме.",
+    "en": "Synthetic fixtures verified two transactions at a fixed rate and HTTP 400 for a zero amount."
+  },
+  "limits": {
+    "ru": "Учебный прототип на тестовых данных.",
+    "en": "Course prototype using test data."
+  },
+  "role": {
+    "ru": "Участвовал в командной учебной разработке и анализе результатов.",
+    "en": "Contributed to the team coursework and analysis of results."
+  },
+  "flow": [
+    {
+      "ru": "Добавить операцию",
+      "en": "Add a transaction"
+    },
+    {
+      "ru": "Проверить форму",
+      "en": "Validate the form"
+    },
+    {
+      "ru": "Сверить валюту отображения",
+      "en": "Check the displayed conversion"
+    }
+  ],
+  "screens": [
+    {
+      "path": "artifacts/finance-runtime.png",
+      "width": 897,
+      "height": 304,
+      "title": {
+        "ru": "Операции с синтетическими данными",
+        "en": "Transactions using synthetic data"
+      }
+    },
+    {
+      "path": "artifacts/finance-form.png",
+      "width": 510,
+      "height": 397,
+      "title": {
+        "ru": "Форма добавления",
+        "en": "Entry form"
+      }
+    }
+  ],
+  "links": [
+    {
+      "label": {
+        "ru": "Контракт сервиса курса",
+        "en": "Exchange-rate contract"
+      },
+      "url": "artifacts/rate-service.openapi.yaml"
+    }
+  ],
+  "api": []
+}

@@ -1,0 +1,58 @@
+{
+  "id": "merch",
+  "category": "practice",
+  "featured": false,
+  "title": {
+    "ru": "Хочу мерч!",
+    "en": "Merch shop prototype"
+  },
+  "headline": {
+    "ru": "Покупка за баллы в ELMA365",
+    "en": "Redeem points in ELMA365"
+  },
+  "description": {
+    "ru": "Итоговый прототип производственной практики в «Лаборатории БПМ».",
+    "en": "Placement capstone prototype at BPM Laboratory."
+  },
+  "context": {
+    "ru": "Сотрудник выбирает товар, а ответственный подтверждает выдачу. Пополнение кошелька вне объёма.",
+    "en": "An employee selects merchandise and a custodian confirms fulfillment. Wallet top-ups are outside scope."
+  },
+  "model": {
+    "ru": "Каталог, кошелёк, заказ и транзакция связаны в модели. Две роли отвечают за покупку и выдачу.",
+    "en": "The catalog, wallet, order and transaction are linked. Two roles own purchase and fulfillment."
+  },
+  "decision": {
+    "ru": "Перед покупкой сверяются остаток и баланс. Явная транзакционная защита конкурентных списаний требует проверки.",
+    "en": "Purchase checks stock and available balance. A transaction boundary for competing debits still needs verification."
+  },
+  "verification": {
+    "ru": "Учебный экспорт и подписанный отчёт подтверждают реализацию. Независимый повторный запуск не выполнялся.",
+    "en": "The learning export and signed report support the implementation. No independent rerun was performed."
+  },
+  "limits": {
+    "ru": "Внутренний экспорт и снимки не опубликованы. Ниже обезличенная реконструкция процесса по описанию.",
+    "en": "Internal exports and screenshots are private. The process below is a sanitized reconstruction from the documented flow."
+  },
+  "role": {
+    "ru": "В 2026 году спроектировал объектную модель, настроил сценарии ELMA365 и подготовил учебный код с помощью ИИ.",
+    "en": "In 2026 I designed the object model, configured ELMA365 workflows and prepared prototype scripts with AI assistance."
+  },
+  "flow": [
+    {
+      "ru": "Сверить товар и баланс",
+      "en": "Check stock and balance"
+    },
+    {
+      "ru": "Создать заказ и транзакцию",
+      "en": "Create order and transaction"
+    },
+    {
+      "ru": "Подготовить и подтвердить выдачу",
+      "en": "Prepare and confirm fulfillment"
+    }
+  ],
+  "screens": [],
+  "links": [],
+  "api": []
+}

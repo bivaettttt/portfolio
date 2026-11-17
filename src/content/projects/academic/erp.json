@@ -1,0 +1,55 @@
+{
+  "id": "erp",
+  "category": "academic",
+  "featured": false,
+  "archived": true,
+  "screens": [],
+  "api": [],
+  "links": [],
+  "title": {
+    "ru": "CRM, продажи и закупки",
+    "en": "CRM, sales and purchasing"
+  },
+  "headline": {
+    "ru": "Сценарии работы в учебной ERP",
+    "en": "Workflows in a learning ERP"
+  },
+  "description": {
+    "ru": "Соавторская лабораторная по корпоративным системам.",
+    "en": "Co-authored enterprise systems coursework."
+  },
+  "context": {
+    "ru": "Связать работу с заказом клиента и этапы закупок с настройками среды.",
+    "en": "Connect customer orders and purchasing stages to the system configuration."
+  },
+  "model": {
+    "ru": "В работе разобраны сквозные сценарии работы с клиентом, продажами и закупкой.",
+    "en": "The coursework examines end-to-end customer, sales and procurement flows."
+  },
+  "decision": {
+    "ru": "Связать переходы с документами и показать точки проверки.",
+    "en": "Link transitions to documents and show validation points."
+  },
+  "role": {
+    "ru": "Участвовал в выполнении и документировании задания с соавтором.",
+    "en": "Contributed to implementation and documentation with a co-author."
+  },
+  "verification": {
+    "ru": "Описание сверено с отчётом. Независимый запуск не выполнялся.",
+    "en": "The description matches the report. No independent rerun was performed."
+  },
+  "limits": {
+    "ru": "Оригинальные материалы в соавторстве не опубликованы.",
+    "en": "The co-authored original materials are private."
+  },
+  "flow": [
+    {
+      "ru": "Открыть работу с клиентом",
+      "en": "Open the customer workflow"
+    },
+    {
+      "ru": "Оформить заказ и проверить закупку",
+      "en": "Record the order and review procurement"
+    }
+  ]
+}

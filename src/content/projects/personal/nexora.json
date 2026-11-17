@@ -1,0 +1,289 @@
+{
+  "id": "nexora",
+  "category": "personal",
+  "featured": true,
+  "title": {
+    "ru": "Nexora",
+    "en": "Nexora"
+  },
+  "headline": {
+    "ru": "Когда одна доставка завершилась, а другая нет",
+    "en": "When one delivery succeeds and another fails"
+  },
+  "description": {
+    "ru": "Диагностика независимых доставок между CRM, ERP и Billing.",
+    "en": "Diagnose independent deliveries across CRM, ERP and Billing."
+  },
+  "context": {
+    "ru": "Сервисы используют разные контракты. Ошибка ERP не должна скрывать успешную отправку в Billing или создавать повторную запись.",
+    "en": "Services use different contracts. An ERP failure must not hide a successful Billing delivery or duplicate a record."
+  },
+  "model": {
+    "ru": "CRM и Billing используют REST, ERP — SOAP. RabbitMQ передаёт события отдельным получателям. PostgreSQL хранит Outbox, Inbox, доставку и попытку.",
+    "en": "CRM and Billing use REST; ERP uses SOAP. RabbitMQ sends events to independent destinations. PostgreSQL stores outbox, inbox, delivery and attempt records."
+  },
+  "decision": {
+    "ru": "Публикация подтверждается брокером, получатель подтверждает обработку после записи Inbox. Версия защищает проекцию от старых событий.",
+    "en": "The broker confirms publication. Consumers acknowledge only after the inbox commit. Versions keep stale events from overwriting projections."
+  },
+  "verification": {
+    "ru": "Отчёт фиксирует частичный успех, DLQ, повтор, восстановление проекции и сверку.",
+    "en": "The report records partial success, dead lettering, retries, projection recovery and reconciliation."
+  },
+  "limits": {
+    "ru": "Локальный стенд, ролевые ключи и сверка одного клиента.",
+    "en": "Local environment, role keys and one-customer reconciliation."
+  },
+  "role": {
+    "ru": "Личный учебный проект. Я определил задачу, сквозной сценарий и критерии приёмки. Аналитические материалы, код и проверки подготовлены с помощью Codex.",
+    "en": "Independent learning project. I defined the problem, end-to-end scenario and acceptance criteria. Analysis, code and verification were prepared with Codex."
+  },
+  "flow": [
+    {
+      "ru": "Создать клиента CRM",
+      "en": "Create a CRM customer"
+    },
+    {
+      "ru": "Проверить доставки ERP и Billing",
+      "en": "Inspect ERP and Billing deliveries"
+    },
+    {
+      "ru": "Изучить сбой и восстановить доставку",
+      "en": "Investigate and recover the failed delivery"
+    },
+    {
+      "ru": "Сверить записи",
+      "en": "Reconcile records"
+    }
+  ],
+  "screens": [
+    {
+      "path": "media/nexora/workbench.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Трассировка сообщения",
+        "en": "Message trace"
+      },
+      "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/workbench.png",
+      "preview": "media/nexora/workbench-640.webp"
+    },
+    {
+      "path": "media/nexora/partial-delivery.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Частичный успех",
+        "en": "Partial delivery"
+      },
+      "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/partial-delivery.png",
+      "preview": "media/nexora/partial-delivery-640.webp"
+    },
+    {
+      "path": "media/nexora/error-inspector.webp",
+      "width": 1440,
+      "height": 1725,
+      "title": {
+        "ru": "Инспектор ошибок",
+        "en": "Error inspector"
+      },
+      "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/error-inspector.png",
+      "preview": "media/nexora/error-inspector-640.webp"
+    },
+    {
+      "path": "media/nexora/reconciliation.webp",
+      "width": 1440,
+      "height": 1000,
+      "title": {
+        "ru": "Сверка проекций",
+        "en": "Projection reconciliation"
+      },
+      "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/reconciliation.png",
+      "preview": "media/nexora/reconciliation-640.webp"
+    }
+  ],
+  "sha": "e028f4be74e077017cae596a5d046c8a3d577a9f",
+  "repo": "https://github.com/bivaettttt/nexora",
+  "links": [
+    {
+      "label": {
+        "ru": "Требования и границы",
+        "en": "Requirements and scope"
+      },
+      "url": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/docs/analysis/mvp.md"
+    },
+    {
+      "label": {
+        "ru": "Интеграционная архитектура",
+        "en": "Integration architecture"
+      },
+      "url": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/docs/architecture/design.md"
+    },
+    {
+      "label": {
+        "ru": "Результаты проверок",
+        "en": "Verification results"
+      },
+      "url": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/docs/testing/results.md"
+    },
+    {
+      "label": {
+        "ru": "OpenAPI · исходный контракт",
+        "en": "OpenAPI · source contract"
+      },
+      "url": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/docs/api/nexora.openapi.json"
+    }
+  ],
+  "api": [
+    {
+      "path": "/api/broker",
+      "method": "GET",
+      "summary": "Broker",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/customers",
+      "method": "GET",
+      "summary": "Customers",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/customers",
+      "method": "POST",
+      "summary": "Create",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/customers/{customer}",
+      "method": "PUT",
+      "summary": "Update",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/customers/{customer}/payment",
+      "method": "POST",
+      "summary": "Payment",
+      "responses": ["201", "422"]
+    },
+    {
+      "path": "/api/deliveries/{identifier}/replay",
+      "method": "POST",
+      "summary": "Recover",
+      "responses": ["202", "422"]
+    },
+    {
+      "path": "/api/errors",
+      "method": "GET",
+      "summary": "Errors",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/lab/availability/{target}",
+      "method": "PUT",
+      "summary": "Availability",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/lab/publish/{scenario}",
+      "method": "POST",
+      "summary": "Inject",
+      "responses": ["202", "422"]
+    },
+    {
+      "path": "/api/me",
+      "method": "GET",
+      "summary": "Me",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/messages",
+      "method": "GET",
+      "summary": "Messages",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/messages/{identifier}",
+      "method": "GET",
+      "summary": "Details",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reconciliation/{customer}",
+      "method": "GET",
+      "summary": "Check",
+      "responses": ["200", "422"]
+    },
+    {
+      "path": "/api/reconciliation/{customer}/repair",
+      "method": "POST",
+      "summary": "Repair Profile",
+      "responses": ["202", "422"]
+    },
+    {
+      "path": "/api/routes",
+      "method": "GET",
+      "summary": "Routes",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/stats",
+      "method": "GET",
+      "summary": "Stats",
+      "responses": ["200"]
+    },
+    {
+      "path": "/api/systems",
+      "method": "GET",
+      "summary": "Systems",
+      "responses": ["200"]
+    },
+    {
+      "path": "/health",
+      "method": "GET",
+      "summary": "Health",
+      "responses": ["200"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-04",
+      "title": {
+        "ru": "Восстановить доставку",
+        "en": "Recover a delivery"
+      },
+      "rule": {
+        "ru": "Отказ ERP не блокирует Billing.",
+        "en": "ERP failure does not block Billing."
+      },
+      "check": {
+        "ru": "Сопоставить две доставки и результат повтора.",
+        "en": "Reconcile both deliveries and the retry result."
+      }
+    },
+    {
+      "id": "FR-06",
+      "title": {
+        "ru": "Защитить актуальность",
+        "en": "Preserve freshness"
+      },
+      "rule": {
+        "ru": "Старая версия не перезаписывает проекцию.",
+        "en": "An older version cannot overwrite the projection."
+      },
+      "check": {
+        "ru": "Подать устаревшее событие после новой версии.",
+        "en": "Submit an older event after applying a new version."
+      }
+    }
+  ],
+  "diagram": {
+    "path": "media/nexora/container.svg",
+    "width": 932,
+    "height": 1391,
+    "title": {
+      "ru": "Интеграционные контейнеры",
+      "en": "Integration containers"
+    },
+    "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/docs/diagrams/container.mmd"
+  }
+}

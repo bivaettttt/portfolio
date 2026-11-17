@@ -1,0 +1,86 @@
+{
+  "id": "bks-architecture",
+  "category": "academic",
+  "featured": false,
+  "title": {
+    "ru": "Архитектура предприятия",
+    "en": "Enterprise architecture"
+  },
+  "headline": {
+    "ru": "Связь процессов с архитектурой",
+    "en": "Connect processes to architecture"
+  },
+  "description": {
+    "ru": "Индивидуальная учебная серия по BPMN, ArchiMate и UML на примере предметной области БКС.",
+    "en": "Individual coursework in BPMN, ArchiMate and UML using the BCS domain as a study subject."
+  },
+  "context": {
+    "ru": "Задача — показать разные уровни представления инвестиционного обслуживания и контроля рисков.",
+    "en": "The coursework connects investment service and risk management across different modeling viewpoints."
+  },
+  "model": {
+    "ru": "ArchiMate связывает прикладные сервисы и компоненты. UML Sequence показывает взаимодействие CRM с календарём. BPMN определяет роли и ветвления.",
+    "en": "ArchiMate links application services and components. UML Sequence shows CRM and calendar interactions. BPMN describes roles and branches."
+  },
+  "decision": {
+    "ru": "Использовать разные нотации для разных вопросов: статические зависимости, взаимодействия и ответственность в процессе.",
+    "en": "Choose a notation for each question: structural dependencies, interactions and process responsibilities."
+  },
+  "verification": {
+    "ru": "Фрагменты сверены с индивидуальными отчётами.",
+    "en": "The excerpts were checked against the individual course reports."
+  },
+  "limits": {
+    "ru": "Учебная модель. Публичны фрагменты диаграмм, не полный отчёт.",
+    "en": "Course model. Selected diagram excerpts are public."
+  },
+  "role": {
+    "ru": "Подготовил модели и пояснения в индивидуальных лабораторных работах.",
+    "en": "Created the models and notes in individual coursework."
+  },
+  "flow": [
+    {
+      "ru": "Выделить роли процесса",
+      "en": "Identify roles"
+    },
+    {
+      "ru": "Связать сервисы с компонентами",
+      "en": "Map services to components"
+    },
+    {
+      "ru": "Разобрать обмен CRM и календаря",
+      "en": "Trace CRM and calendar interaction"
+    }
+  ],
+  "screens": [
+    {
+      "path": "artifacts/bks-original-archimate.png",
+      "width": 1173,
+      "height": 662,
+      "title": {
+        "ru": "Прикладная архитектура · ArchiMate",
+        "en": "Application architecture · ArchiMate"
+      }
+    },
+    {
+      "path": "artifacts/bks-original-sequence.png",
+      "width": 640,
+      "height": 583,
+      "title": {
+        "ru": "Сценарий взаимодействия · UML",
+        "en": "Interaction sequence · UML"
+      }
+    },
+    {
+      "path": "artifacts/bks-original-bpmn.png",
+      "width": 1484,
+      "height": 1049,
+      "title": {
+        "ru": "Управление рисками · BPMN",
+        "en": "Risk management · BPMN"
+      }
+    }
+  ],
+  "links": [],
+  "api": []
+}

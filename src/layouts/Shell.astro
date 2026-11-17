@@ -1,0 +1,200 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "@fontsource-variable/inter";
+import "@fontsource/pt-serif/cyrillic-400.css";
+import "@fontsource/pt-serif/latin-400.css";
+import "../styles/portfolio.css";
+import {
+  asset,
+  github,
+  name,
+  resume,
+  telegram,
+  url,
+  type Lang,
+} from "../lib/site";
+interface Props {
+  lang: Lang;
+  route: string;
+  title?: string;
+  description: string;
+  noindex?: boolean;
+  image?: string;
+}
+const { lang, route, title, description, noindex = false, image } = Astro.props;
+const ru = lang === "ru";
+const nav = [
+  { path: "", label: ru ? "Главная" : "Home" },
+  { path: "projects", label: ru ? "Проекты" : "Projects" },
+  { path: "profile", label: ru ? "Профиль" : "Profile" },
+  { path: "contact", label: ru ? "Контакты" : "Contact" },
+];
+const current = nav.find(({ path }) =>
+  path ? route === path || route.startsWith(path + "/") : !route,
+)?.path;
+const other = ru ? "en" : "ru";
+const canonical = new URL(url(route, lang), Astro.site);
+const documentTitle = title
+  ? title + " — " + name[lang]
+  : name[lang] + (ru ? " — системный аналитик" : " — system analyst");
+const preview = image && new URL(asset(image), Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang="ru"
+      href={new URL(url(route, "ru"), Astro.site)}
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(url(route, "en"), Astro.site)}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(url(route, "ru"), Astro.site)}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ru ? "ru_RU" : "en_US"} />
+    {preview && <meta property="og:image" content={preview} />}
+    <link rel="icon" href={asset("favicon.svg")} type="image/svg+xml" />
+    <script is:inline>
+      document.addEventListener("astro:before-swap", (event) => {
+        const theme = document.documentElement.dataset.theme;
+        if (theme) event.newDocument.documentElement.dataset.theme = theme;
+      });
+      try {
+        const theme = localStorage.getItem("portfolio-theme");
+        if (theme === "light" || theme === "dark")
+          document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+    <ClientRouter fallback="none" />
+  </head>
+  <body>
+    <a class="skip" href="#main">
+      {ru ? "Перейти к содержанию" : "Skip to content"}
+    </a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="wordmark" href={url("", lang)}>
+          <span aria-hidden="true" class="monogram">
+            TN
+          </span>
+          <span>{name[lang]}</span>
+        </a>
+        <nav aria-label={ru ? "Основная навигация" : "Main navigation"}>
+          {nav.map(({ path, label }) => (
+            <a
+              href={url(path, lang)}
+              aria-current={current === path ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <div class="header-tools">
+          <a
+            class="language"
+            href={url(route, other)}
+            hreflang={other}
+            lang={other}
+            aria-label={ru ? "English version" : "Русская версия"}
+          >
+            {other.toUpperCase()}
+          </a>
+          <button
+            class="theme"
+            type="button"
+            aria-pressed="false"
+            aria-label={ru ? "Тёмная тема" : "Dark theme"}
+          >
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              aria-hidden="true"
+            >
+              <path d="M20.7 15.1a8.9 8.9 0 0 1-11.8-11.8 9 9 0 1 0 11.8 11.8Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="shell" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <div>
+          <strong>{name[lang]}</strong>
+          <p>
+            {ru
+              ? "Системный анализ · Новосибирск"
+              : "Systems analysis · Novosibirsk"}
+          </p>
+        </div>
+        <nav aria-label={ru ? "Контактные ссылки" : "Contact links"}>
+          <a href={resume}>
+            {ru ? "Резюме HH.ru" : "HH.ru résumé"}{" "}
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href={telegram}>
+            Telegram <span aria-hidden="true">↗</span>
+          </a>
+          <a href={github}>
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+    </footer>
+    <script>
+      function themeControl() {
+        const button = document.querySelector<HTMLButtonElement>(".theme");
+        if (!button) return;
+        const root = document.documentElement;
+        const preference = matchMedia("(prefers-color-scheme: dark)");
+        const dark = () =>
+          root.dataset.theme
+            ? root.dataset.theme === "dark"
+            : preference.matches;
+        function update() {
+          button?.setAttribute("aria-pressed", String(dark()));
+        }
+        update();
+        preference.addEventListener("change", update, {
+          signal: lifecycle.signal,
+        });
+        button.onclick = () => {
+          root.dataset.theme = dark() ? "light" : "dark";
+          try {
+            localStorage.setItem("portfolio-theme", root.dataset.theme);
+          } catch {}
+          update();
+        };
+      }
+      let lifecycle = new AbortController();
+      document.addEventListener("astro:page-load", () => {
+        lifecycle.abort();
+        lifecycle = new AbortController();
+        themeControl();
+      });
+    </script>
+  </body>
+</html>

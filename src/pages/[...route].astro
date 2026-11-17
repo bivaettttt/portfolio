@@ -1,0 +1,98 @@
+---
+import Shell from "../layouts/Shell.astro";
+import Home from "../components/Home.astro";
+import Catalog from "../components/Catalog.astro";
+import Profile from "../components/Profile.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import {
+  categories,
+  entries,
+  projectRoute,
+  url,
+  type Category,
+  type Lang,
+  type Project,
+} from "../lib/site";
+
+type Page = {
+  lang: Lang;
+  route: string;
+  category?: Category;
+  project?: Project;
+  redirect?: string;
+};
+export function getStaticPaths() {
+  const routes: Omit<Page, "lang">[] = [
+    "",
+    "projects",
+    "profile",
+    "contact",
+  ].map((route) => ({ route }));
+  for (const category of Object.keys(categories) as Category[])
+    routes.push({ route: "projects/" + category, category });
+  for (const project of entries)
+    routes.push({ route: projectRoute(project), project });
+  const redirects = {
+    about: "profile",
+    skills: "profile",
+    contacts: "contact",
+    practice: "projects/practice",
+    "projects/bks": "projects/academic",
+    "projects/scoring": "https://github.com/bivaettttt/credit_scoring",
+  };
+  for (const project of entries.filter((p) => p.category !== "personal"))
+    routes.push({
+      route: "projects/" + project.id,
+      redirect: projectRoute(project),
+    });
+  for (const [route, redirect] of Object.entries(redirects))
+    routes.push({ route, redirect });
+  return (["ru", "en"] as Lang[]).flatMap((lang) =>
+    routes.map((p) => ({
+      params: {
+        route:
+          [lang === "en" ? "en" : "", p.route].filter(Boolean).join("/") ||
+          undefined,
+      },
+      props: { ...p, lang },
+    })),
+  );
+}
+const { lang, route, category, project, redirect } = Astro.props as Page;
+const ru = lang === "ru";
+if (redirect)
+  return Astro.redirect(
+    redirect.startsWith("https://") ? redirect : url(redirect, lang),
+    301,
+  );
+const title =
+  project?.title[lang] ??
+  (category
+    ? categories[category].title[lang]
+    : (
+        {
+          projects: ru ? "Проекты" : "Projects",
+          profile: ru ? "Профессиональный профиль" : "Professional profile",
+          contact: ru ? "Контакты" : "Contact",
+        } as Record<string, string>
+      )[route]);
+const description =
+  project?.description[lang] ??
+  (category
+    ? categories[category].desc[lang]
+    : ru
+      ? "Портфолио Тимура Надршина. Требования, процессы, данные и API с доказательствами из учебных и личных проектов."
+      : "Timur Nadrshin’s system analysis portfolio. Requirements, processes, data and APIs illustrated by independent and academic work.");
+---
+
+<Shell {lang} {route} {title} {description} image={project?.screens[0]?.path}>
+  {project ? (
+    <CaseStudy {lang} {project} />
+  ) : route.startsWith("projects") ? (
+    <Catalog {lang} {category} />
+  ) : route === "profile" || route === "contact" ? (
+    <Profile {lang} contact={route === "contact"} />
+  ) : (
+    <Home {lang} />
+  )}
+</Shell>
