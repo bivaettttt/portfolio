@@ -333,5 +333,35 @@
       "en": "Parallel branch join"
     },
     "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/docs/diagrams/join.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Аналитик редактирует, менеджер публикует, сотрудник запускает, согласующий завершает задачу, администратор разбирает инцидент.",
+        "en": "Analysts edit, managers publish, employees start requests, approvers complete tasks, and administrators inspect incidents."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Определение имеет версии, экземпляр — ссылку на версию, токены — задачи и запланированные работы.",
+        "en": "Definitions have versions; instances pin a version and their tokens link to tasks and scheduled jobs."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Переход, новое задание и событие фиксируются вместе. Таймер должен выдерживать перезапуск.",
+        "en": "A transition, new job and event commit together. A timer must survive a restart."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "Устаревшая редакция не публикуется. Повтор команды возвращает сохранённый результат. JOIN ждёт незавершённую ветвь.",
+        "en": "Stale revisions are rejected at publication. Command replay returns the existing result. A join waits for its pending branch."
+      }
+    }
+  ]
 }

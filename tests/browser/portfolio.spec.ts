@@ -150,3 +150,24 @@ test("WCAG scan of representative routes in both themes", async ({ page }) => {
     }
   }
 });
+
+test("a legacy route and original evidence remain usable without JavaScript", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    baseURL: process.env.PORTFOLIO_URL ?? "http://127.0.0.1:44111/portfolio/",
+  });
+  try {
+    const page = await context.newPage();
+    await page.goto("projects/bank/");
+    await expect(page).toHaveURL(/\/projects\/academic\/bank\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Банковская модель данных",
+    );
+    await page.locator("#showcase [data-gallery]").first().click();
+    await expect(page).toHaveURL(/\/artifacts\/bank-original\.png$/);
+  } finally {
+    await context.close();
+  }
+});

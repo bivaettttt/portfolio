@@ -285,5 +285,35 @@
       "en": "Integration containers"
     },
     "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/docs/diagrams/container.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Сотрудники CRM и Billing ведут свои данные. Оператор трассирует, восстанавливает и сверяет доставки.",
+        "en": "CRM and Billing staff own their data. Operators trace, recover and reconcile deliveries."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Глобальный UUID сопоставляется с локальными ID. Событие имеет доставки и отдельную историю попыток.",
+        "en": "A global UUID maps to local IDs. One event has deliveries and separate attempt histories."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "At-least-once и устойчивость к остановке worker. Correlation ID связывает журнал с событием.",
+        "en": "At-least-once delivery and worker restart recovery. Correlation IDs connect traces to events."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "При отказе ERP Billing может завершиться. Изолированная доставка попадает в DLQ, оператор исправляет причину и повторяет её.",
+        "en": "Billing may succeed while ERP fails. The isolated delivery enters a DLQ and can be retried after resolving the cause."
+      }
+    }
+  ]
 }

@@ -429,5 +429,35 @@
       "en": "Traceon containers"
     },
     "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/docs/diagrams/container.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Аналитик описывает требование, ревьюер проверяет решение, менеджер формирует baseline.",
+        "en": "An analyst specifies requirements, a reviewer checks the decision and a manager captures a baseline."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Requirement → revision; типизированная связь связывает артефакты; baseline хранит точные редакции.",
+        "en": "A requirement has revisions, typed links connect artifacts, and a baseline stores specific revisions."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Пути должны воспроизводиться для одной ревизии графа. Изоляция проекта проверяется на сервере.",
+        "en": "Paths must be reproducible for a graph revision. The server enforces project isolation."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "Если граф изменился после оценки, результат устаревает. Повторная оценка сохраняет контекст исходного запроса.",
+        "en": "If the graph changes after assessment, the result becomes stale. Rerunning retains the request context."
+      }
+    }
+  ]
 }

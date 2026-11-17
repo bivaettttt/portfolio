@@ -369,5 +369,35 @@
       "en": "Question sequence"
     },
     "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/docs/diagrams/question.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Исследователь проверяет источники, аналитик различает утверждения, ревьюер сохраняет вывод.",
+        "en": "Researchers inspect sources, analysts distinguish claims and reviewers record a conclusion."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Источник имеет редакции и фрагменты. Цитата указывает диапазон, вывод связывается со снимком.",
+        "en": "Sources have revisions and passages. Citations identify ranges and findings link to a snapshot."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Проверка цитат должна сохранять источник и диапазон. Исторические запросы учитывают дату.",
+        "en": "Citation validation preserves source and range. Historical retrieval respects the requested date."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "При отсутствии данных система указывает пробел. При расхождении редакций следующее решение требует проверки.",
+        "en": "Missing evidence is recorded as a gap. Differing revisions call for review before a conclusion."
+      }
+    }
+  ]
 }

@@ -14,6 +14,14 @@ const ru = lang === "ru";
 const analysis = ru ? "Аналитический кейс" : "Analysis";
 const showcase = ru ? "Демонстрация" : "Showcase";
 const title = p.title[lang];
+const engineeringLabels = {
+  actors: ru
+    ? "Участники и ответственность"
+    : "Stakeholders and responsibilities",
+  data: ru ? "Модель данных" : "Data model",
+  quality: ru ? "Требования к качеству" : "Quality requirements",
+  exceptions: ru ? "Исключения и риски" : "Exceptions and risks",
+};
 const caseSections = [
   {
     id: "context",
@@ -135,6 +143,19 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
           )}
         </section>
       ))}
+      {p.engineering.length > 0 && (
+        <section class="case-section" id="engineering">
+          <h2>{ru ? "Границы и инварианты" : "Boundaries and invariants"}</h2>
+          <dl class="engineering">
+            {p.engineering.map((item) => (
+              <div>
+                <dt>{engineeringLabels[item.id]}</dt>
+                <dd>{item.text[lang]}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
       {p.requirements.length > 0 && (
         <section class="case-section" id="requirements">
           <span class="step-number">04</span>

@@ -20,6 +20,14 @@ const projects = defineCollection({
     featured: z.boolean(),
     archived: z.boolean().default(false),
     diagram: screen.optional(),
+    engineering: z
+      .array(
+        z.object({
+          id: z.enum(["actors", "data", "quality", "exceptions"]),
+          text: bilingual,
+        }),
+      )
+      .default([]),
     title: bilingual,
     headline: bilingual,
     description: bilingual,

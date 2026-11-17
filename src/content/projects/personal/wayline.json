@@ -312,5 +312,35 @@
       "en": "Provider polling"
     },
     "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/docs/diagrams/poll.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Путешественник следит за пересадкой. Операционный сотрудник проверяет состояние провайдера и события.",
+        "en": "A traveler monitors the connection. Operations staff inspect the provider and its events."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Датированные рейсы образуют поездку. Инцидент и оценки связаны с версией расписания.",
+        "en": "Dated flights form an itinerary. An incident and assessments are tied to schedule revisions."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Храним время в UTC. Курсор продвигается только вместе с обработкой полученного события.",
+        "en": "Times are stored in UTC. The cursor advances only when the event has been processed."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "Если план неполный, вывод остаётся неопределённым. При тайм-ауте следующий опрос продолжает с сохранённого курсора.",
+        "en": "An incomplete schedule leaves the assessment unknown. Polling resumes from the saved cursor after a timeout."
+      }
+    }
+  ]
 }

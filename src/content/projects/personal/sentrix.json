@@ -306,5 +306,35 @@
       "en": "Transaction ingestion"
     },
     "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/docs/diagrams/ingest.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Аналитик расследует назначенное дело, отдельный сотрудник принимает решение.",
+        "en": "The assigned analyst investigates the case and a distinct reviewer records the outcome."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Операция имеет оценку. Сигнал связывается с делом, история хранит версию правил и итог ревью.",
+        "en": "A transaction has an assessment. An alert links to a case and history stores rule version and review outcome."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Расчёт должен воспроизводиться по закреплённым признакам и версии правил.",
+        "en": "The score must be reproducible using the recorded indicators and rule version."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "Дубликат не создаёт новый сигнал. Конкурирующее решение не должно породить второе закрытие.",
+        "en": "A duplicate does not generate another alert. Concurrent decisions cannot create two closures."
+      }
+    }
+  ]
 }

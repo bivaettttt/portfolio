@@ -324,5 +324,35 @@
       "en": "Metric lineage"
     },
     "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/docs/diagrams/lineage.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Инженер загружает данные, стюард проверяет качество, аналитик объясняет итог.",
+        "en": "An engineer ingests data, a steward handles quality and an analyst explains results."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Версии входных записей связаны с фактами, курсами и снимком. Сценарий бюджета хранит собственные допущения.",
+        "en": "Input revisions link to facts, FX rates and snapshots. Budget scenarios store separate assumptions."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Исторический отчёт воспроизводится, а денежные значения используют точный десятичный расчёт.",
+        "en": "Historical reports can be reproduced and monetary values use decimal arithmetic."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "Пропуски курсов и неверные ссылки видны в карантине. Сбой ETL возобновляется с контрольной точки.",
+        "en": "Missing FX rates and invalid references are visible in quarantine. ETL resumes from a checkpoint."
+      }
+    }
+  ]
 }

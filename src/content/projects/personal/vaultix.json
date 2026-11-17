@@ -263,5 +263,35 @@
       "en": "Transfer sequence"
     },
     "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/docs/diagrams/transfer.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Клиент ведёт свои счета, оператор управляет состояниями, администратор задаёт границы доступа и лимиты.",
+        "en": "Customers manage their accounts, operators manage account state and administrators configure access and limits."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Счёт имеет записи журнала. Перевод связывает две записи, квитанция связывает команду и HTTP-результат.",
+        "en": "An account has ledger entries. A transfer connects two entries; the receipt binds a command to its HTTP result."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Остаток клиента неотрицателен. Обе проводки либо готовы, либо откатываются.",
+        "en": "Customer balances remain non-negative. Both entries commit together or roll back."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "При недостатке остатка, заморозке или смене тела с тем же ключом команда возвращает конфликт.",
+        "en": "Insufficient funds, frozen accounts or changed payload under the same key result in a conflict."
+      }
+    }
+  ]
 }

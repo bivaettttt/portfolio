@@ -366,5 +366,35 @@
       "en": "Decision sequence"
     },
     "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/docs/diagrams/sequence.mmd"
-  }
+  },
+  "engineering": [
+    {
+      "id": "actors",
+      "text": {
+        "ru": "Заявитель отправляет данные, аналитик готовит рекомендацию, риск-офицер принимает решение.",
+        "en": "The applicant submits evidence, the analyst recommends and the risk officer decides."
+      }
+    },
+    {
+      "id": "data",
+      "text": {
+        "ru": "Заявка имеет снимок, оценку и историю решений. Предложение построено из конкретного решения.",
+        "en": "An application has evidence snapshots, assessments and decisions. An offer is tied to a particular decision."
+      }
+    },
+    {
+      "id": "quality",
+      "text": {
+        "ru": "Изменения защищены редакцией. Право проверяется на объекте и по роли.",
+        "en": "Revisions protect updates. Object access and role are enforced by the server."
+      }
+    },
+    {
+      "id": "exceptions",
+      "text": {
+        "ru": "После уточнения требуется новая оценка. Второе решение по закрытому переходу отклоняется.",
+        "en": "A clarification requires reassessment. Another decision against a closed transition is rejected."
+      }
+    }
+  ]
 }
