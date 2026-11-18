@@ -1,0 +1,47 @@
+[
+  {
+    "id": "bks-processes",
+    "file": "../.git/portfolio-audit/authentic/bks-bp-image13.png",
+    "original": "media/bks-processes/elma-client-flow.png",
+    "width": 2560,
+    "height": 1440,
+    "bytes": 200498,
+    "caption": "Маршрут из индивидуальной курсовой. Оригинальный снимок редактора, 2560 × 1440."
+  },
+  {
+    "id": "bks-processes",
+    "file": "../.git/portfolio-audit/authentic/bks-bp-image16.png",
+    "original": "media/bks-processes/elma-investment.png",
+    "width": 2560,
+    "height": 1439,
+    "bytes": 180624,
+    "caption": "Разделены инициатор, инвестиционный аналитик, риск-менеджер и трейдер. Отказ и доработка имеют отдельные исходы."
+  },
+  {
+    "id": "bks-processes",
+    "file": "../.git/portfolio-audit/authentic/bks-bp-image19.png",
+    "original": "media/bks-processes/elma-new-product.png",
+    "width": 2560,
+    "height": 1440,
+    "bytes": 207545,
+    "caption": "Параллельные риск- и комплаенс-проверки предшествуют решению о запуске. Подписи сохранены из оригинала отчёта."
+  },
+  {
+    "id": "bks-architecture",
+    "file": "../.git/portfolio-audit/authentic/arch3-image3.png",
+    "original": "media/bks-architecture/risk-model-detail.png",
+    "width": 481,
+    "height": 781,
+    "bytes": 83840,
+    "caption": "Оригинальный фрагмент индивидуальной работы. Небольшое исходное изображение показано без растягивания."
+  },
+  {
+    "id": "bank",
+    "file": "../Результаты портфолио/Материалы-HH/bank-catalog-postgresql.png",
+    "original": "media/bank/bank-keys-detail.png",
+    "width": 1286,
+    "height": 441,
+    "bytes": 57834,
+    "caption": "Четыре таблицы и три FK из каталога PostgreSQL. Схема содержит структуру без банковских записей."
+  }
+]

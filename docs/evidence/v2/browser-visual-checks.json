@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "id": "credence",
+      "broken": []
+    },
+    {
+      "id": "flowent",
+      "broken": []
+    },
+    {
+      "id": "nexora",
+      "broken": []
+    },
+    {
+      "id": "quantara",
+      "broken": []
+    },
+    {
+      "id": "sentrix",
+      "broken": []
+    },
+    {
+      "id": "traceon",
+      "broken": []
+    },
+    {
+      "id": "vaultix",
+      "broken": []
+    },
+    {
+      "id": "veridion",
+      "broken": []
+    },
+    {
+      "id": "wayline",
+      "broken": []
+    },
+    {
+      "id": "bank",
+      "broken": []
+    },
+    {
+      "id": "bks-architecture",
+      "broken": []
+    },
+    {
+      "id": "bks-processes",
+      "broken": []
+    },
+    {
+      "id": "finance",
+      "broken": []
+    },
+    {
+      "id": "credit-cabinet",
+      "broken": []
+    },
+    {
+      "id": "merch",
+      "broken": []
+    }
+  ],
+  "errors": [],
+  "pan": {
+    "left": 260,
+    "top": 80
+  }
+}
