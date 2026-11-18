@@ -53,6 +53,71 @@
     }
   ],
   "screens": [],
-  "links": [],
-  "api": []
+  "links": [
+    {
+      "url": "artifacts/reconstructions/merch.mmd",
+      "label": {
+        "ru": "Реконструкция · исходник Mermaid",
+        "en": "Reconstruction · Mermaid source"
+      }
+    }
+  ],
+  "api": [],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Сотрудник выбирает товар и количество. Баланс и остаток проверяются до заказа. Ответственный готовит мерч и подтверждает выдачу.",
+      "en": "An employee selects a product and quantity. Balance and stock are checked before ordering. A custodian prepares and hands over merchandise."
+    },
+    "exception": {
+      "ru": "Недостаточный баланс или остаток ведут к отказу. Для количества и конкурентного списания требуются отдельные граничные тесты.",
+      "en": "Insufficient balance or stock leads to rejection. Quantity boundaries and concurrent debits require separate tests."
+    },
+    "tradeoff": {
+      "ru": "Конфигурация связывает объекты и скрипты. Общая транзакция обновления кошелька и каталога в экспорте не подтверждена.",
+      "en": "Configuration connects objects and scripts. A common transaction for wallet and stock updates was not confirmed in the export."
+    },
+    "acceptance": {
+      "ru": "Отчёт и экспорт подтверждают модель и учебные скрипты. Публична обозначенная реконструкция, оригиналы организации закрыты.",
+      "en": "The report and export support the model and learning scripts. A labeled reconstruction is public while organizational originals stay private."
+    }
+  },
+  "diagram": {
+    "path": "artifacts/reconstructions/merch.svg",
+    "width": 360,
+    "height": 1070,
+    "title": {
+      "ru": "Покупка и выдача мерча",
+      "en": "Merchandise purchase and fulfillment"
+    },
+    "caption": {
+      "ru": "Обезличенная реконструкция на основе материалов проекта",
+      "en": "Sanitized reconstruction based on project materials"
+    }
+  },
+  "requirements": [
+    {
+      "id": "CASE-MERCH-01",
+      "title": {
+        "ru": "Проверка основного сценария",
+        "en": "Main scenario verification"
+      },
+      "condition": {
+        "ru": "Сотрудник выбирает товар и количество. Баланс и остаток проверяются до заказа. Ответственный готовит мерч и подтверждает выдачу.",
+        "en": "An employee selects a product and quantity. Balance and stock are checked before ordering. A custodian prepares and hands over merchandise."
+      },
+      "rule": {
+        "ru": "Перед покупкой сверяются остаток и баланс. Явная транзакционная защита конкурентных списаний требует проверки.",
+        "en": "Purchase checks stock and available balance. A transaction boundary for competing debits still needs verification."
+      },
+      "check": {
+        "ru": "Отчёт и экспорт подтверждают модель и учебные скрипты. Публична обозначенная реконструкция, оригиналы организации закрыты.",
+        "en": "The report and export support the model and learning scripts. A labeled reconstruction is public while organizational originals stay private."
+      },
+      "constraints": {
+        "ru": "Внутренний экспорт и снимки не опубликованы. Ниже обезличенная реконструкция процесса по описанию.",
+        "en": "Internal exports and screenshots are private. The process below is a sanitized reconstruction from the documented flow."
+      },
+      "retrospective": true
+    }
+  ]
 }

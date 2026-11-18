@@ -66,7 +66,29 @@
         "en": "Research desk"
       },
       "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/assets/screenshots/research-desk.png",
-      "preview": "media/veridion/research-desk-640.webp"
+      "preview": "media/veridion/research-desk-640.webp",
+      "original": "media/veridion/research-desk.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "0851e07d2f537757f030971d95764efbfcba772b69008531c25e6e836355f7c5",
+      "variants": [
+        {
+          "path": "media/veridion/research-desk-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/veridion/research-desk-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/veridion/research-desk-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Рабочее место исследования объединяет документы, вопрос и результат с доказательствами.",
+        "en": "The research desk unites documents, a question and an evidence-backed result."
+      }
     },
     {
       "path": "media/veridion/citation-inspector.webp",
@@ -77,7 +99,29 @@
         "en": "Citation inspector"
       },
       "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/assets/screenshots/citation-inspector.png",
-      "preview": "media/veridion/citation-inspector-640.webp"
+      "preview": "media/veridion/citation-inspector-640.webp",
+      "original": "media/veridion/citation-inspector.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "a86020b8915295a685a615bab7ee6954db135dc13507d114a5d251e7f06c78d8",
+      "variants": [
+        {
+          "path": "media/veridion/citation-inspector-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/veridion/citation-inspector-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/veridion/citation-inspector-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Инспектор цитаты связывает вывод с фрагментом и редакцией исходного документа.",
+        "en": "The citation inspector ties a finding to a source fragment and revision."
+      }
     },
     {
       "path": "media/veridion/human-review.webp",
@@ -88,7 +132,29 @@
         "en": "Human review"
       },
       "source": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/assets/screenshots/human-review.png",
-      "preview": "media/veridion/human-review-640.webp"
+      "preview": "media/veridion/human-review-640.webp",
+      "original": "media/veridion/human-review.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "62086bddf49fa754cbdf3a3b3a63ae077817363eaf279bade3a32b50229fdec2",
+      "variants": [
+        {
+          "path": "media/veridion/human-review-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/veridion/human-review-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/veridion/human-review-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Человек проверяет вывод и доказательства перед решением. Результат остаётся в истории.",
+        "en": "A person reviews the finding and evidence before deciding. The result remains in history."
+      }
     }
   ],
   "sha": "9bea917d073cb62108f88a9b2c9eb29236618d6d",
@@ -342,7 +408,17 @@
       "check": {
         "ru": "Открыть цитату из ответа и сверить текст.",
         "en": "Open the answer citation and compare its text."
-      }
+      },
+      "condition": {
+        "ru": "Вопрос запускает гибридный поиск по конкретным редакциям. Ответ сохраняет контекст и цитаты.",
+        "en": "A question triggers hybrid search across specific revisions. The answer retains context and citations."
+      },
+      "constraints": {
+        "ru": "Синтетический корпус и локальные модели, итог требует проверки исследователем.",
+        "en": "Synthetic corpus and local models. Findings require human verification."
+      },
+      "implementation": "https://github.com/bivaettttt/veridion/tree/9bea917d073cb62108f88a9b2c9eb29236618d6d/backend",
+      "testSource": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/frontend/tests/research.spec.ts"
     },
     {
       "id": "FR-06",
@@ -357,7 +433,17 @@
       "check": {
         "ru": "Проверить конкурирующие согласования.",
         "en": "Check competing reviews."
-      }
+      },
+      "condition": {
+        "ru": "Вопрос запускает гибридный поиск по конкретным редакциям. Ответ сохраняет контекст и цитаты.",
+        "en": "A question triggers hybrid search across specific revisions. The answer retains context and citations."
+      },
+      "constraints": {
+        "ru": "Синтетический корпус и локальные модели, итог требует проверки исследователем.",
+        "en": "Synthetic corpus and local models. Findings require human verification."
+      },
+      "implementation": "https://github.com/bivaettttt/veridion/tree/9bea917d073cb62108f88a9b2c9eb29236618d6d/backend",
+      "testSource": "https://github.com/bivaettttt/veridion/blob/9bea917d073cb62108f88a9b2c9eb29236618d6d/frontend/tests/research.spec.ts"
     }
   ],
   "diagram": {
@@ -399,5 +485,23 @@
         "en": "Missing evidence is recorded as a gap. Differing revisions call for review before a conclusion."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Вопрос запускает гибридный поиск по конкретным редакциям. Ответ сохраняет контекст и цитаты.",
+      "en": "A question triggers hybrid search across specific revisions. The answer retains context and citations."
+    },
+    "exception": {
+      "ru": "Недостаток свидетельств отмечен явно. Неверная версия или диапазон цитаты отклоняются. Конкурентное ревью проверяет revision.",
+      "en": "Evidence gaps are explicit. Invalid revisions and citation ranges are rejected. Concurrent review checks revisions."
+    },
+    "tradeoff": {
+      "ru": "Локальная генерация требует настройки модели и проверки цитат. Ручное заключение остаётся отдельной записью.",
+      "en": "Local generation requires model configuration and citation validation. Human review remains a separate record."
+    },
+    "acceptance": {
+      "ru": "Northstar различает требование 10 000 и наблюдение при 2 000 пользователей. Цитата открывает исходный фрагмент нужной версии.",
+      "en": "Northstar distinguishes a 10,000-user requirement from a 2,000-user observation. Citations open the original revision and passage."
+    }
+  }
 }

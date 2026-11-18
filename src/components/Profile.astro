@@ -109,18 +109,17 @@ const items = [
       <h2>
         {ru ? "Что умею показать на кейсах" : "What the cases demonstrate"}
       </h2>
-      <ul>
-        {items.map((i) => (
-          <li>
-            <h3>
-              <a href={url(i.href, lang)}>
-                {i.title} <span aria-hidden="true">↗</span>
-              </a>
-            </h3>
+      <div class="skill-atlas">
+        {items.map((i, index) => (
+          <details name="profile-atlas" open={index === 0}>
+            <summary>{i.title}</summary>
             <p>{i.desc}</p>
-          </li>
+            <a href={url(i.href, lang)}>
+              {ru ? "Открыть связанный кейс" : "Open the related case"} ↗
+            </a>
+          </details>
         ))}
-      </ul>
+      </div>
     </section>
     <section class="spread profile-spread">
       <div>
@@ -135,6 +134,24 @@ const items = [
             ? "На производственной практике в «Лаборатории БПМ» в июне–июле 2026 года спроектировал объектную модель и настроил учебный процесс в ELMA365. На хакатоне Альфа-Банка отвечал за требования, пользовательские сценарии, UX и критерии приёмки в составе команды."
             : "In June–July 2026, I designed an object model and configured an ELMA365 prototype during placement at BPM Laboratory. At the Alfa Bank hackathon, my team role covered requirements, user flows, UX and acceptance criteria."}
         </p>
+        <ol class="profile-timeline">
+          <li>
+            <span>2026</span>
+            <a href={url("projects/practice/merch", lang)}>
+              {ru
+                ? "Производственная практика · Лаборатория БПМ"
+                : "Placement · BPM Laboratory"}
+            </a>
+          </li>
+          <li>
+            <span>2027</span>
+            <span>
+              {ru
+                ? "Планируемый выпуск · НГТУ НЭТИ"
+                : "Expected graduation · NSTU NETI"}
+            </span>
+          </li>
+        </ol>
         <a href={url("projects/practice", lang)}>
           {ru ? "Кейсы практики и хакатона" : "Placement and hackathon cases"} ↗
         </a>

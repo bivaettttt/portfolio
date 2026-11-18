@@ -60,7 +60,14 @@
       "title": {
         "ru": "Операции с синтетическими данными",
         "en": "Transactions using synthetic data"
-      }
+      },
+      "caption": {
+        "ru": "Форма отправляет тип, сумму и валюту в Flask. После проверки операция сохраняется, отдельный сервис отдаёт курс.",
+        "en": "The form submits type, amount and currency to Flask. A valid transaction is stored and a separate service supplies the rate."
+      },
+      "original": "artifacts/finance-full-0.png",
+      "originalWidth": 1140,
+      "originalHeight": 820
     },
     {
       "path": "artifacts/finance-form.png",
@@ -69,7 +76,14 @@
       "title": {
         "ru": "Форма добавления",
         "en": "Entry form"
-      }
+      },
+      "caption": {
+        "ru": "Нулевая сумма даёт HTTP 400. Суммы 9 050 и 1 810 RUB дают 100 и 20 USD по фиксированному курсу 90,5.",
+        "en": "Zero amounts return HTTP 400. RUB 9,050 and 1,810 become USD 100 and 20 at a fixed 90.5 rate."
+      },
+      "original": "artifacts/finance-full-1.png",
+      "originalWidth": 1140,
+      "originalHeight": 820
     }
   ],
   "links": [
@@ -79,7 +93,71 @@
         "en": "Exchange-rate contract"
       },
       "url": "artifacts/rate-service.openapi.yaml"
+    },
+    {
+      "url": "artifacts/reconstructions/finance-architecture.mmd",
+      "label": {
+        "ru": "Реконструкция · исходник Mermaid",
+        "en": "Reconstruction · Mermaid source"
+      }
     }
   ],
-  "api": []
+  "api": [],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Форма отправляет тип, сумму и валюту в Flask. После проверки операция сохраняется, отдельный сервис отдаёт курс.",
+      "en": "The form submits type, amount and currency to Flask. A valid transaction is stored and a separate service supplies the rate."
+    },
+    "exception": {
+      "ru": "Нулевая сумма даёт HTTP 400. Суммы 9 050 и 1 810 RUB дают 100 и 20 USD по фиксированному курсу 90,5.",
+      "en": "Zero amounts return HTTP 400. RUB 9,050 and 1,810 become USD 100 and 20 at a fixed 90.5 rate."
+    },
+    "tradeoff": {
+      "ru": "Отдельный сервис делает зависимость от курса видимой. OpenAPI подготовлен по коду ретроспективно для портфолио.",
+      "en": "A separate service exposes the rate dependency. OpenAPI was documented retrospectively from code for the portfolio."
+    },
+    "acceptance": {
+      "ru": "Локальный запуск на синтетике проверил форму и операции. Промышленные показатели не измерялись.",
+      "en": "A local synthetic run verified the form and transactions. Production metrics were not measured."
+    }
+  },
+  "diagram": {
+    "path": "artifacts/reconstructions/finance-architecture.svg",
+    "width": 915,
+    "height": 216,
+    "title": {
+      "ru": "Компоненты учебного приложения",
+      "en": "Learning application components"
+    },
+    "caption": {
+      "ru": "Обезличенная реконструкция на основе материалов проекта",
+      "en": "Sanitized reconstruction based on project materials"
+    }
+  },
+  "requirements": [
+    {
+      "id": "CASE-FINANCE-01",
+      "title": {
+        "ru": "Проверка основного сценария",
+        "en": "Main scenario verification"
+      },
+      "condition": {
+        "ru": "Форма отправляет тип, сумму и валюту в Flask. После проверки операция сохраняется, отдельный сервис отдаёт курс.",
+        "en": "The form submits type, amount and currency to Flask. A valid transaction is stored and a separate service supplies the rate."
+      },
+      "rule": {
+        "ru": "Целостность структуры проверена отдельным запуском. Спецификация курсов подготовлена ретроспективно по коду.",
+        "en": "A local run verified the structure. The exchange-rate contract was documented retrospectively from code."
+      },
+      "check": {
+        "ru": "Локальный запуск на синтетике проверил форму и операции. Промышленные показатели не измерялись.",
+        "en": "A local synthetic run verified the form and transactions. Production metrics were not measured."
+      },
+      "constraints": {
+        "ru": "Учебный прототип на тестовых данных.",
+        "en": "Course prototype using test data."
+      },
+      "retrospective": true
+    }
+  ]
 }

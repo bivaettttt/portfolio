@@ -10,6 +10,17 @@ const screen = z.object({
   title: bilingual,
   source: z.url().optional(),
   preview: z.string().optional(),
+  original: z.string().optional(),
+  originalWidth: z.number().int().positive().optional(),
+  originalHeight: z.number().int().positive().optional(),
+  originalSha256: z
+    .string()
+    .regex(/^[a-f0-9]{64}$/)
+    .optional(),
+  variants: z
+    .array(z.object({ path: z.string(), width: z.number().int().positive() }))
+    .default([]),
+  caption: bilingual.optional(),
 });
 
 const projects = defineCollection({
@@ -20,6 +31,15 @@ const projects = defineCollection({
     featured: z.boolean(),
     archived: z.boolean().default(false),
     diagram: screen.optional(),
+    detail: screen.optional(),
+    caseNotes: z
+      .object({
+        trigger: bilingual,
+        exception: bilingual,
+        tradeoff: bilingual,
+        acceptance: bilingual,
+      })
+      .optional(),
     engineering: z
       .array(
         z.object({
@@ -50,8 +70,13 @@ const projects = defineCollection({
       .array(
         z.object({
           id: z.string(),
+          retrospective: z.boolean().default(false),
           title: bilingual,
           rule: bilingual,
+          condition: bilingual.optional(),
+          constraints: bilingual.optional(),
+          implementation: z.url().optional(),
+          testSource: z.url().optional(),
           check: bilingual,
         }),
       )

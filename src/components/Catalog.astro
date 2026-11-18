@@ -26,7 +26,7 @@ const rest = rows.filter((entry) => !entry.featured);
     </a>
   )}
   <p class="eyebrow">{ru ? "ПОРТФОЛИО" : "PORTFOLIO"}</p>
-  <h1>
+  <h1 transition:name={category ? "category-" + category : undefined}>
     {category ? categories[category].title[lang] : ru ? "Проекты" : "Projects"}
   </h1>
   <p class="lede">
@@ -65,7 +65,7 @@ const rest = rows.filter((entry) => !entry.featured);
                 : "КЕЙСОВ"
               : "CASES"}
           </span>
-          <h2>{detail.title[lang]}</h2>
+          <h2 transition:name={"category-" + key}>{detail.title[lang]}</h2>
           <p>{detail.desc[lang]}</p>
         </div>
         <span class="folder-arrow" aria-hidden="true">
@@ -87,7 +87,9 @@ const rest = rows.filter((entry) => !entry.featured);
             href={url(projectRoute(p), lang)}
           >
             <div class="feature-copy">
-              <p class="eyebrow">{p.title[lang]}</p>
+              <p class="eyebrow" transition:name={"project-" + p.id}>
+                {p.title[lang]}
+              </p>
               <h3>{p.headline[lang]}</h3>
               <p>{p.description[lang]}</p>
               <strong>
@@ -98,7 +100,14 @@ const rest = rows.filter((entry) => !entry.featured);
             {p.screens[0] && (
               <div class="feature-image">
                 <img
-                  src={asset(p.screens[0].preview ?? p.screens[0].path)}
+                  src={asset(p.screens[0].path)}
+                  srcset={[
+                    ...p.screens[0].variants,
+                    { path: p.screens[0].path, width: p.screens[0].width },
+                  ]
+                    .map((item) => asset(item.path) + " " + item.width + "w")
+                    .join(", ")}
+                  sizes="(max-width: 690px) 91vw, (max-width: 1370px) 54vw, 740px"
                   alt={p.screens[0].title[lang]}
                   width={p.screens[0].width}
                   height={p.screens[0].height}
@@ -123,7 +132,7 @@ const rest = rows.filter((entry) => !entry.featured);
         <article class={"project-row project-" + p.id}>
           <a href={url(projectRoute(p), lang)}>
             <div>
-              <h3>{p.title[lang]}</h3>
+              <h3 transition:name={"project-" + p.id}>{p.title[lang]}</h3>
               <p>{p.description[lang]}</p>
             </div>
             <span class="row-arrow" aria-hidden="true">

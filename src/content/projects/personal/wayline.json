@@ -55,36 +55,102 @@
   "screens": [
     {
       "path": "media/wayline/trips.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Поездки",
         "en": "Trips"
       },
       "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/trips.png",
-      "preview": "media/wayline/trips-640.webp"
+      "preview": "media/wayline/trips-640.webp",
+      "original": "media/wayline/trips.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "03cac554984aea59a4d161e011a83f509b3ab67da19afa4be058d9cc1382b9e7",
+      "variants": [
+        {
+          "path": "media/wayline/trips-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/wayline/trips-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/wayline/trips-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Поездки и события расписания задают контекст проверки пересадок.",
+        "en": "Trips and timetable events establish context for connection checks."
+      }
     },
     {
       "path": "media/wayline/disruption-details.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Причина риска",
         "en": "Disruption details"
       },
       "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/disruption-details.png",
-      "preview": "media/wayline/disruption-details-640.webp"
+      "preview": "media/wayline/disruption-details-640.webp",
+      "original": "media/wayline/disruption-details.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "0b6eace134ad31e569d7914204a37c243dd49651ec4560ccbd02c1c9d10deddb",
+      "variants": [
+        {
+          "path": "media/wayline/disruption-details-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/wayline/disruption-details-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/wayline/disruption-details-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Карточка нарушения объясняет затронутую пересадку и исходное событие.",
+        "en": "The disruption detail explains the affected connection and source event."
+      }
     },
     {
       "path": "media/wayline/alternatives.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Альтернативные маршруты",
         "en": "Alternative routes"
       },
       "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/alternatives.png",
-      "preview": "media/wayline/alternatives-640.webp"
+      "preview": "media/wayline/alternatives-640.webp",
+      "original": "media/wayline/alternatives.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "f543df32b57c14c16c4df9e66bdb6b38932c2d1b4c29ff42a57eeb48efe36f32",
+      "variants": [
+        {
+          "path": "media/wayline/alternatives-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/wayline/alternatives-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/wayline/alternatives-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Альтернативы сравниваются в контексте нарушения для выбора допустимого маршрута.",
+        "en": "Alternatives are compared in disruption context to choose a feasible route."
+      }
     }
   ],
   "sha": "6b29602c23335fb7b18d5f62782827fae1102521",
@@ -284,7 +350,17 @@
       "check": {
         "ru": "Сверить 35 минут с порогом 60.",
         "en": "Compare a 35-minute connection against a 60-minute threshold."
-      }
+      },
+      "condition": {
+        "ru": "Путешественник сохраняет поездку. Poller обновляет рейсы по последовательности событий поставщика и пересчитывает пересадки.",
+        "en": "A traveler saves an itinerary. A poller applies provider events and reassesses connections."
+      },
+      "constraints": {
+        "ru": "Синтетический провайдер и поиск по ограниченному расписанию, без бронирования.",
+        "en": "Synthetic provider, bounded timetable search and no booking."
+      },
+      "implementation": "https://github.com/bivaettttt/wayline/tree/6b29602c23335fb7b18d5f62782827fae1102521/backend",
+      "testSource": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/frontend/e2e/wayline.spec.ts"
     },
     {
       "id": "FR-06",
@@ -299,7 +375,17 @@
       "check": {
         "ru": "Открыть альтернативы после задержки.",
         "en": "Inspect alternatives after a delay."
-      }
+      },
+      "condition": {
+        "ru": "Путешественник сохраняет поездку. Poller обновляет рейсы по последовательности событий поставщика и пересчитывает пересадки.",
+        "en": "A traveler saves an itinerary. A poller applies provider events and reassesses connections."
+      },
+      "constraints": {
+        "ru": "Синтетический провайдер и поиск по ограниченному расписанию, без бронирования.",
+        "en": "Synthetic provider, bounded timetable search and no booking."
+      },
+      "implementation": "https://github.com/bivaettttt/wayline/tree/6b29602c23335fb7b18d5f62782827fae1102521/backend",
+      "testSource": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/frontend/e2e/wayline.spec.ts"
     }
   ],
   "video": "media/wayline/demo.mp4",
@@ -342,5 +428,23 @@
         "en": "An incomplete schedule leaves the assessment unknown. Polling resumes from the saved cursor after a timeout."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Путешественник сохраняет поездку. Poller обновляет рейсы по последовательности событий поставщика и пересчитывает пересадки.",
+      "en": "A traveler saves an itinerary. A poller applies provider events and reassesses connections."
+    },
+    "exception": {
+      "ru": "Тайм-аут не продвигает курсор. Старая версия не перезаписывает прогноз. Неполные данные оставляют неопределённость.",
+      "en": "Timeouts preserve the cursor. Older versions cannot overwrite forecasts and incomplete data leaves uncertainty."
+    },
+    "tradeoff": {
+      "ru": "План, прогноз и факт хранятся отдельно. Поиск ограничен учебным расписанием, каждый вариант проверяется по MCT.",
+      "en": "Schedule, estimate and actual remain distinct. Search is limited to the fixture schedule and every option is checked against MCT."
+    },
+    "acceptance": {
+      "ru": "Задержка уменьшает пересадку с 95 до 35 минут при MCT 60. Причина и допустимые альтернативы доступны в поездке.",
+      "en": "A delay shrinks the connection from 95 to 35 minutes against MCT 60. The trip exposes the cause and valid alternatives."
+    }
+  }
 }

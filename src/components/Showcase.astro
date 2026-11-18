@@ -1,0 +1,193 @@
+---
+import { asset, mediaLink, type Lang, type Project } from "../lib/site";
+const { lang, project } = Astro.props as { lang: Lang; project: Project };
+const ru = lang === "ru";
+const personal = project.category === "personal";
+const p = project;
+const screenshots = p.screens;
+const caption = (screen: Project["screens"][number]) =>
+  screen.caption?.[lang] ?? screen.title[lang];
+---
+
+<section class:list={["showcase", { "product-story": personal }]} id="showcase">
+  <header class="story-heading">
+    <div>
+      <p class="eyebrow">
+        {personal
+          ? p.title[lang]
+          : ru
+            ? "РЕЗУЛЬТАТ ПРОЕКТА"
+            : "PROJECT OUTCOME"}
+      </p>
+      <h2>
+        {personal
+          ? ru
+            ? "Демонстрация продукта"
+            : "Product walkthrough"
+          : ru
+            ? "Материалы работы"
+            : "Project evidence"}
+      </h2>
+    </div>
+    <p>{personal ? p.description[lang] : p.verification[lang]}</p>
+  </header>
+  {screenshots.length ? (
+    <div class="story-chapters">
+      {screenshots.map((screen, i) => (
+        <div
+          class:list={[
+            "story-chapter",
+            {
+              "story-reveal": i === 0,
+              "story-finale": i === screenshots.length - 1,
+            },
+          ]}
+        >
+          <div class="chapter-copy">
+            <h3>{screen.title[lang]}</h3>
+            {screen.caption && <p>{caption(screen)}</p>}
+            {screen.source && (
+              <a href={screen.source}>
+                {ru ? "Кадр в репозитории" : "Frame in repository"}{" "}
+                <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </div>
+          <figure style={"--frame-width:" + screen.width + "px"}>
+            <a
+              href={asset(screen.original ?? screen.path)}
+              data-gallery
+              data-title={screen.title[lang]}
+              data-description={caption(screen)}
+            >
+              <img
+                src={asset(screen.path)}
+                srcset={
+                  screen.variants.length
+                    ? [
+                        ...screen.variants,
+                        { path: screen.path, width: screen.width },
+                      ]
+                        .map((v) => asset(v.path) + " " + v.width + "w")
+                        .join(", ")
+                    : undefined
+                }
+                sizes={
+                  screen.variants.length
+                    ? i === 0
+                      ? "(max-width: 760px) 90vw, (max-width: 1380px) 91vw, 1240px"
+                      : "(max-width: 760px) 90vw, (max-width: 1380px) 64vw, 870px"
+                    : undefined
+                }
+                alt={screen.title[lang]}
+                width={screen.width}
+                height={screen.height}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="zoom-icon" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          </figure>
+          {personal && i === 0 && (
+            <div class="story-route">
+              <h3>{ru ? "Путь пользователя" : "User journey"}</h3>
+              <ol>
+                {p.flow.map((step) => (
+                  <li>{step[lang]}</li>
+                ))}
+              </ol>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="practice-stage">
+      <p class="practice-label">
+        {ru
+          ? "Обезличенная реконструкция на основе материалов проекта"
+          : "Sanitized reconstruction based on project materials"}
+      </p>
+      {p.caseNotes && <p>{p.caseNotes.trigger[lang]}</p>}
+      <ol>
+        {p.flow.map((step, index) => (
+          <li>
+            <span aria-hidden="true">0{index + 1}</span>
+            <strong>{step[lang]}</strong>
+          </li>
+        ))}
+      </ol>
+      {p.caseNotes && (
+        <details>
+          <summary>{ru ? "Альтернативная ветвь" : "Alternative path"}</summary>
+          <p>{p.caseNotes.exception[lang]}</p>
+        </details>
+      )}
+    </div>
+  )}
+  {p.detail && (
+    <figure class="inspection-detail">
+      <figcaption>
+        <h3>{p.detail.title[lang]}</h3>
+        <p>{p.detail.caption?.[lang]}</p>
+      </figcaption>
+      <a
+        href={asset(p.detail.path)}
+        data-gallery
+        data-title={p.detail.title[lang]}
+        data-description={p.detail.caption?.[lang]}
+      >
+        <img
+          src={asset(p.detail.path)}
+          alt={p.detail.title[lang]}
+          width={p.detail.width}
+          height={p.detail.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+    </figure>
+  )}
+  {personal && p.caseNotes && (
+    <div class="story-technical">
+      <div>
+        <h3>{ru ? "Инженерное решение" : "Engineering decision"}</h3>
+        <p>{p.caseNotes.tradeoff[lang]}</p>
+      </div>
+      <div>
+        <h3>{ru ? "Исключительный сценарий" : "Exceptional scenario"}</h3>
+        <p>{p.caseNotes.exception[lang]}</p>
+      </div>
+    </div>
+  )}
+  {p.video && (
+    <details class="video">
+      <summary>{ru ? "Запись сценария" : "Recorded walkthrough"}</summary>
+      <video
+        controls
+        preload="none"
+        poster={asset(screenshots[0]!.preview ?? screenshots[0]!.path)}
+        muted
+        playsinline
+        src={asset(p.video)}
+        aria-label={
+          ru ? "Запись сценария без звука" : "Silent recorded walkthrough"
+        }
+      ></video>
+    </details>
+  )}
+  {(p.repo || p.links.length > 0) && (
+    <div class="story-resources">
+      {p.repo && (
+        <a href={p.repo}>
+          {ru ? "Код и инструкции запуска" : "Source and local setup"} ↗
+        </a>
+      )}
+      {p.links.slice(0, 2).map((link) => (
+        <a href={mediaLink(link.url)}>{link.label[lang]} ↗</a>
+      ))}
+    </div>
+  )}
+</section>

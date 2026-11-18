@@ -60,6 +60,10 @@
       "title": {
         "ru": "Прикладная архитектура · ArchiMate",
         "en": "Application architecture · ArchiMate"
+      },
+      "caption": {
+        "ru": "BPMN раскрывает управление риском, ArchiMate — сервисы и компоненты, UML — обмен CRM и календаря.",
+        "en": "BPMN covers risk management, ArchiMate maps services and components and UML shows CRM/calendar exchange."
       }
     },
     {
@@ -69,6 +73,10 @@
       "title": {
         "ru": "Сценарий взаимодействия · UML",
         "en": "Interaction sequence · UML"
+      },
+      "caption": {
+        "ru": "Временной порядок не следует из статической схемы. Для обмена нужна отдельная последовательность.",
+        "en": "Temporal order cannot be inferred from static structure. Interaction needs a sequence model."
       }
     },
     {
@@ -78,9 +86,75 @@
       "title": {
         "ru": "Управление рисками · BPMN",
         "en": "Risk management · BPMN"
+      },
+      "caption": {
+        "ru": "Разные представления требуют согласованных названий. Каждая диаграмма показывает выбранную учебную точку зрения.",
+        "en": "Multiple views require consistent names. Each diagram expresses a selected learning viewpoint."
       }
+    },
+    {
+      "path": "media/bks-architecture/risk-model-detail.webp",
+      "width": 481,
+      "height": 781,
+      "original": "media/bks-architecture/risk-model-detail.png",
+      "originalWidth": 481,
+      "originalHeight": 781,
+      "originalSha256": "0d1b0fdd777fc0bd39d3a6d06492c33f358b2bd009eaa0510e1b862db463f4cb",
+      "title": {
+        "ru": "Фрагмент модели управления риском",
+        "en": "Risk management model excerpt"
+      },
+      "caption": {
+        "ru": "Оригинальный фрагмент индивидуальной работы. Небольшое исходное изображение показано без растягивания.",
+        "en": "Original excerpt from individual coursework. The small image is presented without enlargement."
+      },
+      "variants": []
     }
   ],
   "links": [],
-  "api": []
+  "api": [],
+  "caseNotes": {
+    "trigger": {
+      "ru": "BPMN раскрывает управление риском, ArchiMate — сервисы и компоненты, UML — обмен CRM и календаря.",
+      "en": "BPMN covers risk management, ArchiMate maps services and components and UML shows CRM/calendar exchange."
+    },
+    "exception": {
+      "ru": "Временной порядок не следует из статической схемы. Для обмена нужна отдельная последовательность.",
+      "en": "Temporal order cannot be inferred from static structure. Interaction needs a sequence model."
+    },
+    "tradeoff": {
+      "ru": "Разные представления требуют согласованных названий. Каждая диаграмма показывает выбранную учебную точку зрения.",
+      "en": "Multiple views require consistent names. Each diagram expresses a selected learning viewpoint."
+    },
+    "acceptance": {
+      "ru": "Модели сверены с индивидуальными отчётами, детали доступны на полноразмерных фрагментах.",
+      "en": "Models were checked against individual reports. Full-size excerpts preserve the details."
+    }
+  },
+  "requirements": [
+    {
+      "id": "CASE-BKS-ARCHITECTURE-01",
+      "title": {
+        "ru": "Проверка основного сценария",
+        "en": "Main scenario verification"
+      },
+      "condition": {
+        "ru": "BPMN раскрывает управление риском, ArchiMate — сервисы и компоненты, UML — обмен CRM и календаря.",
+        "en": "BPMN covers risk management, ArchiMate maps services and components and UML shows CRM/calendar exchange."
+      },
+      "rule": {
+        "ru": "Использовать разные нотации для разных вопросов: статические зависимости, взаимодействия и ответственность в процессе.",
+        "en": "Choose a notation for each question: structural dependencies, interactions and process responsibilities."
+      },
+      "check": {
+        "ru": "Модели сверены с индивидуальными отчётами, детали доступны на полноразмерных фрагментах.",
+        "en": "Models were checked against individual reports. Full-size excerpts preserve the details."
+      },
+      "constraints": {
+        "ru": "Учебная модель. Публичны фрагменты диаграмм, не полный отчёт.",
+        "en": "Course model. Selected diagram excerpts are public."
+      },
+      "retrospective": true
+    }
+  ]
 }

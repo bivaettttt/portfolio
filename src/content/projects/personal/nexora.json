@@ -66,7 +66,29 @@
         "en": "Message trace"
       },
       "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/workbench.png",
-      "preview": "media/nexora/workbench-640.webp"
+      "preview": "media/nexora/workbench-640.webp",
+      "original": "media/nexora/workbench.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "40461f4fa4dd6f2ef7d65de0291c66a049d071308ab49a67012e7040005a9493",
+      "variants": [
+        {
+          "path": "media/nexora/workbench-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/nexora/workbench-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/nexora/workbench-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Одно событие CRM и две доставки: ERP по SOAP и Billing по REST. Идентификаторы связывают обработку.",
+        "en": "One CRM event and two deliveries: ERP over SOAP and Billing over REST. Identifiers connect processing."
+      }
     },
     {
       "path": "media/nexora/partial-delivery.webp",
@@ -77,7 +99,29 @@
         "en": "Partial delivery"
       },
       "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/partial-delivery.png",
-      "preview": "media/nexora/partial-delivery-640.webp"
+      "preview": "media/nexora/partial-delivery-640.webp",
+      "original": "media/nexora/partial-delivery.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "088004ef86d612a10c5b1ac8d3b4627de5c531da96bdee36ea3f1ee3cc5c33a5",
+      "variants": [
+        {
+          "path": "media/nexora/partial-delivery-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/nexora/partial-delivery-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/nexora/partial-delivery-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Billing обработал событие, ERP ожидает повтора. У каждой доставки свой статус, история и следующий шаг.",
+        "en": "Billing applied the event while ERP awaits retry. Each delivery has its own state, history and next step."
+      }
     },
     {
       "path": "media/nexora/error-inspector.webp",
@@ -88,7 +132,29 @@
         "en": "Error inspector"
       },
       "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/error-inspector.png",
-      "preview": "media/nexora/error-inspector-640.webp"
+      "preview": "media/nexora/error-inspector-640.webp",
+      "original": "media/nexora/error-inspector.png",
+      "originalWidth": 1440,
+      "originalHeight": 1725,
+      "originalSha256": "4665da0e2f02523542ed1312f0f3b5853a87edc734de51918c56c82b04b47223",
+      "variants": [
+        {
+          "path": "media/nexora/error-inspector-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/nexora/error-inspector-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/nexora/error-inspector-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "ERP попал в DLQ после четырёх попыток. Код ошибки, история и восстановление относятся к конкретной доставке.",
+        "en": "ERP reached DLQ after four attempts. The error code, history and recovery belong to that delivery."
+      }
     },
     {
       "path": "media/nexora/reconciliation.webp",
@@ -99,7 +165,29 @@
         "en": "Projection reconciliation"
       },
       "source": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/assets/screenshots/reconciliation.png",
-      "preview": "media/nexora/reconciliation-640.webp"
+      "preview": "media/nexora/reconciliation-640.webp",
+      "original": "media/nexora/reconciliation.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "c366a13c3e31d34cbad07fffab94e8e3e9513145f406c1982c4da4a3c6dba491",
+      "variants": [
+        {
+          "path": "media/nexora/reconciliation-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/nexora/reconciliation-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/nexora/reconciliation-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Сверка проекций получателей проверяет бизнес-результат доставки. Успех транспортного запроса сам по себе его не доказывает.",
+        "en": "Receiver reconciliation verifies the business result. Transport success alone does not prove that result."
+      }
     }
   ],
   "sha": "e028f4be74e077017cae596a5d046c8a3d577a9f",
@@ -258,7 +346,17 @@
       "check": {
         "ru": "Сопоставить две доставки и результат повтора.",
         "en": "Reconcile both deliveries and the retry result."
-      }
+      },
+      "condition": {
+        "ru": "CRM записывает профиль и Outbox. Одно событие приводит к двум независимым доставкам ERP SOAP и Billing REST.",
+        "en": "CRM records a profile and an outbox event. One event produces independent ERP SOAP and Billing REST deliveries."
+      },
+      "constraints": {
+        "ru": "Локальный стенд, ролевые ключи и сверка одного клиента.",
+        "en": "Local environment, role keys and one-customer reconciliation."
+      },
+      "implementation": "https://github.com/bivaettttt/nexora/tree/e028f4be74e077017cae596a5d046c8a3d577a9f/backend",
+      "testSource": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/frontend/e2e/console.spec.ts"
     },
     {
       "id": "FR-06",
@@ -273,7 +371,17 @@
       "check": {
         "ru": "Подать устаревшее событие после новой версии.",
         "en": "Submit an older event after applying a new version."
-      }
+      },
+      "condition": {
+        "ru": "CRM записывает профиль и Outbox. Одно событие приводит к двум независимым доставкам ERP SOAP и Billing REST.",
+        "en": "CRM records a profile and an outbox event. One event produces independent ERP SOAP and Billing REST deliveries."
+      },
+      "constraints": {
+        "ru": "Локальный стенд, ролевые ключи и сверка одного клиента.",
+        "en": "Local environment, role keys and one-customer reconciliation."
+      },
+      "implementation": "https://github.com/bivaettttt/nexora/tree/e028f4be74e077017cae596a5d046c8a3d577a9f/backend",
+      "testSource": "https://github.com/bivaettttt/nexora/blob/e028f4be74e077017cae596a5d046c8a3d577a9f/frontend/e2e/console.spec.ts"
     }
   ],
   "diagram": {
@@ -315,5 +423,36 @@
         "en": "Billing may succeed while ERP fails. The isolated delivery enters a DLQ and can be retried after resolving the cause."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "CRM записывает профиль и Outbox. Одно событие приводит к двум независимым доставкам ERP SOAP и Billing REST.",
+      "en": "CRM records a profile and an outbox event. One event produces independent ERP SOAP and Billing REST deliveries."
+    },
+    "exception": {
+      "ru": "При отказе ERP доставка Billing остаётся успешной. После исчерпания попыток оператор исправляет причину и запускает повтор.",
+      "en": "Billing can succeed while ERP fails. After bounded attempts, an operator resolves the cause and retries."
+    },
+    "tradeoff": {
+      "ru": "At-least-once требует идемпотентного получателя. Подтверждение брокера не означает бизнес-обработку, Inbox фиксируется перед ack.",
+      "en": "At-least-once requires idempotent consumers. Broker confirmation is distinct from business completion and inbox commit precedes acknowledgement."
+    },
+    "acceptance": {
+      "ru": "Correlation ID связывает payload, маппинг, доставки и попытки. Сверка подтверждает восстановленную проекцию.",
+      "en": "A correlation ID connects payload, mappings, deliveries and attempts. Reconciliation verifies the recovered projection."
+    }
+  },
+  "detail": {
+    "path": "media/nexora/inspection-detail.png",
+    "width": 1080,
+    "height": 680,
+    "title": {
+      "ru": "Состояния доставок · увеличенный фрагмент",
+      "en": "Delivery states · detail"
+    },
+    "caption": {
+      "ru": "Фрагмент оригинального снимка. Кадрирование для чтения технических деталей, содержимое интерфейса сохранено.",
+      "en": "A crop of the original screenshot for technical inspection. The interface content is preserved."
+    }
+  }
 }

@@ -66,7 +66,29 @@
         "en": "Requirement workspace"
       },
       "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/requirement.png",
-      "preview": "media/traceon/requirement-640.webp"
+      "preview": "media/traceon/requirement-640.webp",
+      "original": "media/traceon/requirement.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "8e728300a43dd689f19187a2954f18ca7561b88da008f4bf15ed59b9b5975882",
+      "variants": [
+        {
+          "path": "media/traceon/requirement-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/traceon/requirement-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/traceon/requirement-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "FR-014: содержание и версия требования, связанные изменения и вход в анализ влияния.",
+        "en": "FR-014: content and revision, related changes and the entry to impact analysis."
+      }
     },
     {
       "path": "media/traceon/impact.webp",
@@ -77,7 +99,29 @@
         "en": "Impact analysis"
       },
       "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/impact.png",
-      "preview": "media/traceon/impact-640.webp"
+      "preview": "media/traceon/impact-640.webp",
+      "original": "media/traceon/impact.png",
+      "originalWidth": 1440,
+      "originalHeight": 2234,
+      "originalSha256": "a773f467626e3eee44186b0d48c436e3921b1f880497457dd1da4e412b5001ae",
+      "variants": [
+        {
+          "path": "media/traceon/impact-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/traceon/impact-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/traceon/impact-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Путь от FR-014 к API, данным и тестам. У затронутого объекта — объяснение влияния и решение аналитика.",
+        "en": "Paths from FR-014 to APIs, data and tests. Each affected object has an explanation and analyst decision."
+      }
     },
     {
       "path": "media/traceon/review.webp",
@@ -88,7 +132,29 @@
         "en": "Change review"
       },
       "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/review.png",
-      "preview": "media/traceon/review-640.webp"
+      "preview": "media/traceon/review-640.webp",
+      "original": "media/traceon/review.png",
+      "originalWidth": 1440,
+      "originalHeight": 1658,
+      "originalSha256": "9ca541b0acc6fcb660007588f83a152e9bbb718c47da15628a75ba3cba7d92b6",
+      "variants": [
+        {
+          "path": "media/traceon/review-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/traceon/review-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/traceon/review-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Ревьюер принимает решение по выбранной редакции. История согласований сохранена рядом с требованием и связями.",
+        "en": "The reviewer decides on a selected revision. Review history remains alongside the requirement and its links."
+      }
     },
     {
       "path": "media/traceon/baseline.webp",
@@ -99,7 +165,29 @@
         "en": "Baseline comparison"
       },
       "source": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/assets/screenshots/baseline.png",
-      "preview": "media/traceon/baseline-640.webp"
+      "preview": "media/traceon/baseline-640.webp",
+      "original": "media/traceon/baseline.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "486abdda4a75db1eb6c2468960af643be6266eea786e2ac00d87ff3b7541f431",
+      "variants": [
+        {
+          "path": "media/traceon/baseline-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/traceon/baseline-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/traceon/baseline-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Два baseline: добавленные, удалённые и изменённые требования с атрибутами «было → стало».",
+        "en": "Two baselines: added, removed and changed requirements with before-and-after attributes."
+      }
     }
   ],
   "sha": "6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0",
@@ -402,7 +490,17 @@
       "check": {
         "ru": "Повторить обход графа и сопоставить маршрут.",
         "en": "Repeat graph traversal and compare the path."
-      }
+      },
+      "condition": {
+        "ru": "Аналитик выбирает FR-014 и описывает изменение правила. Сохранённая версия требования задаёт исходную точку оценки.",
+        "en": "An analyst selects FR-014 and records a rule change. The saved requirement revision sets the starting point."
+      },
+      "constraints": {
+        "ru": "Синтетический проект, локальные роли, один воспроизводимый путь на находку.",
+        "en": "Synthetic project, local roles and one reproducible path per result."
+      },
+      "implementation": "https://github.com/bivaettttt/traceon/tree/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/backend",
+      "testSource": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/frontend/e2e/traceon.spec.ts"
     },
     {
       "id": "FR-007",
@@ -417,7 +515,17 @@
       "check": {
         "ru": "Новая правка не меняет прежний состав.",
         "en": "A later edit does not change the earlier set."
-      }
+      },
+      "condition": {
+        "ru": "Аналитик выбирает FR-014 и описывает изменение правила. Сохранённая версия требования задаёт исходную точку оценки.",
+        "en": "An analyst selects FR-014 and records a rule change. The saved requirement revision sets the starting point."
+      },
+      "constraints": {
+        "ru": "Синтетический проект, локальные роли, один воспроизводимый путь на находку.",
+        "en": "Synthetic project, local roles and one reproducible path per result."
+      },
+      "implementation": "https://github.com/bivaettttt/traceon/tree/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/backend",
+      "testSource": "https://github.com/bivaettttt/traceon/blob/6cc6505b0c9a2c28a6b2b6ef15332be7962f19a0/frontend/e2e/traceon.spec.ts"
     }
   ],
   "diagram": {
@@ -459,5 +567,36 @@
         "en": "If the graph changes after assessment, the result becomes stale. Rerunning retains the request context."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Аналитик выбирает FR-014 и описывает изменение правила. Сохранённая версия требования задаёт исходную точку оценки.",
+      "en": "An analyst selects FR-014 and records a rule change. The saved requirement revision sets the starting point."
+    },
+    "exception": {
+      "ru": "Если граф изменился, прежняя оценка не подтверждает актуальный состав зависимостей. Анализ повторяется, решения фиксируются для нового контекста.",
+      "en": "If the graph changes, the earlier assessment becomes stale. Analysis runs again and decisions refer to the new context."
+    },
+    "tradeoff": {
+      "ru": "BFS сохраняет один детерминированный путь. Он объясняет влияние без перечисления всех возможных маршрутов.",
+      "en": "BFS records one deterministic path. It explains impact without enumerating every possible route."
+    },
+    "acceptance": {
+      "ru": "Можно завершить оценки, согласовать CR, выпустить v2 и сравнить baseline. Исходный снимок сохраняет прежний состав.",
+      "en": "Complete assessments, approve a CR, issue v2 and compare baselines. The original snapshot preserves its content."
+    }
+  },
+  "detail": {
+    "path": "media/traceon/inspection-detail.png",
+    "width": 990,
+    "height": 570,
+    "title": {
+      "ru": "Карточка FR-014 · увеличенный фрагмент",
+      "en": "FR-014 workspace · detail"
+    },
+    "caption": {
+      "ru": "Фрагмент оригинального снимка. Кадрирование для чтения технических деталей, содержимое интерфейса сохранено.",
+      "en": "A crop of the original screenshot for technical inspection. The interface content is preserved."
+    }
+  }
 }

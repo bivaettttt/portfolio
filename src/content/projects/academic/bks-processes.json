@@ -58,11 +58,127 @@
       "width": 2459,
       "height": 1265,
       "title": {
-        "ru": "Учебная модель процесса в ELMA365",
-        "en": "Course process model in ELMA365"
-      }
+        "ru": "Привлечение и сопровождение клиента",
+        "en": "Customer acquisition and service"
+      },
+      "caption": {
+        "ru": "Маршрут из индивидуальной курсовой. Оригинальный снимок редактора, 2560 × 1440.",
+        "en": "Original editor capture from individual coursework, 2560 × 1440."
+      },
+      "original": "media/bks-processes/elma-client-flow.png",
+      "originalWidth": 2560,
+      "originalHeight": 1440,
+      "originalSha256": "2f86ab409ff8d9a8be4271944b7cb06162e8fd6b69e135c5c4b6db8b5ba03769"
+    },
+    {
+      "path": "media/bks-processes/elma-investment.webp",
+      "width": 1600,
+      "height": 899,
+      "original": "media/bks-processes/elma-investment.png",
+      "originalWidth": 2560,
+      "originalHeight": 1439,
+      "originalSha256": "cdcd4a038ab7a4fd3588aa95adf5c2f86f1348780691c2727c45f1138904295f",
+      "title": {
+        "ru": "Инвестиционное поручение",
+        "en": "Investment order"
+      },
+      "caption": {
+        "ru": "Разделены инициатор, инвестиционный аналитик, риск-менеджер и трейдер. Отказ и доработка имеют отдельные исходы.",
+        "en": "Separate roles for initiator, investment analyst, risk manager and trader. Rejection and revision have distinct paths."
+      },
+      "variants": [
+        {
+          "path": "media/bks-processes/elma-investment-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/bks-processes/elma-investment-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/bks-processes/elma-investment-1280.webp",
+          "width": 1280
+        }
+      ],
+      "preview": "media/bks-processes/elma-investment-640.webp"
+    },
+    {
+      "path": "media/bks-processes/elma-new-product.webp",
+      "width": 1600,
+      "height": 900,
+      "original": "media/bks-processes/elma-new-product.png",
+      "originalWidth": 2560,
+      "originalHeight": 1440,
+      "originalSha256": "4e2b518342f2437306502810465ea029d9b3a65648f5b080bbb192623d73c21f",
+      "title": {
+        "ru": "Вывод нового продукта",
+        "en": "New product launch"
+      },
+      "caption": {
+        "ru": "Параллельные риск- и комплаенс-проверки предшествуют решению о запуске. Подписи сохранены из оригинала отчёта.",
+        "en": "Parallel risk and compliance checks precede the launch decision. Labels are preserved from the original report."
+      },
+      "variants": [
+        {
+          "path": "media/bks-processes/elma-new-product-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/bks-processes/elma-new-product-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/bks-processes/elma-new-product-1280.webp",
+          "width": 1280
+        }
+      ],
+      "preview": "media/bks-processes/elma-new-product-640.webp"
     }
   ],
   "links": [],
-  "api": []
+  "api": [],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Клиентский маршрут фиксирует роли, задачи, переходы и ответственных за передачу работы.",
+      "en": "The customer flow captures roles, tasks, transitions and ownership of handoffs."
+    },
+    "exception": {
+      "ru": "Исключения процесса нужно рассматривать отдельно от успешного маршрута, проверяя условие каждого перехода.",
+      "en": "Exceptions must be reviewed separately from the happy path, inspecting each transition condition."
+    },
+    "tradeoff": {
+      "ru": "ELMA365 даёт конкретный маршрут. Оригинальные модели можно читать независимо от доступа к среде.",
+      "en": "ELMA365 provides a concrete flow. Original models can be examined independently of the environment."
+    },
+    "acceptance": {
+      "ru": "Публичен фрагмент индивидуального отчёта. Независимый прогон всех ролей не выполнялся.",
+      "en": "An individual-report excerpt is public. All roles were not independently rerun."
+    }
+  },
+  "requirements": [
+    {
+      "id": "CASE-BKS-PROCESSES-01",
+      "title": {
+        "ru": "Проверка основного сценария",
+        "en": "Main scenario verification"
+      },
+      "condition": {
+        "ru": "Клиентский маршрут фиксирует роли, задачи, переходы и ответственных за передачу работы.",
+        "en": "The customer flow captures roles, tasks, transitions and ownership of handoffs."
+      },
+      "rule": {
+        "ru": "Модели разделены по рабочим сценариям, пригодным для обсуждения отдельных точек передачи.",
+        "en": "Models are organized by business scenarios so that handoffs can be reviewed individually."
+      },
+      "check": {
+        "ru": "Публичен фрагмент индивидуального отчёта. Независимый прогон всех ролей не выполнялся.",
+        "en": "An individual-report excerpt is public. All roles were not independently rerun."
+      },
+      "constraints": {
+        "ru": "Университетская работа без доступа к промышленной конфигурации.",
+        "en": "University coursework without access to a production configuration."
+      },
+      "retrospective": true
+    }
+  ]
 }

@@ -2,57 +2,192 @@
 import { name, resume, url, type Lang } from "../lib/site";
 const { lang } = Astro.props as { lang: Lang };
 const ru = lang === "ru";
-const phases = ru
-  ? ["Требования", "Модель системы", "Проверка"]
-  : ["Requirements", "System model", "Verification"];
-const approach = ru
+const layers = ru
+  ? [
+      {
+        title: "Потребность",
+        kind: "Бизнес-контекст",
+        detail:
+          "Кто принимает решение, что меняется и по какому результату поймём, что задача решена.",
+        keys: ["Участники", "Ограничения", "Цель"],
+      },
+      {
+        title: "Модель системы",
+        kind: "Процессы и данные",
+        detail:
+          "Связываю состояния, правила, модель данных и обмен между системами.",
+        keys: ["BPMN", "ERD", "API"],
+      },
+      {
+        title: "Проверка",
+        kind: "От правила к доказательству",
+        detail:
+          "Прохожу основной и альтернативный сценарии и сопоставляю результат с критериями приёмки.",
+        keys: ["Исключения", "Инварианты", "Тесты"],
+      },
+    ]
+  : [
+      {
+        title: "Need",
+        kind: "Business context",
+        detail:
+          "Who makes the decision, what changes, and which outcome would show that the need was met.",
+        keys: ["Actors", "Constraints", "Goal"],
+      },
+      {
+        title: "System model",
+        kind: "Processes and data",
+        detail:
+          "Connect states, rules, the data model and the interfaces between systems.",
+        keys: ["BPMN", "ERD", "API"],
+      },
+      {
+        title: "Verification",
+        kind: "From rule to evidence",
+        detail:
+          "Walk the main and alternate paths and compare each outcome with its acceptance criteria.",
+        keys: ["Exceptions", "Invariants", "Tests"],
+      },
+    ];
+const journey = ru
   ? [
       [
-        "Понять задачу",
-        "Уточнить цель, участников и ограничения. Согласовать, по каким признакам результат можно будет принять.",
+        "Потребность",
+        "Уточнить, чей процесс меняется, в чём затруднение и кому нужно принять решение.",
       ],
       [
-        "Собрать модель",
-        "Связать процесс, состояния, данные и контракты. Проверить, что исключения видны на схеме и в требованиях.",
+        "Исследование",
+        "Найти источники, разобрать текущий сценарий и отметить пробелы, которые меняют решение.",
       ],
       [
-        "Проверить решение",
-        "Пройти основной и альтернативный сценарии. Найти доказательство для каждого важного правила.",
+        "Требования",
+        "Описать условия, ожидаемое поведение и критерий приёмки. Согласовать границы.",
+      ],
+      [
+        "Моделирование",
+        "Показать основной поток, исключения, состояния и связи данных.",
+      ],
+      [
+        "Архитектура",
+        "Развести ответственность компонентов и уточнить контракты на границах.",
+      ],
+      [
+        "Реализация",
+        "Проследить, как модель выражена в интерфейсе, обработчиках и ограничениях базы.",
+      ],
+      [
+        "Проверка",
+        "Воспроизвести сценарии и сохранить наблюдаемые результаты. Обновить требования, если меняются условия.",
       ],
     ]
   : [
       [
-        "Understand the problem",
-        "Clarify the goal, stakeholders and constraints. Agree on what would make the outcome acceptable.",
+        "Need",
+        "Identify who owns the workflow, where it breaks down and who needs to make a decision.",
       ],
       [
-        "Build the model",
-        "Connect the process, states, data and contracts. Make exceptions visible in the models and requirements.",
+        "Research",
+        "Inspect sources and the current workflow. Record gaps that could change the outcome.",
       ],
       [
-        "Verify the outcome",
-        "Walk through the main and alternate scenarios. Find evidence for every important rule.",
+        "Requirements",
+        "Define conditions, expected behavior and acceptance criteria. Agree on the scope.",
+      ],
+      [
+        "Modeling",
+        "Map the main flow, exceptions, states and data relationships.",
+      ],
+      [
+        "Architecture",
+        "Separate component responsibilities and specify boundary contracts.",
+      ],
+      [
+        "Implementation",
+        "Trace the model through the interface, handlers and database constraints.",
+      ],
+      [
+        "Verification",
+        "Reproduce the workflows, record observed outcomes and update requirements when assumptions change.",
+      ],
+    ];
+const interests = ru
+  ? [
+      [
+        "Контракты и интеграции",
+        "Хочу глубже разбираться в обмене данными, эволюции API и поведении систем при частичных сбоях.",
+      ],
+      [
+        "Процессы и модели данных",
+        "Интересно связывать бизнес-правила с состояниями, данными и проверяемыми ограничениями.",
+      ],
+    ]
+  : [
+      [
+        "Contracts and integrations",
+        "I want to deepen my understanding of data exchange, API evolution and system behavior during partial failures.",
+      ],
+      [
+        "Processes and data models",
+        "I am interested in connecting business rules to states, data and verifiable constraints.",
       ],
     ];
 ---
 
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">
-      <span class="signal" aria-hidden="true"></span>
-      {ru ? "СИСТЕМНЫЙ АНАЛИТИК · JUNIOR" : "SYSTEM ANALYST · JUNIOR"}
-    </p>
-    <h1>{name[lang]}</h1>
-    <p class="headline">
-      {ru
-        ? "От требований — к работающей системе."
-        : "From requirements to a working system."}
-    </p>
-    <p class="lede">
-      {ru
-        ? "Формализую требования, моделирую процессы и данные, описываю API и проверяю ключевые сценарии."
-        : "I define requirements, model processes and data, document APIs and verify key scenarios."}
-    </p>
+<section class="editorial-hero">
+  <div class="editorial-intro">
+    <div>
+      <p class="eyebrow">
+        {ru ? "СИСТЕМНЫЙ АНАЛИТИК · JUNIOR" : "SYSTEM ANALYST · JUNIOR"}
+      </p>
+      <h1>{name[lang]}</h1>
+    </div>
+    <div class="editorial-position">
+      <p class="headline">
+        {ru
+          ? "От требований — к работающей системе."
+          : "From requirements to a working system."}
+      </p>
+      <p class="lede">
+        {ru
+          ? "Моделирую процессы и данные, описываю API и проверяю, как система ведёт себя в основном и исключительных сценариях."
+          : "I model processes and data, document APIs and verify how systems behave in normal and exceptional scenarios."}
+      </p>
+    </div>
+  </div>
+  <div
+    class="document-desk"
+    aria-label={
+      ru ? "Рабочий подход системного аналитика" : "Systems analysis approach"
+    }
+  >
+    <div class="desk-lines" aria-hidden="true">
+      <i></i>
+      <i></i>
+    </div>
+    {layers.map((layer, index) => (
+      <details
+        class={"analysis-sheet sheet-" + index}
+        name="hero-layers"
+        open={index === 1}
+      >
+        <summary>
+          <span class="sheet-kind">{layer.kind}</span>
+          <strong>{layer.title}</strong>
+          <span class="sheet-plus" aria-hidden="true">
+            +
+          </span>
+        </summary>
+        <p>{layer.detail}</p>
+        <ul aria-label={ru ? "Артефакты" : "Artifacts"}>
+          {layer.keys.map((key) => (
+            <li>{key}</li>
+          ))}
+        </ul>
+      </details>
+    ))}
+  </div>
+  <div class="editorial-links">
+    <p>{ru ? "Новосибирск · НГТУ НЭТИ" : "Novosibirsk · NSTU NETI"}</p>
     <div class="actions">
       <a class="button primary" href={url("projects", lang)}>
         {ru ? "Смотреть проекты" : "Explore projects"}{" "}
@@ -63,80 +198,71 @@ const approach = ru
       </a>
     </div>
   </div>
-  <div class="hero-art" aria-hidden="true">
-    <div class="art-grid"></div>
-    <div class="art-emblem">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="art-layers">
-      {phases.map((title, i) => (
-        <div class={"art-sheet sheet-" + i}>
-          <span class="sheet-icon">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-          <span>{title}</span>
-          <b>↘</b>
-        </div>
-      ))}
-    </div>
-    <div class="art-index">TN / SYSTEM ANALYSIS</div>
-  </div>
 </section>
-<section class="intro-strip">
-  <span>
-    {ru ? "НГТУ НЭТИ · Бизнес-информатика" : "NSTU NETI · Business Informatics"}
-  </span>
-  <span>{ru ? "Новосибирск" : "Novosibirsk"}</span>
-  <a href={resume}>
-    {ru ? "Резюме на HH.ru" : "Résumé on HH.ru"}{" "}
-    <span aria-hidden="true">↗</span>
-  </a>
-</section>
-<section class="spread">
+<section class="editorial-about">
   <div>
     <p class="eyebrow">{ru ? "ОБО МНЕ" : "ABOUT"}</p>
-    <h2>{ru ? "Разбираюсь, как устроены системы" : "How systems work"}</h2>
+    <h2>
+      {ru
+        ? "Как устроена система и что меняется, когда она ошибается?"
+        : "How does the system work, and what happens when it fails?"}
+    </h2>
   </div>
   <div class="prose">
     <p>
       {ru
-        ? "Учусь на бизнес-информатике в НГТУ НЭТИ. В университете моделировал процессы и базы данных, на практике собрал учебный процесс в ELMA365, а на командном хакатоне отвечал за требования и сценарии."
-        : "I study business informatics at NSTU NETI. My coursework covers process and data modeling. During placement I configured a prototype in ELMA365, and at a team hackathon I owned requirements and user flows."}
+        ? "Учусь на бизнес-информатике в НГТУ НЭТИ. На практике настроил учебный процесс в ELMA365, а на командном хакатоне отвечал за требования и сценарии."
+        : "I study business informatics at NSTU NETI. During placement I configured a prototype in ELMA365, and at a team hackathon I owned requirements and user flows."}
     </p>
     <p>
       {ru
-        ? "Ищу позицию Junior System Analyst. Хочу развивать навыки проектирования интеграций и API, моделирования данных и проверки решений вместе с командой."
-        : "I am looking for a Junior System Analyst role. I want to advance my work in integrations, APIs and data modeling, and verify designs with a team."}
+        ? "Ищу позицию Junior System Analyst. Хочу работать с интеграциями, API и моделями данных и проверять решения вместе с командой."
+        : "I am looking for a Junior System Analyst role. I want to work on integrations, APIs and data models, and verify designs with a team."}
     </p>
   </div>
 </section>
-<section class="method">
-  <p class="eyebrow">{ru ? "ПОДХОД" : "APPROACH"}</p>
-  <h2>{ru ? "Как веду работу" : "How I work"}</h2>
-  <ol>
-    {approach.map(([title, description], i) => (
-      <li>
-        <span class="step-number">{String(i + 1).padStart(2, "0")}</span>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </li>
+<section class="approach-board">
+  <div class="approach-title">
+    <p class="eyebrow">{ru ? "ПОДХОД" : "APPROACH"}</p>
+    <h2>{ru ? "Как веду работу" : "How I work"}</h2>
+    <p>
+      {ru
+        ? "Каждый шаг даёт материал, который можно обсудить с командой."
+        : "Every step produces something the team can review."}
+    </p>
+  </div>
+  <div class="journey">
+    {journey.map(([title, detail], i) => (
+      <details name="journey" open={i === 0}>
+        <summary>
+          <span class="journey-dot" aria-hidden="true"></span>
+          {title}
+        </summary>
+        <p>{detail}</p>
+      </details>
     ))}
-  </ol>
-</section>
-<section class="contact-band">
-  <div>
-    <h2>{ru ? "Обсудим работу?" : "Let’s talk about the work"}</h2>
-    <p>
-      {ru
-        ? "Открыт к позициям начинающего системного аналитика."
-        : "Open to junior system analyst roles."}
-    </p>
   </div>
-  <a class="button primary" href={url("contact", lang)}>
-    {ru ? "Связаться" : "Get in touch"} <span aria-hidden="true">↗</span>
-  </a>
+</section>
+<section class="direction-strip">
+  <div>
+    <p class="eyebrow">{ru ? "ПРОФЕССИОНАЛЬНЫЕ ЦЕЛИ" : "PROFESSIONAL GOALS"}</p>
+    <h2>{ru ? "Куда развиваюсь" : "Where I want to grow"}</h2>
+  </div>
+  <div>
+    {interests.map(([title, text]) => (
+      <details>
+        <summary>{title}</summary>
+        <p>{text}</p>
+      </details>
+    ))}
+  </div>
+</section>
+<section class="editorial-close">
+  <h2>{ru ? "Обсудим работу?" : "Let’s talk about the work"}</h2>
+  <nav aria-label={ru ? "Портфолио и контакты" : "Portfolio and contact"}>
+    <a href={url("projects", lang)}>{ru ? "Проекты" : "Projects"} ↗</a>
+    <a href={url("profile", lang)}>{ru ? "Профиль" : "Profile"} ↗</a>
+    <a href={resume}>{ru ? "Резюме" : "Résumé"} ↗</a>
+    <a href={url("contact", lang)}>{ru ? "Контакты" : "Contact"} ↗</a>
+  </nav>
 </section>

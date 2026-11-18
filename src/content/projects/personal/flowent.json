@@ -59,14 +59,36 @@
   "screens": [
     {
       "path": "media/flowent/expense-editor.webp",
-      "width": 1440,
-      "height": 810,
+      "width": 1600,
+      "height": 900,
       "title": {
         "ru": "Редактор корпоративных расходов",
         "en": "Corporate expense modeler"
       },
       "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/expense-editor.png",
-      "preview": "media/flowent/expense-editor-640.webp"
+      "preview": "media/flowent/expense-editor-640.webp",
+      "original": "media/flowent/expense-editor.png",
+      "originalWidth": 1600,
+      "originalHeight": 900,
+      "originalSha256": "4b50536479646b9f1e110e53dfe6e5241276f2c19f21bc0bf7758e6e21006405",
+      "variants": [
+        {
+          "path": "media/flowent/expense-editor-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/flowent/expense-editor-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/flowent/expense-editor-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Редактор корпоративных расходов: BPMN, сохранённая редакция и опубликованная версия процесса.",
+        "en": "The expense editor: BPMN, the saved revision and published process version."
+      }
     },
     {
       "path": "media/flowent/runtime-viewer.webp",
@@ -77,7 +99,29 @@
         "en": "Execution and waiting branch"
       },
       "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/runtime-viewer.png",
-      "preview": "media/flowent/runtime-viewer-640.webp"
+      "preview": "media/flowent/runtime-viewer-640.webp",
+      "original": "media/flowent/runtime-viewer.png",
+      "originalWidth": 1440,
+      "originalHeight": 1060,
+      "originalSha256": "3a9e76012e8c97bcabaf94e447fd15e7d85c96ca172dbca961f92ba102b63cc9",
+      "variants": [
+        {
+          "path": "media/flowent/runtime-viewer-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/flowent/runtime-viewer-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/flowent/runtime-viewer-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Экземпляр закреплён за опубликованной версией. Объяснение JOIN показывает недостающий вход и активную задачу.",
+        "en": "The instance is pinned to a published version. The JOIN explanation shows the missing input and active task."
+      }
     },
     {
       "path": "media/flowent/incident-details.webp",
@@ -88,7 +132,29 @@
         "en": "Incident attempt history"
       },
       "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/incident-details.png",
-      "preview": "media/flowent/incident-details-640.webp"
+      "preview": "media/flowent/incident-details-640.webp",
+      "original": "media/flowent/incident-details.png",
+      "originalWidth": 1440,
+      "originalHeight": 950,
+      "originalSha256": "eb58e89015fae862ea943c1f7c11226253710fdccc415fcc5bfc198a25f63722",
+      "variants": [
+        {
+          "path": "media/flowent/incident-details-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/flowent/incident-details-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/flowent/incident-details-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Инцидент GUARD_UNAVAILABLE: причина отказа, элемент BPMN и хронология повторных попыток.",
+        "en": "A GUARD_UNAVAILABLE incident: failure reason, BPMN element and retry history."
+      }
     },
     {
       "path": "media/flowent/recovery-history.webp",
@@ -99,7 +165,29 @@
         "en": "Confirmed recovery"
       },
       "source": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/assets/screenshots/recovery-history.png",
-      "preview": "media/flowent/recovery-history-640.webp"
+      "preview": "media/flowent/recovery-history-640.webp",
+      "original": "media/flowent/recovery-history.png",
+      "originalWidth": 1440,
+      "originalHeight": 1040,
+      "originalSha256": "2ff52b78949157933cc6fca0946fd3267a6ae3bd04ed773ee89a28d28f50e3e6",
+      "variants": [
+        {
+          "path": "media/flowent/recovery-history-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/flowent/recovery-history-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/flowent/recovery-history-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "После повтора зафиксированы MANUAL_RETRY и SERVICE_DONE. Восстановление требует подтверждения.",
+        "en": "Retry records MANUAL_RETRY and SERVICE_DONE. Recovery requires confirmation."
+      }
     }
   ],
   "sha": "ee5d419aada38fce45343f04850882ebeee12d17",
@@ -306,7 +394,17 @@
       "check": {
         "ru": "Проверить отклонение устаревшей редакции.",
         "en": "Check that a stale revision is rejected."
-      }
+      },
+      "condition": {
+        "ru": "Менеджер публикует модель. Сотрудник запускает экземпляр, согласующие получают задачи и отправляют формы закреплённой версии.",
+        "en": "A manager publishes the model. An employee starts an instance and approvers submit forms from the pinned version."
+      },
+      "constraints": {
+        "ru": "Поддерживаемое подмножество BPMN, три учебных модели, локальный стенд.",
+        "en": "A documented subset of BPMN, three learning models and a local environment."
+      },
+      "implementation": "https://github.com/bivaettttt/flowent/tree/ee5d419aada38fce45343f04850882ebeee12d17/backend",
+      "testSource": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/frontend/e2e/workbench.spec.ts"
     },
     {
       "id": "NFR-02",
@@ -321,7 +419,17 @@
       "check": {
         "ru": "Завершить ветви по очереди и найти один JOINED.",
         "en": "Complete both branches and find one JOINED."
-      }
+      },
+      "condition": {
+        "ru": "Менеджер публикует модель. Сотрудник запускает экземпляр, согласующие получают задачи и отправляют формы закреплённой версии.",
+        "en": "A manager publishes the model. An employee starts an instance and approvers submit forms from the pinned version."
+      },
+      "constraints": {
+        "ru": "Поддерживаемое подмножество BPMN, три учебных модели, локальный стенд.",
+        "en": "A documented subset of BPMN, three learning models and a local environment."
+      },
+      "implementation": "https://github.com/bivaettttt/flowent/tree/ee5d419aada38fce45343f04850882ebeee12d17/backend",
+      "testSource": "https://github.com/bivaettttt/flowent/blob/ee5d419aada38fce45343f04850882ebeee12d17/frontend/e2e/workbench.spec.ts"
     }
   ],
   "diagram": {
@@ -363,5 +471,36 @@
         "en": "Stale revisions are rejected at publication. Command replay returns the existing result. A join waits for its pending branch."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Менеджер публикует модель. Сотрудник запускает экземпляр, согласующие получают задачи и отправляют формы закреплённой версии.",
+      "en": "A manager publishes the model. An employee starts an instance and approvers submit forms from the pinned version."
+    },
+    "exception": {
+      "ru": "JOIN ждёт вторую ветвь после первой задачи. При отказе сервиса возникает инцидент, retry ставит работу в очередь.",
+      "en": "A join waits after the first task. Service failure creates an incident and retry queues the work."
+    },
+    "tradeoff": {
+      "ru": "Блокировка экземпляра сериализует переходы. Ограниченное BPMN-подмножество позволяет воспроизвести поведение поддерживаемых конструкций.",
+      "en": "An instance lock serializes transitions. A limited BPMN subset makes supported execution reproducible."
+    },
+    "acceptance": {
+      "ru": "После второй ветви возникает один JOINED. Таймер переживает перезапуск. Экземпляр читает закреплённый XML.",
+      "en": "The second branch produces one JOINED. Timers survive restart and instances read their pinned XML."
+    }
+  },
+  "detail": {
+    "path": "media/flowent/inspection-detail.png",
+    "width": 690,
+    "height": 205,
+    "title": {
+      "ru": "Ожидание JOIN · увеличенный фрагмент",
+      "en": "Waiting JOIN · detail"
+    },
+    "caption": {
+      "ru": "Фрагмент оригинального снимка. Кадрирование для чтения технических деталей, содержимое интерфейса сохранено.",
+      "en": "A crop of the original screenshot for technical inspection. The interface content is preserved."
+    }
+  }
 }

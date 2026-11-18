@@ -11,7 +11,7 @@ export default defineConfig({
   webServer: process.env.PORTFOLIO_URL
     ? undefined
     : {
-        command: "npm run preview -- --port 44111",
+        command: "npm run preview -- --port 44111 --ignore-lock",
         url: "http://127.0.0.1:44111/portfolio/",
         reuseExistingServer: !process.env.CI,
         timeout: 20000,

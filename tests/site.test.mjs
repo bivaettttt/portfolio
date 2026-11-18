@@ -65,6 +65,11 @@ test("all generated internal links, sources, and legacy redirects resolve from t
     const attributes = [...page.matchAll(/(?:href|src|poster)="([^"]+)"/g)].map(
       (m) => m[1].replaceAll("&amp;", "&"),
     );
+    for (const set of page.matchAll(/srcset="([^"]+)"/g)) {
+      attributes.push(
+        ...set[1].split(",").map((v) => v.trim().split(/\s+/)[0]),
+      );
+    }
     const redirect = page.match(/url=(\/portfolio\/[^"<> ]+)/i);
     if (redirect) attributes.push(redirect[1]);
     for (const value of attributes) {

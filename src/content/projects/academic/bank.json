@@ -60,6 +60,10 @@
       "title": {
         "ru": "Концептуальная ER-модель",
         "en": "Conceptual ER model"
+      },
+      "caption": {
+        "ru": "Клиенты, счета и операции связываются в концептуальной модели, затем в таблицах, ключах и процедурах.",
+        "en": "Customers, accounts and transactions link in the conceptual model, then tables, keys and procedures."
       }
     },
     {
@@ -69,9 +73,89 @@
       "title": {
         "ru": "Схема по каталогу PostgreSQL",
         "en": "PostgreSQL catalog diagram"
+      },
+      "caption": {
+        "ru": "Совпадение имён на ER не доказывает физическую связь. Внешние ключи проверяются в системном каталоге PostgreSQL.",
+        "en": "Matching ER names do not establish physical links. Foreign keys are verified through the PostgreSQL catalog."
       }
+    },
+    {
+      "path": "media/bank/bank-keys-detail.webp",
+      "width": 1286,
+      "height": 441,
+      "original": "media/bank/bank-keys-detail.png",
+      "originalWidth": 1286,
+      "originalHeight": 441,
+      "originalSha256": "264b409f1e157368393a4bd585b1126dbc55bf1a22ffb4859a48a61d54f537d5",
+      "title": {
+        "ru": "Фрагмент фактических внешних ключей",
+        "en": "Actual foreign key excerpt"
+      },
+      "caption": {
+        "ru": "Четыре таблицы и три FK из каталога PostgreSQL. Схема содержит структуру без банковских записей.",
+        "en": "Four tables and three foreign keys from the PostgreSQL catalog. Structure only, without banking records."
+      },
+      "variants": [
+        {
+          "path": "media/bank/bank-keys-detail-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/bank/bank-keys-detail-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/bank/bank-keys-detail-1280.webp",
+          "width": 1280
+        }
+      ],
+      "preview": "media/bank/bank-keys-detail-640.webp"
     }
   ],
   "links": [],
-  "api": []
+  "api": [],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Клиенты, счета и операции связываются в концептуальной модели, затем в таблицах, ключах и процедурах.",
+      "en": "Customers, accounts and transactions link in the conceptual model, then tables, keys and procedures."
+    },
+    "exception": {
+      "ru": "Совпадение имён на ER не доказывает физическую связь. Внешние ключи проверяются в системном каталоге PostgreSQL.",
+      "en": "Matching ER names do not establish physical links. Foreign keys are verified through the PostgreSQL catalog."
+    },
+    "tradeoff": {
+      "ru": "Схема публикуется без банковских записей. Наличие процедуры не подтверждает поведение конкурентных переводов.",
+      "en": "The schema is published without banking records. A procedure does not establish concurrent transfer behavior."
+    },
+    "acceptance": {
+      "ru": "Каталог подтверждает 16 таблиц, 25 FK и 11 представлений после загрузки DDL.",
+      "en": "The catalog confirms 16 tables, 25 foreign keys and 11 views after DDL application."
+    }
+  },
+  "requirements": [
+    {
+      "id": "CASE-BANK-01",
+      "title": {
+        "ru": "Проверка основного сценария",
+        "en": "Main scenario verification"
+      },
+      "condition": {
+        "ru": "Клиенты, счета и операции связываются в концептуальной модели, затем в таблицах, ключах и процедурах.",
+        "en": "Customers, accounts and transactions link in the conceptual model, then tables, keys and procedures."
+      },
+      "rule": {
+        "ru": "Физическая схема на сайте построена из системного каталога после загрузки DDL.",
+        "en": "The physical diagram was generated from the database catalog after applying the DDL."
+      },
+      "check": {
+        "ru": "Каталог подтверждает 16 таблиц, 25 FK и 11 представлений после загрузки DDL.",
+        "en": "The catalog confirms 16 tables, 25 foreign keys and 11 views after DDL application."
+      },
+      "constraints": {
+        "ru": "Загружена только схема. Конкурентность переводов не измерялась.",
+        "en": "Schema-only validation. Concurrent transfers were not benchmarked."
+      },
+      "retrospective": true
+    }
+  ]
 }

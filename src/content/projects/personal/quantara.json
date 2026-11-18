@@ -55,36 +55,102 @@
   "screens": [
     {
       "path": "media/quantara/dashboard.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Финансовый обзор",
         "en": "Financial workspace"
       },
       "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/assets/screenshots/dashboard.png",
-      "preview": "media/quantara/dashboard-640.webp"
+      "preview": "media/quantara/dashboard-640.webp",
+      "original": "media/quantara/dashboard.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "58b388a4fe25426b9546011f0651e96ab80e4cec090e0551e4c6c013d63db906",
+      "variants": [
+        {
+          "path": "media/quantara/dashboard-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/quantara/dashboard-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/quantara/dashboard-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Показатель связан с периодом, исходной загрузкой и проверкой данных.",
+        "en": "A metric is tied to its period, source import and data checks."
+      }
     },
     {
       "path": "media/quantara/lineage.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Происхождение показателя",
         "en": "Metric lineage"
       },
       "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/assets/screenshots/lineage.png",
-      "preview": "media/quantara/lineage-640.webp"
+      "preview": "media/quantara/lineage-640.webp",
+      "original": "media/quantara/lineage.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "7af214c38f05bd31d0e1b4401ac8dd8648d5702b6937bb8a16f2e95f6d7e8d5c",
+      "variants": [
+        {
+          "path": "media/quantara/lineage-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/quantara/lineage-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/quantara/lineage-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Происхождение значения раскрывается от показателя до исходных записей и преобразований.",
+        "en": "Lineage traces a metric back to source records and transformations."
+      }
     },
     {
       "path": "media/quantara/comparison.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Сравнение отчётов",
         "en": "Report comparison"
       },
       "source": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/assets/screenshots/comparison.png",
-      "preview": "media/quantara/comparison-640.webp"
+      "preview": "media/quantara/comparison-640.webp",
+      "original": "media/quantara/comparison.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "287e5a9cefc178c4a04a271ae8fb7c40a847aa9462e32d15eb530a29ec4069f0",
+      "variants": [
+        {
+          "path": "media/quantara/comparison-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/quantara/comparison-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/quantara/comparison-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Сравнение показывает влияние исправления на результат и сохраняет контекст исходной версии.",
+        "en": "Comparison shows how a correction affects the result while preserving original version context."
+      }
     }
   ],
   "sha": "d4142f4cb3fc87a630e230fe7c60c2eda084363e",
@@ -296,7 +362,17 @@
       "check": {
         "ru": "Открыть первичную запись из показателя.",
         "en": "Follow a metric to the raw record."
-      }
+      },
+      "condition": {
+        "ru": "Инженер загружает данные ERP, банка и FX. Проверенные версии преобразуются в факты и снимок отчёта.",
+        "en": "An engineer ingests ERP, bank and FX data. Validated revisions become facts and a report snapshot."
+      },
+      "constraints": {
+        "ru": "Учебная методология и синтетические источники.",
+        "en": "Educational methodology and synthetic sources."
+      },
+      "implementation": "https://github.com/bivaettttt/quantara/tree/d4142f4cb3fc87a630e230fe7c60c2eda084363e/backend",
+      "testSource": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/frontend/e2e/workspace.spec.ts"
     },
     {
       "id": "FR-05",
@@ -311,7 +387,17 @@
       "check": {
         "ru": "Выполнить коррекцию и сравнить результаты.",
         "en": "Apply a correction and compare the results."
-      }
+      },
+      "condition": {
+        "ru": "Инженер загружает данные ERP, банка и FX. Проверенные версии преобразуются в факты и снимок отчёта.",
+        "en": "An engineer ingests ERP, bank and FX data. Validated revisions become facts and a report snapshot."
+      },
+      "constraints": {
+        "ru": "Учебная методология и синтетические источники.",
+        "en": "Educational methodology and synthetic sources."
+      },
+      "implementation": "https://github.com/bivaettttt/quantara/tree/d4142f4cb3fc87a630e230fe7c60c2eda084363e/backend",
+      "testSource": "https://github.com/bivaettttt/quantara/blob/d4142f4cb3fc87a630e230fe7c60c2eda084363e/frontend/e2e/workspace.spec.ts"
     }
   ],
   "video": "media/quantara/demo.mp4",
@@ -354,5 +440,23 @@
         "en": "Missing FX rates and invalid references are visible in quarantine. ETL resumes from a checkpoint."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Инженер загружает данные ERP, банка и FX. Проверенные версии преобразуются в факты и снимок отчёта.",
+      "en": "An engineer ingests ERP, bank and FX data. Validated revisions become facts and a report snapshot."
+    },
+    "exception": {
+      "ru": "Неверная ссылка или отсутствие курса видны в карантине. Исправление создаёт новую версию и сохраняет старый отчёт.",
+      "en": "Invalid references and missing rates appear in quarantine. Corrections create a revision and preserve prior reports."
+    },
+    "tradeoff": {
+      "ru": "Raw и lineage требуют больше записей, но объясняют денежный результат. Начисления и cash сохраняют разный смысл.",
+      "en": "Raw data and lineage cost additional records but explain monetary results. Accrual and cash retain distinct meanings."
+    },
+    "acceptance": {
+      "ru": "KPI связан с первичными фактами и курсом. Исправление сравнивается со старым снимком и его контрольной суммой.",
+      "en": "KPIs link to source facts and rates. A correction is compared to the earlier snapshot and its digest."
+    }
+  }
 }

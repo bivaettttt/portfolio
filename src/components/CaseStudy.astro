@@ -1,4 +1,7 @@
 ---
+import CaseNavigation from "./CaseNavigation.astro";
+import ImageGallery from "./ImageGallery.astro";
+import Showcase from "./Showcase.astro";
 import {
   asset,
   categories,
@@ -39,20 +42,46 @@ const caseSections = [
     texts: [p.verification[lang], p.limits[lang]],
   },
 ];
-const next = entries.filter((e) => e.category === p.category && !e.archived);
-const nextCase = next[(next.indexOf(p) + 1) % next.length];
+const peers = entries.filter(
+  (entry) => entry.category === p.category && !entry.archived,
+);
+const position = peers.indexOf(p);
+const previous = peers[position - 1];
+const next = peers[position + 1];
+const chapters = [
+  ...caseSections,
+  ...(p.caseNotes
+    ? [
+        {
+          id: "process",
+          label: ru ? "Процесс и решения" : "Process and trade-offs",
+        },
+      ]
+    : []),
+  ...(p.engineering.length
+    ? [
+        {
+          id: "engineering",
+          label: ru ? "Границы и инварианты" : "Boundaries and invariants",
+        },
+      ]
+    : []),
+  ...(p.requirements.length
+    ? [{ id: "requirements", label: ru ? "Требования" : "Requirements" }]
+    : []),
+  ...(p.api.length ? [{ id: "api", label: "OpenAPI" }] : []),
+  { id: "showcase", label: showcase },
+];
 ---
 
 <div class={"case project-" + p.id}>
+  <CaseNavigation {lang} project={p} {chapters} />
   <header class="case-heading">
-    <a class="breadcrumb" href={url("projects/" + p.category, lang)}>
-      ← {categories[p.category].title[lang]}
-    </a>
     <div class="case-identity">
       <p class="eyebrow">
         {ru ? "КЕЙС СИСТЕМНОГО АНАЛИЗА" : "SYSTEM ANALYSIS CASE"}
       </p>
-      <h1>{title}</h1>
+      <h1 transition:name={"project-" + p.id}>{title}</h1>
       <p class="case-headline">{p.headline[lang]}</p>
       <p class="lede">{p.description[lang]}</p>
       <div class="actions">
@@ -78,23 +107,14 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
   <div class="case-body" id="analysis">
     <aside class="case-side">
       <nav aria-label={ru ? "Оглавление кейса" : "Case contents"}>
-        <p class="eyebrow">{ru ? "В ЭТОМ КЕЙСЕ" : "IN THIS CASE"}</p>
-        {caseSections.map((s) => (
-          <a href={"#" + s.id}>{s.label}</a>
+        {chapters.map((chapter) => (
+          <a href={"#" + chapter.id}>{chapter.label}</a>
         ))}
-        {p.requirements.length > 0 && (
-          <a href="#requirements">{ru ? "Требования" : "Requirements"}</a>
-        )}
-        {p.api.length > 0 && (
-          <a href="#api">{ru ? "Контракты API" : "API contracts"}</a>
-        )}
-        <a href="#showcase">{showcase}</a>
       </nav>
     </aside>
     <div class="case-content">
-      {caseSections.map((section, i) => (
+      {caseSections.map((section) => (
         <section class="case-section" id={section.id}>
-          <span class="step-number">0{i + 1}</span>
           <h2>{section.label}</h2>
           {section.texts.map((text) => (
             <p>{text}</p>
@@ -135,14 +155,37 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
               </a>
               <figcaption>
                 <strong>{p.diagram.title[lang]}</strong>{" "}
-                <a href={p.diagram.source}>
-                  {ru ? "Исходник Mermaid" : "Mermaid source"} ↗
-                </a>
+                {p.diagram.source && (
+                  <a href={p.diagram.source}>
+                    {ru ? "Исходник Mermaid" : "Mermaid source"} ↗
+                  </a>
+                )}
+                {p.diagram.caption && <p>{p.diagram.caption[lang]}</p>}
               </figcaption>
             </figure>
           )}
         </section>
       ))}
+      {p.caseNotes && (
+        <section class="case-section case-process" id="process">
+          <h2>{ru ? "Процесс и решения" : "Process and trade-offs"}</h2>
+          <p>{p.caseNotes.trigger[lang]}</p>
+          <div class="process-evidence">
+            <div>
+              <h3>{ru ? "Альтернативная ветвь" : "Alternative path"}</h3>
+              <p>{p.caseNotes.exception[lang]}</p>
+            </div>
+            <div>
+              <h3>{ru ? "Компромисс" : "Trade-off"}</h3>
+              <p>{p.caseNotes.tradeoff[lang]}</p>
+            </div>
+            <div>
+              <h3>{ru ? "Признак приёмки" : "Acceptance evidence"}</h3>
+              <p>{p.caseNotes.acceptance[lang]}</p>
+            </div>
+          </div>
+        </section>
+      )}
       {p.engineering.length > 0 && (
         <section class="case-section" id="engineering">
           <h2>{ru ? "Границы и инварианты" : "Boundaries and invariants"}</h2>
@@ -158,7 +201,6 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
       )}
       {p.requirements.length > 0 && (
         <section class="case-section" id="requirements">
-          <span class="step-number">04</span>
           <h2>
             {ru
               ? "От требования к проверке"
@@ -170,7 +212,20 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
                 <summary>
                   <code>{req.id}</code> {req.title[lang]}
                 </summary>
+                {req.retrospective && (
+                  <p class="pad">
+                    {ru
+                      ? "Ретроспективная формализация для портфолио на основе подтверждённых материалов."
+                      : "Retrospective portfolio formalization based on the verified materials."}
+                  </p>
+                )}
                 <dl>
+                  {req.condition && (
+                    <div>
+                      <dt>{ru ? "Предусловия" : "Preconditions"}</dt>
+                      <dd>{req.condition[lang]}</dd>
+                    </div>
+                  )}
                   <div>
                     <dt>{ru ? "Инвариант" : "Invariant"}</dt>
                     <dd>{req.rule[lang]}</dd>
@@ -178,6 +233,27 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
                   <div>
                     <dt>{ru ? "Проверка" : "Verification"}</dt>
                     <dd>{req.check[lang]}</dd>
+                  </div>
+                  {req.constraints && (
+                    <div>
+                      <dt>{ru ? "Ограничения" : "Constraints"}</dt>
+                      <dd>{req.constraints[lang]}</dd>
+                    </div>
+                  )}
+                  <div class="requirement-links">
+                    <a href="#process">
+                      {ru ? "Бизнес-процесс" : "Business process"}
+                    </a>
+                    {req.implementation && (
+                      <a href={req.implementation}>
+                        {ru ? "Реализация" : "Implementation"} ↗
+                      </a>
+                    )}
+                    {req.testSource && (
+                      <a href={req.testSource}>
+                        {ru ? "Браузерные проверки" : "Browser verification"} ↗
+                      </a>
+                    )}
                   </div>
                 </dl>
               </details>
@@ -187,7 +263,6 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
       )}
       {p.api.length > 0 && (
         <section class="case-section" id="api">
-          <span class="step-number">05</span>
           <h2>{ru ? "Контракты API" : "API contracts"}</h2>
           <details class="api-details">
             <summary>
@@ -235,160 +310,32 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
       )}
     </div>
   </div>
-  <section class="showcase" id="showcase">
-    <header>
-      <p class="eyebrow">
-        {p.screens.length
-          ? ru
-            ? "РЕАЛЬНЫЕ МАТЕРИАЛЫ"
-            : "ORIGINAL MATERIALS"
-          : ru
-            ? "РЕКОНСТРУКЦИЯ ПО ОПИСАНИЮ"
-            : "DOCUMENTED RECONSTRUCTION"}
-      </p>
-      <h2>
-        {p.category === "personal"
-          ? ru
-            ? "Демонстрация продукта"
-            : "Product walkthrough"
-          : ru
-            ? "Результат работы"
-            : "Project outcome"}
-      </h2>
-      <p>
-        {p.screens.length
-          ? ru
-            ? "Откройте материал в полном размере, чтобы рассмотреть детали."
-            : "Open each artifact at full size to examine the details."
-          : p.limits[lang]}
-      </p>
-    </header>
-    {p.screens.length > 0 ? (
-      <div class="showcase-grid">
-        {p.screens.map((screen, i) => (
-          <figure class:list={[{ "showcase-main": i === 0 }]}>
-            <a
-              href={asset(screen.path)}
-              data-gallery
-              data-title={screen.title[lang]}
-            >
-              <img
-                src={asset(screen.path)}
-                srcset={
-                  screen.preview
-                    ? asset(screen.preview) +
-                      " 640w, " +
-                      asset(screen.path) +
-                      " " +
-                      screen.width +
-                      "w"
-                    : undefined
-                }
-                sizes={
-                  screen.preview
-                    ? i === 0
-                      ? "(max-width: 690px) 90vw, 1150px"
-                      : "(max-width: 690px) 90vw, 580px"
-                    : undefined
-                }
-                alt={screen.title[lang]}
-                width={screen.width}
-                height={screen.height}
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="zoom-icon" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-            <figcaption>
-              <strong>{screen.title[lang]}</strong>
-              {screen.source && (
-                <a href={screen.source}>{ru ? "Источник" : "Source"} ↗</a>
-              )}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    ) : (
-      <div class="flow">
-        <h3>{ru ? "Маршрут" : "Flow"}</h3>
-        <ol>
-          {p.flow.map((phase, index) => (
-            <li>
-              <span>{index + 1}</span>
-              {phase[lang]}
-            </li>
-          ))}
-        </ol>
-      </div>
-    )}
-    {p.video && (
-      <details class="video">
-        <summary>{ru ? "Запись сценария" : "Recorded walkthrough"}</summary>
-        <video
-          controls
-          preload="none"
-          poster={asset(p.screens[0]!.path)}
-          muted
-          playsinline
-          src={asset(p.video)}
-          aria-label={
-            ru
-              ? "Запись сценария без звукового сопровождения"
-              : "Silent recorded walkthrough"
-          }
-        ></video>
-        <p>
-          {ru
-            ? "Без звукового сопровождения. Основные шаги описаны выше."
-            : "Silent recording. The key steps are described above."}
-        </p>
-      </details>
-    )}
-  </section>
-  {nextCase && nextCase.id !== p.id && (
-    <a class="next-case" href={url(projectRoute(nextCase), lang)}>
-      <div>
-        <span class="eyebrow">{ru ? "СЛЕДУЮЩИЙ КЕЙС" : "NEXT CASE"}</span>
-        <strong>{nextCase.title[lang]}</strong>
-      </div>
-      <span aria-hidden="true">↗</span>
+  <Showcase {lang} project={p} />
+  <nav
+    class="case-neighbors"
+    aria-label={ru ? "Навигация по категории" : "Category navigation"}
+  >
+    <div>
+      {previous && (
+        <a rel="prev" href={url(projectRoute(previous), lang)}>
+          <span>{ru ? "Предыдущий проект" : "Previous project"}</span>
+          <strong>← {previous.title[lang]}</strong>
+        </a>
+      )}
+    </div>
+    <a class="category-return" href={url("projects/" + p.category, lang)}>
+      {categories[p.category].title[lang]}
     </a>
-  )}
-  {p.screens.length > 0 && (
-    <dialog class="image-dialog" aria-labelledby="gallery-title">
-      <div class="dialog-head">
-        <h2 id="gallery-title"></h2>
-        <div>
-          <button
-            type="button"
-            data-zoom="-1"
-            aria-label={ru ? "Уменьшить" : "Zoom out"}
-          >
-            −
-          </button>
-          <button
-            type="button"
-            data-zoom="1"
-            aria-label={ru ? "Увеличить" : "Zoom in"}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            data-close
-            aria-label={ru ? "Закрыть" : "Close"}
-          >
-            ×
-          </button>
-        </div>
-      </div>
-      <div class="image-stage" tabindex="0">
-        <img alt="" />
-      </div>
-    </dialog>
-  )}
+    <div>
+      {next && (
+        <a rel="next" href={url(projectRoute(next), lang)}>
+          <span>{ru ? "Следующий проект" : "Next project"}</span>
+          <strong>{next.title[lang]} →</strong>
+        </a>
+      )}
+    </div>
+  </nav>
+  {(p.screens.length || p.diagram) && <ImageGallery {lang} />}
 </div>
 <script>
   document.addEventListener("astro:page-load", () => {
@@ -409,39 +356,5 @@ const nextCase = next[(next.indexOf(p) + 1) % next.length];
       }
       if (empty) empty.hidden = matches > 0;
     });
-    const dialog = document.querySelector<HTMLDialogElement>(".image-dialog");
-    const image = dialog?.querySelector<HTMLImageElement>("img");
-    const title = dialog?.querySelector("h2");
-    if (!dialog || !image || !title) return;
-    let zoom = 100;
-    for (const link of document.querySelectorAll<HTMLAnchorElement>(
-      "[data-gallery]",
-    )) {
-      link.onclick = (event) => {
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
-          return;
-        event.preventDefault();
-        title.textContent = link.dataset.title ?? "";
-        image.src = link.href;
-        image.alt = link.dataset.title ?? "";
-        image.style.width = "100%";
-        zoom = 100;
-        dialog.showModal();
-        dialog.querySelector(".image-stage")?.scrollTo(0, 0);
-      };
-    }
-    dialog.querySelector<HTMLButtonElement>("[data-close]")!.onclick = () =>
-      dialog.close();
-    for (const button of dialog.querySelectorAll<HTMLButtonElement>(
-      "[data-zoom]",
-    )) {
-      button.onclick = () => {
-        zoom = Math.min(
-          250,
-          Math.max(75, zoom + 25 * Number(button.dataset.zoom)),
-        );
-        image.style.width = zoom + "%";
-      };
-    }
   });
 </script>

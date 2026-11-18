@@ -1,0 +1,155 @@
+---
+import {
+  categories,
+  entries,
+  projectRoute,
+  url,
+  type Lang,
+  type Project,
+} from "../lib/site";
+const { lang, project, chapters } = Astro.props as {
+  lang: Lang;
+  project: Project;
+  chapters: { id: string; label: string }[];
+};
+const ru = lang === "ru";
+const peers = entries.filter(
+  (entry) =>
+    entry.category === project.category &&
+    (!entry.archived || entry.id === project.id),
+);
+const category = categories[project.category].title[lang];
+---
+
+<nav class="case-breadcrumb" aria-label={ru ? "Путь к проекту" : "Breadcrumb"}>
+  <ol>
+    <li>
+      <a href={url("projects", lang)}>{ru ? "Проекты" : "Projects"}</a>
+    </li>
+    <li>
+      <a href={url("projects/" + project.category, lang)}>{category}</a>
+    </li>
+    <li aria-current="page">{project.title[lang]}</li>
+  </ol>
+</nav>
+<div class="case-context" data-case-context>
+  <details class="switcher">
+    <summary>
+      <span>{category}</span>
+      <strong>{project.title[lang]}</strong>
+    </summary>
+    <nav
+      aria-label={ru ? "Другие проекты категории" : "Projects in this category"}
+    >
+      {peers.map((peer) => (
+        <a
+          href={url(projectRoute(peer), lang)}
+          aria-current={peer.id === project.id ? "page" : undefined}
+        >
+          {peer.title[lang]}
+        </a>
+      ))}
+    </nav>
+  </details>
+  <nav class="case-parts" aria-label={ru ? "Части кейса" : "Case sections"}>
+    <a href="#analysis" aria-current="location">
+      {ru ? "Аналитика" : "Analysis"}
+    </a>
+    <a href="#showcase">{ru ? "Презентация" : "Showcase"}</a>
+  </nav>
+  <details class="chapter-picker">
+    <summary>{ru ? "Оглавление" : "Contents"}</summary>
+    <nav aria-label={ru ? "Главы кейса" : "Case chapters"}>
+      {chapters.map((chapter) => (
+        <a href={"#" + chapter.id}>{chapter.label}</a>
+      ))}
+    </nav>
+  </details>
+</div>
+
+<script>
+  let cleanup: (() => void) | undefined;
+  document.addEventListener("astro:before-swap", () => cleanup?.());
+  document.addEventListener("astro:page-load", () => {
+    cleanup?.();
+    const bar = document.querySelector<HTMLElement>("[data-case-context]");
+    if (!bar) return;
+    const controller = new AbortController();
+    const links = [
+      ...bar.querySelectorAll<HTMLAnchorElement>(".chapter-picker a"),
+    ];
+    const chapters = links.flatMap((link) => {
+      const heading = document.getElementById(link.hash.slice(1));
+      return heading ? [heading] : [];
+    });
+    const parts = [...bar.querySelectorAll(".case-parts a")];
+    let frame = 0;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const line = bar.getBoundingClientRect().bottom + 54;
+        const current = chapters.findLast(
+          (chapter) => chapter.getBoundingClientRect().top <= line,
+        );
+        bar.dataset.chapter = current ? "#" + current.id : "";
+        for (const link of links) {
+          if (link.hash === bar.dataset.chapter)
+            link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        }
+        const showcase = document.getElementById("showcase");
+        const part =
+          showcase && showcase.getBoundingClientRect().top <= line
+            ? "#showcase"
+            : "#analysis";
+        for (const link of parts) {
+          if (link.getAttribute("href") === part)
+            link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        }
+      });
+    };
+    window.addEventListener("scroll", update, {
+      signal: controller.signal,
+      passive: true,
+    });
+    window.addEventListener("resize", update, { signal: controller.signal });
+    bar.addEventListener(
+      "click",
+      (event) => {
+        const anchor = (event.target as Element).closest("a");
+        if (anchor?.hash) anchor.closest("details")?.removeAttribute("open");
+      },
+      { signal: controller.signal },
+    );
+    document.addEventListener(
+      "pointerdown",
+      (event) => {
+        if (!bar.contains(event.target as Node))
+          for (const open of bar.querySelectorAll("details[open]"))
+            open.removeAttribute("open");
+      },
+      { signal: controller.signal },
+    );
+    bar.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key !== "Escape") return;
+        const open = (event.target as Element).closest("details[open]");
+        open?.removeAttribute("open");
+        open?.querySelector("summary")?.focus();
+      },
+      { signal: controller.signal },
+    );
+    const alternate = document.querySelector<HTMLAnchorElement>(".language");
+    if (alternate)
+      alternate.onclick = () => {
+        alternate.hash = location.hash || bar.dataset.chapter || "";
+      };
+    update();
+    cleanup = () => {
+      controller.abort();
+      cancelAnimationFrame(frame);
+    };
+  });
+</script>

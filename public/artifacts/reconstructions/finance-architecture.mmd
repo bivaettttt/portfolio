@@ -1,0 +1,6 @@
+flowchart LR
+  A["Пользователь"] -->|"Форма операции"| B["Flask"]
+  B -->|"psycopg2"| C[("PostgreSQL")]
+  B -->|"HTTP /rate"| D["Учебный rate_service"]
+  D -->|"Фиксированный курс"| B
+  B -->|"Список операций"| A

@@ -62,7 +62,29 @@
         "en": "Customer accounts"
       },
       "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/assets/screenshots/accounts.png",
-      "preview": "media/vaultix/accounts-640.webp"
+      "preview": "media/vaultix/accounts-640.webp",
+      "original": "media/vaultix/accounts.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "6409300aa4a557ecd355196e69d1e80eed8f19e337deed7bcb48e435a7e8fa6a",
+      "variants": [
+        {
+          "path": "media/vaultix/accounts-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/vaultix/accounts-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/vaultix/accounts-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Синтетические счета в RUB: доступный остаток, статус и переход к операциям.",
+        "en": "Synthetic RUB accounts: available balance, state and access to operations."
+      }
     },
     {
       "path": "media/vaultix/journal.webp",
@@ -73,7 +95,29 @@
         "en": "Transaction journal"
       },
       "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/assets/screenshots/journal.png",
-      "preview": "media/vaultix/journal-640.webp"
+      "preview": "media/vaultix/journal-640.webp",
+      "original": "media/vaultix/journal.png",
+      "originalWidth": 1440,
+      "originalHeight": 1000,
+      "originalSha256": "a0e002d158b5d46129f9d76dea4538c79d5eb3cff515c9aa21405257b823e751",
+      "variants": [
+        {
+          "path": "media/vaultix/journal-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/vaultix/journal-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/vaultix/journal-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Журнал проводок раскрывает обе стороны финансовой операции.",
+        "en": "The ledger journal exposes both sides of a financial operation."
+      }
     },
     {
       "path": "media/vaultix/lab.webp",
@@ -84,7 +128,29 @@
         "en": "Reliability lab"
       },
       "source": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/assets/screenshots/lab.png",
-      "preview": "media/vaultix/lab-640.webp"
+      "preview": "media/vaultix/lab-640.webp",
+      "original": "media/vaultix/lab.png",
+      "originalWidth": 1440,
+      "originalHeight": 1809,
+      "originalSha256": "b43dd18f09c387692b86c3896278de8566dfa0c2e0303d6b951682af22cfaf81",
+      "variants": [
+        {
+          "path": "media/vaultix/lab-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/vaultix/lab-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/vaultix/lab-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Лаборатория выполняет реальные сценарии повторов, конкурентности и отката с состоянием до и после.",
+        "en": "The lab runs real replay, concurrency and rollback scenarios with before-and-after states."
+      }
     }
   ],
   "sha": "9d1971294ca9f96e2f6fb820691863df6f57050d",
@@ -236,7 +302,17 @@
       "check": {
         "ru": "Сверить HTTP 201 и две встречные записи.",
         "en": "Match HTTP 201 to two balanced entries."
-      }
+      },
+      "condition": {
+        "ru": "Клиент выбирает свой активный счёт и сумму RUB. Сервер проверяет статус, лимиты и остаток под согласованными блокировками.",
+        "en": "A customer selects an owned active account and a RUB amount. The server checks state, limits and balance under ordered locks."
+      },
+      "constraints": {
+        "ru": "Синтетические счета, RUB и внутренние переводы.",
+        "en": "Synthetic accounts, RUB and internal transfers."
+      },
+      "implementation": "https://github.com/bivaettttt/vaultix/tree/9d1971294ca9f96e2f6fb820691863df6f57050d/backend",
+      "testSource": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/frontend/e2e/flows.spec.ts"
     },
     {
       "id": "FR-004",
@@ -251,7 +327,17 @@
       "check": {
         "ru": "Повторить запрос с прежним и изменённым телом.",
         "en": "Replay with identical and changed payloads."
-      }
+      },
+      "condition": {
+        "ru": "Клиент выбирает свой активный счёт и сумму RUB. Сервер проверяет статус, лимиты и остаток под согласованными блокировками.",
+        "en": "A customer selects an owned active account and a RUB amount. The server checks state, limits and balance under ordered locks."
+      },
+      "constraints": {
+        "ru": "Синтетические счета, RUB и внутренние переводы.",
+        "en": "Synthetic accounts, RUB and internal transfers."
+      },
+      "implementation": "https://github.com/bivaettttt/vaultix/tree/9d1971294ca9f96e2f6fb820691863df6f57050d/backend",
+      "testSource": "https://github.com/bivaettttt/vaultix/blob/9d1971294ca9f96e2f6fb820691863df6f57050d/frontend/e2e/flows.spec.ts"
     }
   ],
   "diagram": {
@@ -293,5 +379,23 @@
         "en": "Insufficient funds, frozen accounts or changed payload under the same key result in a conflict."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Клиент выбирает свой активный счёт и сумму RUB. Сервер проверяет статус, лимиты и остаток под согласованными блокировками.",
+      "en": "A customer selects an owned active account and a RUB amount. The server checks state, limits and balance under ordered locks."
+    },
+    "exception": {
+      "ru": "Недостаток средств даёт конфликт. Ошибка после проводок откатывает всю операцию и сохраняет исходные остатки.",
+      "en": "Insufficient funds result in a conflict. Failure after ledger writes rolls back the operation and preserves initial balances."
+    },
+    "tradeoff": {
+      "ru": "Остаток выводится из журнала. Порядок блокировок уменьшает риск deadlock, операции одного счёта конкурируют за ресурс.",
+      "en": "Balances derive from the ledger. Ordered locks reduce deadlock risk while same-account operations contend."
+    },
+    "acceptance": {
+      "ru": "Успешный перевод имеет две равные встречные записи. Повтор возвращает исходный ответ, изменённое тело с тем же ключом конфликтует.",
+      "en": "A successful transfer has two balanced entries. Replay returns the original response and a changed same-key payload conflicts."
+    }
+  }
 }

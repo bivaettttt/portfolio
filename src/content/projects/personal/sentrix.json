@@ -55,36 +55,102 @@
   "screens": [
     {
       "path": "media/sentrix/alerts.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Предупреждения",
         "en": "Alert queue"
       },
       "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/assets/screenshots/alerts.png",
-      "preview": "media/sentrix/alerts-640.webp"
+      "preview": "media/sentrix/alerts-640.webp",
+      "original": "media/sentrix/alerts.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "4bad9867dc3c269b4374116e3bfa19db814d3283498b9c302fb0b3752908583e",
+      "variants": [
+        {
+          "path": "media/sentrix/alerts-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/sentrix/alerts-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/sentrix/alerts-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Предупреждение связано с правилом и операцией для начала расследования.",
+        "en": "An alert ties a rule to an operation to begin investigation."
+      }
     },
     {
       "path": "media/sentrix/investigation.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Расследование",
         "en": "Investigation"
       },
       "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/assets/screenshots/investigation.png",
-      "preview": "media/sentrix/investigation-640.webp"
+      "preview": "media/sentrix/investigation-640.webp",
+      "original": "media/sentrix/investigation.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "479615a9b214b22d8a2e36964c4a713dd58c265cc0eedc110e20d8b347363115",
+      "variants": [
+        {
+          "path": "media/sentrix/investigation-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/sentrix/investigation-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/sentrix/investigation-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Факты и связи собраны в контексте расследования для объяснимого решения аналитика.",
+        "en": "Facts and links are collected in investigation context for an explainable analyst decision."
+      }
     },
     {
       "path": "media/sentrix/review.webp",
-      "width": 1440,
-      "height": 912,
+      "width": 1500,
+      "height": 950,
       "title": {
         "ru": "Согласование",
         "en": "Review"
       },
       "source": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/assets/screenshots/review.png",
-      "preview": "media/sentrix/review-640.webp"
+      "preview": "media/sentrix/review-640.webp",
+      "original": "media/sentrix/review.png",
+      "originalWidth": 1500,
+      "originalHeight": 950,
+      "originalSha256": "bfbb1457e9025dee687b58d87cd12ab656af5de2e72e67b80dbf34311d585bf1",
+      "variants": [
+        {
+          "path": "media/sentrix/review-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/sentrix/review-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/sentrix/review-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Ревью фиксирует решение и основание, сохраняя историю рассмотрения.",
+        "en": "Review records the decision and its reason while retaining assessment history."
+      }
     }
   ],
   "sha": "7addc9671ebd287f1d5633b174da038af90471d2",
@@ -278,7 +344,17 @@
       "check": {
         "ru": "Открыть историческую оценку после обновления правил.",
         "en": "Inspect a historical assessment after rule updates."
-      }
+      },
+      "condition": {
+        "ru": "Операция приходит через API или CSV. Признаки и правила создают оценку. Высокий риск порождает предупреждение и дело.",
+        "en": "A transaction arrives via API or CSV. Indicators and rules generate an assessment. High risk creates an alert and a case."
+      },
+      "constraints": {
+        "ru": "Синтетические события и правила. Учебный скоринг требует отдельной оценки для реального применения.",
+        "en": "Synthetic transactions and rules. Real-world use would need independent validation."
+      },
+      "implementation": "https://github.com/bivaettttt/sentrix/tree/7addc9671ebd287f1d5633b174da038af90471d2/backend",
+      "testSource": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/frontend/e2e/workspace.spec.ts"
     },
     {
       "id": "FR-05",
@@ -293,7 +369,17 @@
       "check": {
         "ru": "Отправить конкурирующие команды и сверить историю.",
         "en": "Submit competing commands and verify history."
-      }
+      },
+      "condition": {
+        "ru": "Операция приходит через API или CSV. Признаки и правила создают оценку. Высокий риск порождает предупреждение и дело.",
+        "en": "A transaction arrives via API or CSV. Indicators and rules generate an assessment. High risk creates an alert and a case."
+      },
+      "constraints": {
+        "ru": "Синтетические события и правила. Учебный скоринг требует отдельной оценки для реального применения.",
+        "en": "Synthetic transactions and rules. Real-world use would need independent validation."
+      },
+      "implementation": "https://github.com/bivaettttt/sentrix/tree/7addc9671ebd287f1d5633b174da038af90471d2/backend",
+      "testSource": "https://github.com/bivaettttt/sentrix/blob/7addc9671ebd287f1d5633b174da038af90471d2/frontend/e2e/workspace.spec.ts"
     }
   ],
   "video": "media/sentrix/demo.mp4",
@@ -336,5 +422,23 @@
         "en": "A duplicate does not generate another alert. Concurrent decisions cannot create two closures."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Операция приходит через API или CSV. Признаки и правила создают оценку. Высокий риск порождает предупреждение и дело.",
+      "en": "A transaction arrives via API or CSV. Indicators and rules generate an assessment. High risk creates an alert and a case."
+    },
+    "exception": {
+      "ru": "Дубликат не создаёт новую оценку. Аналитик передаёт дело отдельному проверяющему, который закрывает или возвращает его.",
+      "en": "Duplicates do not create another assessment. The analyst submits to an independent reviewer who closes or returns the case."
+    },
+    "tradeoff": {
+      "ru": "Правила делают вклад признаков объяснимым. Учебную оценку перед реальным применением пришлось бы отдельно валидировать.",
+      "en": "Rules make indicator contributions explainable. The learning score would require validation for real-world use."
+    },
+    "acceptance": {
+      "ru": "Дело показывает исходные сигналы, версии правил и материалы. Конкурирующие решения дают один итог.",
+      "en": "The case exposes original alerts, rule versions and evidence. Competing decisions produce one outcome."
+    }
+  }
 }

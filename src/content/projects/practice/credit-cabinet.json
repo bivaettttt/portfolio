@@ -53,6 +53,71 @@
     }
   ],
   "screens": [],
-  "links": [],
-  "api": []
+  "links": [
+    {
+      "url": "artifacts/reconstructions/credit-cabinet.mmd",
+      "label": {
+        "ru": "Реконструкция · исходник Mermaid",
+        "en": "Reconstruction · Mermaid source"
+      }
+    }
+  ],
+  "api": [],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Клиент заполняет заявку и получает статус. Команда согласовывала клиентский сценарий, backend и контракт оценки.",
+      "en": "A customer submits an application and receives a status. The team aligned the user flow, backend and assessment contract."
+    },
+    "exception": {
+      "ru": "Неполные данные должны оставлять исправимое состояние формы. Прототип не доказывает готовность кредитного решения.",
+      "en": "Incomplete input should preserve a recoverable form state. A prototype does not establish credit decision readiness."
+    },
+    "tradeoff": {
+      "ru": "Мой вклад — требования, UX и приёмка. Реализация прототипа имеет командное авторство.",
+      "en": "My contribution covered requirements, UX and acceptance. The prototype implementation belongs to the team."
+    },
+    "acceptance": {
+      "ru": "Описание сверено с материалами команды. Исходные кадры и закрытый репозиторий команды не опубликованы.",
+      "en": "The description matches team materials. Original team screenshots and the private repository are not published."
+    }
+  },
+  "diagram": {
+    "path": "artifacts/reconstructions/credit-cabinet.svg",
+    "width": 1024,
+    "height": 237,
+    "title": {
+      "ru": "От заполнения к статусу заявки",
+      "en": "Application input and status"
+    },
+    "caption": {
+      "ru": "Обезличенная реконструкция на основе материалов проекта",
+      "en": "Sanitized reconstruction based on project materials"
+    }
+  },
+  "requirements": [
+    {
+      "id": "CASE-CREDIT-CABINET-01",
+      "title": {
+        "ru": "Проверка основного сценария",
+        "en": "Main scenario verification"
+      },
+      "condition": {
+        "ru": "Клиент заполняет заявку и получает статус. Команда согласовывала клиентский сценарий, backend и контракт оценки.",
+        "en": "A customer submits an application and receives a status. The team aligned the user flow, backend and assessment contract."
+      },
+      "rule": {
+        "ru": "Я описал шаги, состояния и критерии для дальнейшего согласования контракта с командой.",
+        "en": "I documented steps, states and acceptance criteria to align the contract with the team."
+      },
+      "check": {
+        "ru": "Описание сверено с материалами команды. Исходные кадры и закрытый репозиторий команды не опубликованы.",
+        "en": "The description matches team materials. Original team screenshots and the private repository are not published."
+      },
+      "constraints": {
+        "ru": "Командный учебный прототип. Скриншоты и исходный контракт команды не публикуются. Ниже схема по описанию.",
+        "en": "Team learning prototype. Screenshots and the original team contract are private. The flow below is a documented reconstruction."
+      },
+      "retrospective": true
+    }
+  ]
 }

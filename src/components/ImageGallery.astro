@@ -1,0 +1,206 @@
+---
+import type { Lang } from "../lib/site";
+const { lang } = Astro.props as { lang: Lang };
+const ru = lang === "ru";
+---
+
+<dialog class="image-dialog" aria-labelledby="gallery-title">
+  <div class="dialog-head">
+    <div class="image-caption">
+      <p data-count class="gallery-count" aria-live="polite"></p>
+      <h2 id="gallery-title"></h2>
+      <p data-caption></p>
+    </div>
+    <div class="image-controls">
+      <a data-original target="_blank" rel="noopener">
+        {ru ? "Оригинал" : "Original"} <span aria-hidden="true">↗</span>
+      </a>
+      <button
+        type="button"
+        data-close
+        aria-label={ru ? "Закрыть" : "Close"}
+        autofocus
+      >
+        ×
+      </button>
+    </div>
+  </div>
+  <div
+    class="image-stage"
+    tabindex="0"
+    role="region"
+    aria-label={
+      ru
+        ? "Область изображения. Прокручивайте увеличенный снимок."
+        : "Image area. Scroll to pan a zoomed image."
+    }
+  >
+    <img alt="" draggable="false" />
+  </div>
+  <div class="dialog-actions">
+    <button
+      type="button"
+      data-step="-1"
+      aria-label={ru ? "Предыдущее изображение" : "Previous image"}
+    >
+      ←
+    </button>
+    <div>
+      <button
+        type="button"
+        data-zoom="-1"
+        aria-label={ru ? "Уменьшить" : "Zoom out"}
+      >
+        −
+      </button>
+      <button type="button" data-fit>
+        {ru ? "Вписать" : "Fit"}
+      </button>
+      <button
+        type="button"
+        data-native
+        aria-label={ru ? "Исходный масштаб" : "Actual size"}
+      >
+        1:1
+      </button>
+      <button
+        type="button"
+        data-zoom="1"
+        aria-label={ru ? "Увеличить" : "Zoom in"}
+      >
+        +
+      </button>
+    </div>
+    <button
+      type="button"
+      data-step="1"
+      aria-label={ru ? "Следующее изображение" : "Next image"}
+    >
+      →
+    </button>
+  </div>
+</dialog>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const dialog = document.querySelector<HTMLDialogElement>(".image-dialog");
+    if (!dialog) return;
+    const image = dialog.querySelector<HTMLImageElement>("img")!;
+    const title = dialog.querySelector<HTMLElement>("#gallery-title")!;
+    const caption = dialog.querySelector<HTMLElement>("[data-caption]")!;
+    const count = dialog.querySelector<HTMLElement>("[data-count]")!;
+    const original =
+      dialog.querySelector<HTMLAnchorElement>("[data-original]")!;
+    const stage = dialog.querySelector<HTMLElement>(".image-stage")!;
+    const links = [
+      ...document.querySelectorAll<HTMLAnchorElement>("[data-gallery]"),
+    ];
+    let origin: HTMLAnchorElement | undefined;
+    let index = 0;
+    let zoom = 100;
+    let drag:
+      | { id: number; x: number; y: number; left: number; top: number }
+      | undefined;
+
+    function fit() {
+      zoom = 100;
+      image.style.width = "100%";
+      image.classList.remove("is-zoomed");
+      stage.scrollTo(0, 0);
+    }
+
+    function show(next: number) {
+      index = (next + links.length) % links.length;
+      const link = links[index];
+      if (!link) return;
+      const name = link.dataset.title ?? "";
+      title.textContent = name;
+      caption.textContent = link.dataset.description ?? "";
+      count.textContent = `${index + 1} / ${links.length}`;
+      image.alt = name;
+      image.src = link.href;
+      original.href = link.href;
+      fit();
+    }
+
+    for (const [position, link] of links.entries()) {
+      link.onclick = (event) => {
+        if (
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        )
+          return;
+        event.preventDefault();
+        origin = link;
+        show(position);
+        dialog.showModal();
+      };
+    }
+
+    for (const button of dialog.querySelectorAll<HTMLButtonElement>(
+      "[data-step]",
+    )) {
+      button.disabled = links.length < 2;
+      button.onclick = () => show(index + Number(button.dataset.step));
+    }
+    for (const button of dialog.querySelectorAll<HTMLButtonElement>(
+      "[data-zoom]",
+    )) {
+      button.onclick = () => {
+        zoom = Math.min(
+          400,
+          Math.max(75, zoom + 25 * Number(button.dataset.zoom)),
+        );
+        image.style.width = zoom + "%";
+        image.classList.toggle("is-zoomed", zoom > 100);
+      };
+    }
+    dialog.querySelector<HTMLButtonElement>("[data-fit]")!.onclick = fit;
+    dialog.querySelector<HTMLButtonElement>("[data-native]")!.onclick = () => {
+      if (!image.naturalWidth) return;
+      const width = Math.round(image.naturalWidth / window.devicePixelRatio);
+      image.style.width = width + "px";
+      zoom = Math.round((width / stage.clientWidth) * 100);
+      image.classList.add("is-zoomed");
+    };
+    dialog.querySelector<HTMLButtonElement>("[data-close]")!.onclick = () =>
+      dialog.close();
+    dialog.onclose = () => origin?.focus({ preventScroll: true });
+    dialog.onkeydown = (event) => {
+      if (event.target === stage && image.classList.contains("is-zoomed"))
+        return;
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      show(index + (event.key === "ArrowRight" ? 1 : -1));
+    };
+    stage.onpointerdown = (event) => {
+      if (
+        event.pointerType !== "mouse" ||
+        event.button !== 0 ||
+        !image.classList.contains("is-zoomed")
+      )
+        return;
+      stage.setPointerCapture(event.pointerId);
+      drag = {
+        id: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        left: stage.scrollLeft,
+        top: stage.scrollTop,
+      };
+    };
+    stage.onpointermove = (event) => {
+      if (drag?.id !== event.pointerId) return;
+      stage.scrollTo(
+        drag.left + drag.x - event.clientX,
+        drag.top + drag.y - event.clientY,
+      );
+    };
+    stage.onlostpointercapture = () => {
+      drag = undefined;
+    };
+  });
+</script>

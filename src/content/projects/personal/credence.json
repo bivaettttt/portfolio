@@ -62,7 +62,29 @@
         "en": "Application details"
       },
       "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/assets/screenshots/details.png",
-      "preview": "media/credence/details-640.webp"
+      "preview": "media/credence/details-640.webp",
+      "original": "media/credence/details.png",
+      "originalWidth": 1440,
+      "originalHeight": 950,
+      "originalSha256": "a71e7995e2f1fb16d5dca20331faceceb226776a3fdcd93cab0d8cfb22b4acdd",
+      "variants": [
+        {
+          "path": "media/credence/details-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/credence/details-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/credence/details-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Кредитная заявка: исходные данные, текущая редакция и действия по проверке.",
+        "en": "A credit application: source data, current revision and review actions."
+      }
     },
     {
       "path": "media/credence/risk.webp",
@@ -73,7 +95,29 @@
         "en": "Assessment explanation"
       },
       "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/assets/screenshots/risk.png",
-      "preview": "media/credence/risk-640.webp"
+      "preview": "media/credence/risk-640.webp",
+      "original": "media/credence/risk.png",
+      "originalWidth": 1440,
+      "originalHeight": 950,
+      "originalSha256": "527f23fac70ff5900e63cb9f408c267a94cdaedb796f160b3b9cd05a035d6681",
+      "variants": [
+        {
+          "path": "media/credence/risk-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/credence/risk-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/credence/risk-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Оценка риска относится к конкретной редакции заявки. Причина и результат доступны в её контексте.",
+        "en": "Risk assessment refers to a particular application revision. Reason and result remain in context."
+      }
     },
     {
       "path": "media/credence/offer.webp",
@@ -84,7 +128,29 @@
         "en": "Offer"
       },
       "source": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/assets/screenshots/offer.png",
-      "preview": "media/credence/offer-640.webp"
+      "preview": "media/credence/offer-640.webp",
+      "original": "media/credence/offer.png",
+      "originalWidth": 1440,
+      "originalHeight": 950,
+      "originalSha256": "2c7c314ca9eefc6f853d354df5370d1e31a58c8cfe66feed7103ea2558ab52f4",
+      "variants": [
+        {
+          "path": "media/credence/offer-640.webp",
+          "width": 640
+        },
+        {
+          "path": "media/credence/offer-960.webp",
+          "width": 960
+        },
+        {
+          "path": "media/credence/offer-1280.webp",
+          "width": 1280
+        }
+      ],
+      "caption": {
+        "ru": "Предложение связано с проверенными условиями заявки. Изменение требует новой оценки.",
+        "en": "The offer refers to assessed terms. A change requires reassessment."
+      }
     }
   ],
   "sha": "b8dc127da708225191f0f0450ec69a49cb605dff",
@@ -338,7 +404,17 @@
       "check": {
         "ru": "Проверить, что повторная подача сохраняет новую версию.",
         "en": "Verify that resubmission stores a new revision."
-      }
+      },
+      "condition": {
+        "ru": "Заявитель отправляет материалы. Аналитик проверяет снимок и готовит рекомендацию риск-офицеру.",
+        "en": "An applicant submits evidence. An analyst reviews the snapshot and recommends an outcome to a risk officer."
+      },
+      "constraints": {
+        "ru": "Учебная объяснимая модель оценки, синтетические данные.",
+        "en": "Educational explainable score and synthetic data."
+      },
+      "implementation": "https://github.com/bivaettttt/credence/tree/b8dc127da708225191f0f0450ec69a49cb605dff/backend",
+      "testSource": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/frontend/e2e/flow.spec.ts"
     },
     {
       "id": "FR-05",
@@ -353,7 +429,17 @@
       "check": {
         "ru": "Воспроизвести конфликт решений.",
         "en": "Reproduce competing decisions."
-      }
+      },
+      "condition": {
+        "ru": "Заявитель отправляет материалы. Аналитик проверяет снимок и готовит рекомендацию риск-офицеру.",
+        "en": "An applicant submits evidence. An analyst reviews the snapshot and recommends an outcome to a risk officer."
+      },
+      "constraints": {
+        "ru": "Учебная объяснимая модель оценки, синтетические данные.",
+        "en": "Educational explainable score and synthetic data."
+      },
+      "implementation": "https://github.com/bivaettttt/credence/tree/b8dc127da708225191f0f0450ec69a49cb605dff/backend",
+      "testSource": "https://github.com/bivaettttt/credence/blob/b8dc127da708225191f0f0450ec69a49cb605dff/frontend/e2e/flow.spec.ts"
     }
   ],
   "video": "media/credence/demo.mp4",
@@ -396,5 +482,23 @@
         "en": "A clarification requires reassessment. Another decision against a closed transition is rejected."
       }
     }
-  ]
+  ],
+  "caseNotes": {
+    "trigger": {
+      "ru": "Заявитель отправляет материалы. Аналитик проверяет снимок и готовит рекомендацию риск-офицеру.",
+      "en": "An applicant submits evidence. An analyst reviews the snapshot and recommends an outcome to a risk officer."
+    },
+    "exception": {
+      "ru": "Уточнение создаёт новую редакцию. Оценку нужно повторить, а предложение принимается в рамках срока и состояния.",
+      "en": "Clarification creates a new revision. Assessment must run again and offer acceptance respects validity and state."
+    },
+    "tradeoff": {
+      "ru": "Снимки дают воспроизводимость при дополнительной стоимости хранения. Revision и квитанции защищают итоговое решение.",
+      "en": "Snapshots support reproducibility at a storage cost. Revisions and receipts protect final decisions."
+    },
+    "acceptance": {
+      "ru": "Снимок, оценка и предложение связаны версиями. Конкурентные команды не создают два финальных решения.",
+      "en": "Snapshot, assessment and offer link through versions. Competing commands do not create two final decisions."
+    }
+  }
 }
