@@ -33,7 +33,11 @@ test("each content source has a route in both languages and links to shipped evi
       p.id,
     );
     assert.ok(
-      !p.sha || p.screens.every((screen) => screen.source.includes(p.sha)),
+      !p.sha ||
+        p.screens.every(
+          (screen) =>
+            screen.capture?.codeSha === p.sha || screen.source.includes(p.sha),
+        ),
       p.id,
     );
     for (const screen of p.screens) {

@@ -662,8 +662,9 @@
 }
 .image-controls a {
   min-height: 42px;
-  display: inline-grid;
-  place-content: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   white-space: nowrap;
   font-weight: 650;
   padding: 0.15rem 0.35rem;

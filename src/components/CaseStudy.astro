@@ -335,7 +335,17 @@ const chapters = [
       )}
     </div>
   </nav>
-  {(p.screens.length || p.diagram) && <ImageGallery {lang} />}
+  {(p.screens.length || p.diagram) && (
+    <ImageGallery
+      {lang}
+      initialOriginal={asset(
+        p.screens[0]?.original ??
+          p.screens[0]?.path ??
+          p.diagram?.path ??
+          "favicon.svg",
+      )}
+    />
+  )}
 </div>
 <script>
   document.addEventListener("astro:page-load", () => {

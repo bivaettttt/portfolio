@@ -31,9 +31,16 @@ test("original media hashes, dimensions and lossless presentation match the evid
       if (p.category === "personal") {
         originals++;
         const webp = await sharp("dist/" + s.path).metadata();
-        assert.equal(webp.width, original.width);
-        assert.equal(webp.height, original.height);
-        const a = await sharp(bytes).removeAlpha().raw().toBuffer();
+        assert.equal(webp.width, Math.min(original.width, 1600));
+        assert.equal(
+          webp.height,
+          Math.round((original.height / original.width) * webp.width),
+        );
+        const a = await sharp(bytes)
+          .resize({ width: webp.width })
+          .removeAlpha()
+          .raw()
+          .toBuffer();
         const b = await sharp("dist/" + s.path)
           .removeAlpha()
           .raw()

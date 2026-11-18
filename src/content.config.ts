@@ -20,6 +20,15 @@ const screen = z.object({
   variants: z
     .array(z.object({ path: z.string(), width: z.number().int().positive() }))
     .default([]),
+  capture: z
+    .object({
+      codeSha: z.string().regex(/^[a-f0-9]{40}$/),
+      viewport: z.array(z.number().int().positive()).length(2),
+      dpr: z.number().positive(),
+      date: z.string(),
+      evidence: z.string(),
+    })
+    .optional(),
   caption: bilingual.optional(),
 });
 

@@ -1,6 +1,9 @@
 ---
 import type { Lang } from "../lib/site";
-const { lang } = Astro.props as { lang: Lang };
+const { lang, initialOriginal } = Astro.props as {
+  lang: Lang;
+  initialOriginal: string;
+};
 const ru = lang === "ru";
 ---
 
@@ -12,7 +15,7 @@ const ru = lang === "ru";
       <p data-caption></p>
     </div>
     <div class="image-controls">
-      <a data-original target="_blank" rel="noopener">
+      <a data-original href={initialOriginal} target="_blank" rel="noopener">
         {ru ? "Оригинал" : "Original"} <span aria-hidden="true">↗</span>
       </a>
       <button

@@ -55,18 +55,18 @@
   "screens": [
     {
       "path": "media/wayline/trips.webp",
-      "width": 1500,
-      "height": 950,
+      "width": 1600,
+      "height": 1013,
       "title": {
         "ru": "Поездки",
         "en": "Trips"
       },
-      "source": "https://github.com/bivaettttt/wayline/blob/6b29602c23335fb7b18d5f62782827fae1102521/assets/screenshots/trips.png",
+      "source": "https://github.com/bivaettttt/portfolio/blob/main/public/media/wayline/trips.png",
       "preview": "media/wayline/trips-640.webp",
       "original": "media/wayline/trips.png",
-      "originalWidth": 1500,
-      "originalHeight": 950,
-      "originalSha256": "03cac554984aea59a4d161e011a83f509b3ab67da19afa4be058d9cc1382b9e7",
+      "originalWidth": 3000,
+      "originalHeight": 1900,
+      "originalSha256": "f3d9f6c9da8cc30604cde0ef0c717ef0d793d16f6ab32aea175d9cc31ed427e5",
       "variants": [
         {
           "path": "media/wayline/trips-640.webp",
@@ -82,8 +82,15 @@
         }
       ],
       "caption": {
-        "ru": "Поездки и события расписания задают контекст проверки пересадок.",
-        "en": "Trips and timetable events establish context for connection checks."
+        "ru": "Реестр поездок после загрузки: два синтетических маршрута и состояние пересадок. Новый захват 1500×950, DPR 2.",
+        "en": "Loaded trip registry: two synthetic itineraries and their connection states. Recaptured at 1500×950, DPR 2."
+      },
+      "capture": {
+        "codeSha": "6b29602c23335fb7b18d5f62782827fae1102521",
+        "viewport": [1500, 950],
+        "dpr": 2,
+        "date": "2026-11-18",
+        "evidence": "docs/evidence/v2/wayline-capture.json"
       }
     },
     {
